@@ -1,0 +1,20 @@
+<div class="navbar-wrapper">
+  <div class="icon-container">
+    <img src="../../assets/logo.png" alt="" />
+    <h3>LightSpeed</h3>
+  </div>
+  <div class="navbtn-wrap">
+    <a
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Home</a
+    >
+    <a routerLink="/About" routerLinkActive="active">About Us</a>
+    <a routerLink="/Contact" routerLinkActive="active">Contact</a>
+  </div>
+  <div class="authbtn-wrapper">
+    <button (click)="goLogin()">Log in</button>
+    <button (click)="goSignup()">Sign up</button>
+  </div>
+</div>

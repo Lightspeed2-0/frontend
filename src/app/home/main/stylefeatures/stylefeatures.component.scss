@@ -1,0 +1,23 @@
+.features {
+  padding: 1em 3em;
+  h3 {
+    font-size: 1.7em;
+    text-transform: uppercase;
+    border-bottom: 3.5px solid;
+    border-image: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
+    border-image-slice: 1;
+    display: inline-block;
+  }
+  .img-wrap {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    .img {
+      width: 15%;
+      img {
+        width: 100%;
+      }
+    }
+  }
+}

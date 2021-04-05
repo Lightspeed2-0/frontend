@@ -1,0 +1,31 @@
+<div class="Oauth-wrapper">
+  <button>
+    <img src="../../../assets/icons8-google-48.png" alt="" />
+    <p>Continue with Google</p>
+  </button>
+  <button>
+    <img src="../../../assets/icons8-facebook-48.png" alt="" />
+    <p>Continue with Facebook</p>
+  </button>
+  <button>
+    <img src="../../../assets/icons8-apple-logo-50.png" alt="" />
+    <p>Continue with Apple</p>
+  </button>
+</div>
+<form [formGroup]="form" (ngSubmit)="onLogin()">
+  <div class="col">
+    <label for="Name">Username</label>
+    <input type="text" formControlName="Email" />
+  </div>
+  <div class="col">
+    <label for="Password">Password</label>
+    <input type="password" formControlName="Password" />
+  </div>
+  <div class="btn-wrap">
+    <button [disabled]="!form.valid">Log in</button>
+  </div>
+</form>
+<div class="form-footer">
+  <p>Don't have an Account</p>
+  <a routerLink="/Signup">Signup</a>
+</div>

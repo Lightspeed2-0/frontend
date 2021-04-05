@@ -1,0 +1,104 @@
+$mainColor: #00a2fd;
+.about-wrapper {
+  padding: 3em;
+  margin-top: 2em;
+  h3 {
+    display: inline-block;
+    font-size: 1.5em;
+    font-weight: 600;
+    border-bottom: 3px solid $mainColor;
+  }
+  .col-wrap {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    .img {
+      background-image: url("../../../assets/19362653.jpg");
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    .wrap {
+      .developer-wrapper {
+        margin-top: 2em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        .developer {
+          display: flex;
+          gap: 3em;
+          padding: 1em;
+          border-radius: 0.3em;
+          width: 43vw;
+          box-shadow: 0px 0px 5px 0.5px rgba(0, 0, 0, 0.2);
+          img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            box-shadow: 5px 5px 5px 0.5px rgba(0, 0, 0, 0.2);
+          }
+          .dev_contents {
+            .name {
+              display: flex;
+              p {
+                font-size: 1.2em;
+                font-weight: 500;
+              }
+              .team {
+                margin-left: 0.3em;
+                padding: 0.2em 0.5em;
+                color: #fff;
+              }
+            }
+            .nickname {
+              font-size: 1em;
+              color: rgb(110, 110, 110);
+            }
+            .contribution {
+              margin-top: 2em;
+              p {
+                font-size: 1.2em;
+                font-weight: 600;
+              }
+              img {
+                box-shadow: none;
+                width: 40px;
+                height: 40px;
+              }
+            }
+          }
+        }
+        &:nth-child(odd) {
+          .developer {
+            .dev_contents {
+              .team {
+                border-radius: 0.3em;
+                background: #da22ff; /* fallback for old browsers */
+                background: -webkit-linear-gradient(to right, #9733ee, #da22ff);
+                background: linear-gradient(to right, #9733ee, #da22ff);
+              }
+            }
+          }
+        }
+        &:nth-child(even) {
+          .developer {
+            .dev_contents {
+              .team {
+                border-radius: 0.3em;
+                background: #56ccf2;
+                background: -webkit-linear-gradient(to right, #2f80ed, #56ccf2);
+                background: linear-gradient(to right, #2f80ed, #56ccf2);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.horizontal {
+  padding: 0em 3em;
+  hr {
+    border: 0.1px solid gainsboro;
+  }
+}

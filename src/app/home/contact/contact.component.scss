@@ -1,0 +1,135 @@
+$mainColor: #00a2fd;
+.contact-wrapper {
+  height: 80vh;
+  width: 100%;
+  background-image: url("../../../assets/contact.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .profile {
+    width: 70%;
+    .row {
+      margin-top: 5em;
+      display: flex;
+      justify-content: space-between;
+      .profile-wrap {
+        display: flex;
+        box-shadow: 0px 0px 5px 0.5px rgba(0, 0, 0, 0.2);
+        .img-wrap {
+          background: $mainColor;
+          border-top-left-radius: 0.3em;
+          border-bottom-left-radius: 0.3em;
+          padding: 0.5em;
+          img {
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+          }
+        }
+        .profile-contents {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 0.5em 1em;
+          background-color: #fff;
+          border-top-right-radius: 0.3em;
+          border-bottom-right-radius: 0.3em;
+
+          p {
+            font-size: 1.2em;
+            font-weight: 500;
+          }
+          .icon-wrap {
+            display: flex;
+            img {
+              width: 35px;
+              height: 35px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.contact-form {
+  padding: 1em 20em;
+  form {
+    margin-bottom: 2em;
+    fieldset {
+      padding: 1em 3em;
+      border: 2px solid #989898;
+      border-radius: 0.3em;
+      legend {
+        font-size: 1.2em;
+        font-weight: 500;
+      }
+      .row-wrap {
+        display: flex;
+        align-items: center;
+        .row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          label {
+            font-size: 1.2em;
+            font-weight: 500;
+            margin-right: 1em;
+          }
+          input {
+            margin-left: 1.4em;
+            outline: none;
+            font-size: 1.1em;
+            padding: 0.1em 0.3em;
+            border: 2px solid #ccc;
+            margin-right: 1em;
+            border-radius: 0.3em;
+            &:focus {
+              border: 2px solid $mainColor;
+            }
+          }
+        }
+        &:nth-child(3) {
+          margin-top: 1em;
+          .row {
+            textarea {
+              outline: none;
+              padding: 1em;
+              font-size: 1.1em;
+              width: 25em;
+              height: 7em;
+              border: 2px solid #ccc;
+              border-radius: 0.3em;
+              margin-right: 1em;
+              &:focus {
+                border: 2px solid $mainColor;
+              }
+            }
+          }
+          button {
+            font-size: 1.1em;
+            color: #fff;
+            outline: none;
+            border: none;
+            background: $mainColor;
+            padding: 0.5em 1em;
+            border-radius: 0.3em;
+            cursor: pointer;
+            &:disabled {
+              background: gainsboro;
+              cursor: not-allowed;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.horizontal {
+  padding: 0em 3em;
+  hr {
+    border: 0.1px solid gainsboro;
+  }
+}

@@ -1,0 +1,65 @@
+.navbar-wrapper {
+  width: 100%;
+  z-index: 5;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  background: #00a2fd;
+  padding: 0.75em;
+  .icon-container {
+    display: flex;
+    img {
+      width: 25px;
+      height: 28px;
+      margin-right: 0.4em;
+    }
+    h3 {
+      font-size: 1.4em;
+      font-weight: 600;
+      color: #fff;
+    }
+  }
+  .navbtn-wrap {
+    margin-left: 2em;
+    width: 62vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    a {
+      font-size: 1.2em;
+      font-weight: 500;
+      text-decoration: none;
+      color: #fff;
+    }
+  }
+  .authbtn-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 18vw;
+    button {
+      border: none;
+      outline: none;
+      font-size: 1em;
+      font-weight: 600;
+      padding: 0.5em 1.5em;
+      border-radius: 0.3em;
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.02);
+      }
+      &:nth-child(1) {
+        background: none;
+        border: 2px solid #fff;
+        color: #fff;
+      }
+      &:nth-child(2) {
+        background: #fff;
+        border: 2px solid #fff;
+      }
+    }
+  }
+}
+.active {
+  border-bottom: 3px solid #fff;
+}

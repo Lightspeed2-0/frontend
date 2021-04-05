@@ -1,0 +1,100 @@
+<app-navbar></app-navbar>
+<hr />
+<div class="contact-wrapper">
+  <div class="profile">
+    <div class="row">
+      <div class="profile-wrap">
+        <div class="img-wrap">
+          <img src="../../../assets/ajith.jpeg" alt="" />
+        </div>
+        <div class="profile-contents">
+          <p>AjithKumar Ak</p>
+          <div class="icon-wrap">
+            <img src="../../../assets/icons8-facebook-48.png" alt="" />
+            <img src="../../../assets/icons8-instagram-48.png" alt="" />
+            <img src="../../../assets/icons8-linkedin-48.png" alt="" />
+            <img src="../../../assets/icons8-gmail-48.png" alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="profile-wrap">
+        <div class="img-wrap">
+          <img src="../../../assets/ibrahim.jpeg" alt="" />
+        </div>
+        <div class="profile-contents">
+          <p>Ibrahim S</p>
+          <div class="icon-wrap">
+            <img src="../../../assets/icons8-facebook-48.png" alt="" />
+            <img src="../../../assets/icons8-instagram-48.png" alt="" />
+            <img src="../../../assets/icons8-linkedin-48.png" alt="" />
+            <img src="../../../assets/icons8-gmail-48.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="profile-wrap">
+        <div class="img-wrap">
+          <img src="../../../assets/jaya.jpg" alt="" />
+        </div>
+        <div class="profile-contents">
+          <p>Jayasurya V</p>
+          <div class="icon-wrap">
+            <img src="../../../assets/icons8-facebook-48.png" alt="" />
+            <img src="../../../assets/icons8-instagram-48.png" alt="" />
+            <img src="../../../assets/icons8-linkedin-48.png" alt="" />
+            <img src="../../../assets/icons8-gmail-48.png" alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="profile-wrap">
+        <div class="img-wrap">
+          <img src="../../../assets/jiji.jpeg" alt="" />
+        </div>
+        <div class="profile-contents">
+          <p>Jitiendran KS</p>
+          <div class="icon-wrap">
+            <img src="../../../assets/icons8-facebook-48.png" alt="" />
+            <img src="../../../assets/icons8-instagram-48.png" alt="" />
+            <img src="../../../assets/icons8-linkedin-48.png" alt="" />
+            <img src="../../../assets/icons8-gmail-48.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="contact-form">
+  <form [formGroup]="contactFrom" ngSubmit="onSubmit()">
+    <fieldset>
+      <legend>Contact Form</legend>
+      <div class="row-wrap">
+        <div class="row">
+          <label for="Name">Name</label>
+          <input type="text" formControlName="Name" />
+        </div>
+        <div class="row">
+          <label for="Email">Email</label>
+          <input type="email" formControlName="Email" />
+        </div>
+      </div>
+      <div class="row-wrap">
+        <div class="row">
+          <label for="Message">Message</label>
+          <textarea
+            name=""
+            id=""
+            cols="30"
+            rows="10"
+            formControlName="Message"
+          ></textarea>
+        </div>
+        <button [disabled]="!contactFrom.valid">Submit</button>
+      </div>
+    </fieldset>
+  </form>
+</div>
+<div class="horizontal">
+  <hr />
+</div>
+<app-footer></app-footer>
