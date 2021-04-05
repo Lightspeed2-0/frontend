@@ -1,22 +1,22 @@
-import { Router } from '@angular/router';
-import { AuthserviceService } from '../../../auth/authservice.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
-import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from "@angular/router";
+import { AuthserviceService } from "../../../auth/authservice.service";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { Component, OnInit } from "@angular/core";
+import { HttpErrorResponse } from "@angular/common/http";
 
 @Component({
-  selector: 'app-userlogin',
-  templateUrl: './userlogin.component.html',
-  styleUrls: ['./userlogin.component.scss'],
+  selector: "app-userlogin",
+  templateUrl: "./userlogin.component.html",
+  styleUrls: ["./userlogin.component.scss"],
 })
 export class UserloginComponent implements OnInit {
   private user: { Email: string; Password: string } = {
-    Email: '',
-    Password: '',
+    Email: "",
+    Password: "",
   };
   private tokenObj: any;
   form: FormGroup = new FormGroup({
-    Email: new FormControl(null, Validators.required),
+    Email: new FormControl(null, [Validators.required, Validators.email]),
     Password: new FormControl(null, Validators.required),
   });
   constructor(private auth: AuthserviceService, private router: Router) {}
@@ -28,13 +28,13 @@ export class UserloginComponent implements OnInit {
       (res) => {
         console.log(res);
         this.tokenObj = res;
-        localStorage.setItem('token', this.tokenObj.token);
-        this.router.navigateByUrl(`/Consignee/${this.tokenObj.Email}`);
+        localStorage.setItem("token", this.tokenObj.token);
+        this.router.navigateByUrl(`/Consignee`);
       },
       (error) => {
         if (error instanceof HttpErrorResponse) {
           if (error.status === 401) {
-            this.router.navigateByUrl('/Login');
+            this.router.navigateByUrl("/Login");
           }
         }
       }

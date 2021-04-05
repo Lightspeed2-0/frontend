@@ -1,13 +1,13 @@
-import { Routes, RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Routes, RouterModule } from "@angular/router";
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
 
-import { AuthGuard } from '../../auth/auth.guard';
-import { ConsigneeComponent } from '../consignee.component';
+import { AuthGuard } from "../../auth/auth.guard";
+import { ConsigneeComponent } from "../consignee.component";
 
 const routes: Routes = [
   {
-    path: 'Consignee/:name',
+    path: "Consignee",
     component: ConsigneeComponent,
     canActivate: [AuthGuard],
   },

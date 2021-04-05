@@ -11,7 +11,7 @@ import { HttpErrorResponse } from "@angular/common/http";
 })
 export class TransporterloginComponent implements OnInit {
   form: FormGroup = new FormGroup({
-    Username: new FormControl(null, Validators.required),
+    Email: new FormControl(null, [Validators.required, Validators.email]),
     Password: new FormControl(null, Validators.required),
   });
   private user: { Email: string; Password: string } = {
