@@ -48,7 +48,7 @@ export class ConsigneesignupComponent implements OnInit {
       (error) => {
         if (error instanceof HttpErrorResponse) {
           if (error.status === 401) {
-            this.error = error.message;
+            this.error = error.error;
             this.router.navigateByUrl("/Signup");
           }
         }
