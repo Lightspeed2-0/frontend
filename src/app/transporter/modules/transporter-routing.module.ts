@@ -1,12 +1,12 @@
-import { RouterModule, Routes } from '@angular/router';
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { TransporterComponent } from '../transporter.component';
-import { AuthGuard } from '../../auth/auth.guard';
+import { RouterModule, Routes } from "@angular/router";
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { TransporterComponent } from "../transporter.component";
+import { AuthGuard } from "../../auth/auth.guard";
 
 const routes: Routes = [
   {
-    path: 'Transporter/:name',
+    path: "Transporter",
     component: TransporterComponent,
     canActivate: [AuthGuard],
   },
