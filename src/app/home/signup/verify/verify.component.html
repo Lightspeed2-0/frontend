@@ -1,0 +1,10 @@
+<app-navbar></app-navbar>
+<div class="verify">
+  <div class="content-wrapper">
+    <p>OTP has been sent to {{ Email }}</p>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <input type="number" formControlName="OTP" placeholder="Enter the otp" />
+      <button [disabled]="!form.valid">verify</button>
+    </form>
+  </div>
+</div>

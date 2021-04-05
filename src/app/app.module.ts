@@ -23,6 +23,7 @@ import { TokenInterceptorService } from "./auth/token-interceptor.service";
 import { StylefeaturesComponent } from "./home/main/stylefeatures/stylefeatures.component";
 import { TransportersignupComponent } from "./home/signup/transportersignup/transportersignup.component";
 import { ConsigneesignupComponent } from "./home/signup/consigneesignup/consigneesignup.component";
+import { VerifyComponent } from './home/signup/verify/verify.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ConsigneesignupComponent } from "./home/signup/consigneesignup/consigne
     StylefeaturesComponent,
     ConsigneesignupComponent,
     TransportersignupComponent,
+    VerifyComponent,
   ],
   imports: [
     BrowserModule,

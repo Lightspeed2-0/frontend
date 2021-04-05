@@ -1,3 +1,4 @@
+import { VerifyComponent } from "./home/signup/verify/verify.component";
 import { TransportersignupComponent } from "./home/signup/transportersignup/transportersignup.component";
 import { ConsigneesignupComponent } from "./home/signup/consigneesignup/consigneesignup.component";
 import { NgModule } from "@angular/core";
@@ -31,6 +32,7 @@ const routes: Routes = [
       { path: "TransporterSignup", component: TransportersignupComponent },
     ],
   },
+  { path: "Verify/:email", component: VerifyComponent },
 ];
 
 @NgModule({

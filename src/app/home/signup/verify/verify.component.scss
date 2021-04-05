@@ -1,0 +1,43 @@
+.verify {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .content-wrapper {
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 0.5px rgba(0, 0, 0, 0.2);
+    p {
+      font-size: 1.3em;
+      font-weight: 500;
+    }
+    form {
+      margin-top: 1em;
+      input {
+        padding: 0.3em;
+        font-size: 1.1em;
+        outline: none;
+        margin-right: 1em;
+        &:focus {
+          border: 2px solid #f6d365;
+        }
+      }
+      button {
+        outline: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.4em 0.75em;
+        font-size: 1.2em;
+        background: linear-gradient(to right, #f6d365, #fda085);
+        color: #fff;
+        font-weight: 600;
+        border-radius: 0.3em;
+        &:disabled {
+          cursor: not-allowed;
+          background: gainsboro;
+        }
+      }
+    }
+  }
+}
