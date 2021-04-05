@@ -13,6 +13,7 @@
   </button>
 </div>
 <form [formGroup]="form" (ngSubmit)="onLogin()">
+  <p *ngIf="error">{{ error }}</p>
   <div class="col">
     <label for="Name">User Email</label>
     <input type="text" formControlName="Email" />

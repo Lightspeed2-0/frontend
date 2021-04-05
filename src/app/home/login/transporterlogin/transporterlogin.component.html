@@ -13,6 +13,7 @@
   </button>
 </div>
 <form [formGroup]="form" (ngSubmit)="onLogin()">
+  <p *ngIf="error">{{ error }}</p>
   <div class="col">
     <label for="Name">Transporter Email</label>
     <input type="email" formControlName="Email" />
@@ -27,5 +28,5 @@
 </form>
 <div class="form-footer">
   <p>Don't have an Account</p>
-  <a routerLink="/Signup">Signup</a>
+  <a routerLink="/Signup/TransporterSignup">Signup</a>
 </div>

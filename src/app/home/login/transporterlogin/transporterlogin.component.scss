@@ -29,6 +29,12 @@ $mainColor: #00a3fe;
   }
 }
 form {
+  p {
+    padding: 0.3em;
+    border-radius: 0.3em;
+    color: red;
+    background: palevioletred;
+  }
   .col {
     margin-left: 0.2em;
     margin-top: -2em;

@@ -10,6 +10,7 @@ import { HttpErrorResponse } from "@angular/common/http";
   styleUrls: ["./transporterlogin.component.scss"],
 })
 export class TransporterloginComponent implements OnInit {
+  error: any;
   form: FormGroup = new FormGroup({
     Email: new FormControl(null, [Validators.required, Validators.email]),
     Password: new FormControl(null, Validators.required),
@@ -34,6 +35,7 @@ export class TransporterloginComponent implements OnInit {
       (error) => {
         if (error instanceof HttpErrorResponse) {
           if (error.status === 401) {
+            this.error = error.message;
             this.router.navigateByUrl("/Login/TransporterLogin");
           }
         }

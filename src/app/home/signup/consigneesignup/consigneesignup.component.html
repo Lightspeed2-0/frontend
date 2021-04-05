@@ -1,0 +1,26 @@
+<form [formGroup]="form" (ngSubmit)="onLogin()">
+  <p *ngIf="error">{{ error }}</p>
+  <div class="col">
+    <label for="Name">Consignee Name</label>
+    <input type="text" formControlName="Username" />
+  </div>
+  <div class="col">
+    <label for="Name">Mobile number</label>
+    <input type="number" formControlName="MobileNo" />
+  </div>
+  <div class="col">
+    <label for="Name">Email</label>
+    <input type="email" formControlName="Email" />
+  </div>
+  <div class="col">
+    <label for="Password">Password</label>
+    <input type="password" formControlName="Password" />
+  </div>
+  <div class="btn-wrap">
+    <button [disabled]="!form.valid">Sign Up</button>
+  </div>
+</form>
+<div class="form-footer">
+  <p>Already have an Account ?</p>
+  <a routerLink="/Login">Sign in</a>
+</div>
