@@ -23,6 +23,10 @@ export class UserloginComponent implements OnInit {
   constructor(private auth: AuthserviceService, private router: Router) {}
 
   ngOnInit(): void {}
+  onClose() {
+    this.error = null;
+    this.form.reset();
+  }
   onLogin() {
     this.user = this.form.value;
     this.auth.consigneeLogin(this.user).subscribe(
@@ -35,7 +39,7 @@ export class UserloginComponent implements OnInit {
       (error) => {
         if (error instanceof HttpErrorResponse) {
           if (error.status === 401) {
-            this.error = error.message;
+            this.error = error.error;
             this.router.navigateByUrl("/Login");
           }
         }
