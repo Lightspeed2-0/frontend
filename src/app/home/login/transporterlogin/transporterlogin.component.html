@@ -13,7 +13,7 @@
   </button>
 </div>
 <form [formGroup]="form" (ngSubmit)="onLogin()">
-  <p *ngIf="error">{{ error }}</p>
+  <p *ngIf="error">{{ error }} <button (click)="onClose()">X</button></p>
   <div class="col">
     <label for="Name">Transporter Email</label>
     <input type="email" formControlName="Email" />

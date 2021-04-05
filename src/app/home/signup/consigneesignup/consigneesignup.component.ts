@@ -32,6 +32,10 @@ export class ConsigneesignupComponent implements OnInit {
   constructor(private auth: AuthserviceService, private router: Router) {}
 
   ngOnInit(): void {}
+  onClose() {
+    this.error = null;
+    this.form.reset();
+  }
   onLogin() {
     this.user = this.form.value;
     this.auth.consigneeRegister(this.user).subscribe(

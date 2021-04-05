@@ -1,5 +1,5 @@
 <form [formGroup]="form" (ngSubmit)="onLogin()">
-  <p *ngIf="error">{{ error }}</p>
+  <p *ngIf="error">{{ error }} <button>X</button></p>
   <div class="col">
     <label for="Name">Consignee Name</label>
     <input type="text" formControlName="Username" />
