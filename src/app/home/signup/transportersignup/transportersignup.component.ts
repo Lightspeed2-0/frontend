@@ -30,7 +30,10 @@ export class TransportersignupComponent implements OnInit {
     Password: new FormControl(null, Validators.required),
   });
   constructor(private auth: AuthserviceService, private router: Router) {}
-
+  onClose() {
+    this.error = null;
+    this.form.reset();
+  }
   ngOnInit(): void {}
   onLogin() {
     this.user = this.form.value;
