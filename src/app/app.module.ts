@@ -24,6 +24,7 @@ import { StylefeaturesComponent } from "./home/main/stylefeatures/stylefeatures.
 import { TransportersignupComponent } from "./home/signup/transportersignup/transportersignup.component";
 import { ConsigneesignupComponent } from "./home/signup/consigneesignup/consigneesignup.component";
 import { VerifyComponent } from './home/signup/verify/verify.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { VerifyComponent } from './home/signup/verify/verify.component';
     ConsigneeModule,
     ConsigneeRoutingModule,
     TransporterRoutingModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     {
