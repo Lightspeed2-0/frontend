@@ -17,11 +17,19 @@
         routerLink="./"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
-        >Dashboard</a
       >
-      <a routerLink="./Orders" routerLinkActive="active">Orders</a>
-      <a routerLink="./Status" routerLinkActive="active">Status</a>
-      <a routerLink="./Payment" routerLinkActive="active">Payment</a>
+        <span class="material-icons">dashboard </span>
+        Dashboard</a
+      >
+      <a routerLink="./Orders" routerLinkActive="active"
+        ><span class="material-icons"> inventory_2 </span>Orders</a
+      >
+      <a routerLink="./Status" routerLinkActive="active">
+        <span class="material-icons"> info </span>Status</a
+      >
+      <a routerLink="./Payment" routerLinkActive="active"
+        ><span class="material-icons"> payment </span>Payment</a
+      >
     </div>
     <div class="main-content">
       <router-outlet></router-outlet>

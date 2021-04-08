@@ -58,12 +58,15 @@
       flex-direction: column;
       justify-content: center;
       a {
-        border: 2px solid gainsboro;
-        padding: 0.75em 1em;
+        display: flex;
+        align-items: center;
+        gap: 1em;
         text-decoration: none;
+        padding: 0.75em 1em;
+        border: 2px solid gainsboro;
+        border-bottom: 2px solid #fff;
         font-size: 1.5em;
         color: rgb(114, 114, 114);
-        border-bottom: 2px solid #fff;
         &:nth-child(1) {
           border-top-left-radius: 0.5em;
           border-top-right-radius: 0.5em;
@@ -75,7 +78,7 @@
         }
       }
       .active {
-        color: #ff8886;
+        color: #495783;
       }
     }
     .main-content {
