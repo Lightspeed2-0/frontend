@@ -1,3 +1,4 @@
+import { ConsigneeserviceService } from "./consigneeservice.service";
 import { Router } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
 
@@ -7,8 +8,11 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./consignee.component.scss"],
 })
 export class ConsigneeComponent implements OnInit {
-  constructor(private router: Router) {}
-
+  image: any;
+  constructor(
+    private router: Router,
+    private service: ConsigneeserviceService
+  ) {}
   ngOnInit(): void {}
   logOut() {
     localStorage.removeItem("token");

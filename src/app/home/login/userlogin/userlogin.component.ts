@@ -33,14 +33,17 @@ export class UserloginComponent implements OnInit {
     this.clicked = true;
     this.auth.consigneeLogin(this.user).subscribe(
       (res) => {
+        this.clicked = false;
         console.log(res);
         this.tokenObj = res;
         localStorage.setItem("token", this.tokenObj.token);
         this.router.navigateByUrl(`/Consignee`);
       },
       (error) => {
+        this.clicked = false;
         if (error instanceof HttpErrorResponse) {
           if (error.status === 401) {
+            console.error(error);
             this.error = error.error;
             this.router.navigateByUrl("/Login");
           }
