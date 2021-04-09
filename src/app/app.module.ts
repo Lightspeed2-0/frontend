@@ -25,7 +25,7 @@ import { TransportersignupComponent } from "./home/signup/transportersignup/tran
 import { ConsigneesignupComponent } from "./home/signup/consigneesignup/consigneesignup.component";
 import { VerifyComponent } from "./home/signup/verify/verify.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,6 +54,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     ConsigneeRoutingModule,
     TransporterRoutingModule,
     BrowserAnimationsModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     {

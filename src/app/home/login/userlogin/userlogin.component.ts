@@ -11,6 +11,7 @@ import { HttpErrorResponse } from "@angular/common/http";
 })
 export class UserloginComponent implements OnInit {
   error: any;
+  clicked = false;
   private user: { Email: string; Password: string } = {
     Email: "",
     Password: "",
@@ -29,6 +30,7 @@ export class UserloginComponent implements OnInit {
   }
   onLogin() {
     this.user = this.form.value;
+    this.clicked = true;
     this.auth.consigneeLogin(this.user).subscribe(
       (res) => {
         console.log(res);

@@ -1,5 +1,11 @@
 <form [formGroup]="form" (ngSubmit)="onLogin()">
   <p *ngIf="error">{{ error }} <button (click)="onClose()">X</button></p>
+  <div class="spinner" *ngIf="clicked">
+    <mat-progress-spinner
+      mode="indeterminate"
+      diameter="45"
+    ></mat-progress-spinner>
+  </div>
   <div class="col">
     <label for="Name">Consignee Name</label>
     <input type="text" formControlName="Username" />

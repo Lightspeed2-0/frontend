@@ -14,6 +14,13 @@
 </div>
 <form [formGroup]="form" (ngSubmit)="onLogin()">
   <p *ngIf="error">{{ error }} <button (click)="onClose()">X</button></p>
+  <div class="spinner" *ngIf="clicked">
+    <mat-progress-spinner
+      mode="indeterminate"
+      color="accent"
+      diameter="45"
+    ></mat-progress-spinner>
+  </div>
   <div class="col">
     <label for="Name">Transporter Email</label>
     <input type="email" formControlName="Email" />

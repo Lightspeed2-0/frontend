@@ -10,6 +10,7 @@ import { AuthserviceService } from "src/app/auth/authservice.service";
   styleUrls: ["./consigneesignup.component.scss"],
 })
 export class ConsigneesignupComponent implements OnInit {
+  clicked = false;
   error: any;
   private Response: any;
   private user: {
@@ -37,6 +38,7 @@ export class ConsigneesignupComponent implements OnInit {
     this.form.reset();
   }
   onLogin() {
+    this.clicked = true;
     this.user = this.form.value;
     this.auth.consigneeRegister(this.user).subscribe(
       (res) => {

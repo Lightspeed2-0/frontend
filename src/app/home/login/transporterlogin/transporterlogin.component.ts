@@ -10,6 +10,7 @@ import { HttpErrorResponse } from "@angular/common/http";
   styleUrls: ["./transporterlogin.component.scss"],
 })
 export class TransporterloginComponent implements OnInit {
+  clicked = false;
   error: any;
   form: FormGroup = new FormGroup({
     Email: new FormControl(null, [Validators.required, Validators.email]),
@@ -28,6 +29,7 @@ export class TransporterloginComponent implements OnInit {
     this.form.reset();
   }
   onLogin() {
+    this.clicked = true;
     this.user = this.form.value;
     this.auth.transporterLogin(this.user).subscribe(
       (res) => {

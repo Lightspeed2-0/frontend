@@ -11,6 +11,7 @@ import { AuthserviceService } from "src/app/auth/authservice.service";
 })
 export class TransportersignupComponent implements OnInit {
   error: any;
+  clicked = false;
   private user: {
     Username: string;
     MobileNo: number;
@@ -36,6 +37,7 @@ export class TransportersignupComponent implements OnInit {
   }
   ngOnInit(): void {}
   onLogin() {
+    this.clicked = true;
     this.user = this.form.value;
     this.auth.transporterRegsiter(this.user).subscribe(
       (res) => {

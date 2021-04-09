@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from "@angular/router";
   styleUrls: ["./verify.component.scss"],
 })
 export class VerifyComponent implements OnInit {
+  clicked = false;
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
@@ -23,8 +24,14 @@ export class VerifyComponent implements OnInit {
     this.Email = this.route.snapshot.params["email"];
     console.log(this.Email);
   }
+  onClose() {
+    this.clicked = false;
+    this.error = null;
+    this.form.reset();
+  }
   tokenObj: any;
   onSubmit() {
+    this.clicked = true;
     this.http
       .post("https://lightning-backend.herokuapp.com/consignee/verify", {
         Email: this.Email,
