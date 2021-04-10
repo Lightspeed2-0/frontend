@@ -7,6 +7,7 @@ import { DashbordComponent } from "../dashbord/dashbord.component";
 import { OrdersComponent } from "../orders/orders.component";
 import { PaymentComponent } from "../payment/payment.component";
 import { StatusComponent } from "../status/status.component";
+import { MatStepperModule } from "@angular/material/stepper";
 
 @NgModule({
   declarations: [
@@ -16,6 +17,6 @@ import { StatusComponent } from "../status/status.component";
     StatusComponent,
     PaymentComponent,
   ],
-  imports: [CommonModule, AppRoutingModule],
+  imports: [CommonModule, AppRoutingModule, MatStepperModule],
 })
 export class ConsigneeModule {}
