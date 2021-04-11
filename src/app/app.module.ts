@@ -26,6 +26,7 @@ import { ConsigneesignupComponent } from "./home/signup/consigneesignup/consigne
 import { VerifyComponent } from "./home/signup/verify/verify.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+
 @NgModule({
   declarations: [
     AppComponent,

@@ -8,7 +8,6 @@ import { OrdersComponent } from "../orders/orders.component";
 import { PaymentComponent } from "../payment/payment.component";
 import { StatusComponent } from "../status/status.component";
 import { MatStepperModule } from "@angular/material/stepper";
-
 @NgModule({
   declarations: [
     ConsigneeComponent,
