@@ -1,1 +1,45 @@
-<p>status works!</p>
+<div class="under">
+  <div class="center-wrap">
+    <div class="timeline"></div>
+    <div class="row" *ngFor="let item of orderStatus; let i = index">
+      <div
+        class="timeline-icon"
+        [ngStyle]="{
+          background: !item.Status
+            ? 'gainsboro'
+            : 'linear-gradient(to top, #9795f0 0%, #fbc8d4 100%)'
+        }"
+      >
+        <i class="{{ iconArray[i] }}"></i>
+      </div>
+      <div
+        class="timeline-content"
+        [ngStyle]="{
+          border: !item.Status ? '2px solid #fff' : '2px solid gainsboro'
+        }"
+      >
+        <h4>{{ item.Status }}</h4>
+        <p>{{ item.Time }}</p>
+      </div>
+    </div>
+    <!-- <div class="row">
+      <div class="timeline-icon">
+        <i class="fas fa-box"></i>
+      </div>
+      <div class="timeline-content">This is jitiendran</div>
+    </div>
+    <div class="row">
+      <div class="timeline-icon">
+        <i class="fas fa-dolly-flatbed"></i>
+      </div>
+      <div class="timeline-content">This is jitiendran</div>
+    </div>
+    <div class="row">
+      <div class="timeline-icon">
+        <i class="fas fa-shipping-fast"></i>
+      </div>
+      <div class="timeline-content">This is jitiendran</div>
+    </div>
+  </div> -->
+  </div>
+</div>

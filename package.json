@@ -21,7 +21,6 @@
     "@angular/platform-browser": "~11.1.0",
     "@angular/platform-browser-dynamic": "~11.1.0",
     "@angular/router": "~11.1.0",
-    "chartjs-plugin-datalabels": "^0.7.0",
     "remove": "^0.1.5",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
