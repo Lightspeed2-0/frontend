@@ -8,7 +8,6 @@ import { DashbordComponent } from "../dashbord/dashbord.component";
 import { OrdersComponent } from "../orders/orders.component";
 import { PaymentComponent } from "../payment/payment.component";
 import { StatusComponent } from "../status/status.component";
-import { MzdTimelineModule } from "ngx-mzd-timeline";
 @NgModule({
   declarations: [
     ConsigneeComponent,
@@ -17,11 +16,6 @@ import { MzdTimelineModule } from "ngx-mzd-timeline";
     StatusComponent,
     PaymentComponent,
   ],
-  imports: [
-    CommonModule,
-    AppRoutingModule,
-    MatStepperModule,
-    MzdTimelineModule,
-  ],
+  imports: [CommonModule, AppRoutingModule, MatStepperModule],
 })
 export class ConsigneeModule {}
