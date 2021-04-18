@@ -1,41 +1,14 @@
 $grey: #adadad;
 $mainColor: #00a3fe;
-.Oauth-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 2em;
-  button {
-    cursor: pointer;
-    padding: 0.3em;
-    width: 18em;
-    background: none;
-    outline: none;
-    border: 2px solid #cbcbcb;
-    border-radius: 0.3em;
-    display: flex;
-    align-items: center;
-    font-size: 1.3em;
-    font-weight: 500;
-    margin-bottom: 0.5em;
-    img {
-      width: 30px;
-      height: 30px;
-    }
-    p {
-      margin-left: 1.2em;
-    }
-  }
-}
 form {
+  margin-top: 2em;
   p {
     padding: 0.3em;
     border-radius: 0.3em;
     color: #d8000c;
     background-color: #ffbaba;
     border: 2px solid #d8000c;
-    margin-bottom: 1.5em;
+    margin-bottom: 2em;
     button {
       float: right;
       outline: none;
@@ -59,15 +32,16 @@ form {
     padding: 2em 0em;
     display: flex;
     flex-direction: column;
+    gap: 0.5em;
     label {
       font-size: 1.2em;
       font-weight: 500;
     }
     input {
+      width: 18em;
       outline: none;
       border: 2px solid $grey;
       border-radius: 0.3em;
-      width: 18em;
       font-size: 1.3em;
       padding: 0.3em 1em;
       &:focus {
@@ -79,7 +53,7 @@ form {
     }
   }
   .btn-wrap {
-    margin-top: -1em;
+    // margin-top: -1em;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -88,11 +62,18 @@ form {
       padding: 0.3em;
       width: 18em;
       border: none;
-      background: $mainColor;
+      background-image: linear-gradient(
+        to right,
+        #458eda 0%,
+        #ce84b8 25%,
+        #fcb0a9 50%,
+        #ffc39c 80%,
+        #feea9a 100%
+      );
       outline: none;
       border-radius: 0.3em;
       font-size: 1.3em;
-      font-weight: 500;
+      font-weight: 600;
       color: #fff;
       &:disabled {
         background: gainsboro;
@@ -105,13 +86,15 @@ form {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 2em;
   gap: 0.5em;
-  margin-top: 0.4em;
+  margin-top: 1em;
   p {
-    font-size: 1.1em;
+    font-size: 1.2em;
   }
   a {
-    font-size: 1.1em;
+    margin-top: -0.5em;
+    font-size: 1.2em;
     text-decoration: none;
     &:hover {
       text-decoration: underline;

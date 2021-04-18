@@ -30,17 +30,20 @@ $subColor: #fff;
           display: flex;
           gap: 1em;
           img {
-            width: 45px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
           }
           h3 {
+            margin-top: 0.15em;
             font-size: 2.5em;
+            font-weight: 500;
           }
           margin-bottom: 2em;
         }
         h3 {
           color: $subColor;
           font-size: 1.5em;
+          font-weight: 500;
         }
         .btn-wrapper {
           margin-top: 5em;
@@ -50,6 +53,7 @@ $subColor: #fff;
           button {
             outline: none;
             font-size: 1.4em;
+            font-weight: 500;
             border-radius: 0.3em;
             padding: 0.5em 2em;
             cursor: pointer;
@@ -122,6 +126,7 @@ $subColor: #fff;
       gap: 2em;
       h3 {
         font-size: 2em;
+        font-weight: 500;
         text-transform: uppercase;
       }
       ul {
@@ -165,8 +170,10 @@ $subColor: #fff;
         color: #fff;
         padding: 0.5em 1em;
         font-size: 1.2em;
+        font-weight: 600;
         border: none;
         outline: none;
+        cursor: pointer;
         border-radius: 0.3em;
       }
     }

@@ -42,9 +42,9 @@ export class UserloginComponent implements OnInit {
       (error) => {
         this.clicked = false;
         if (error instanceof HttpErrorResponse) {
-          if (error.status === 401) {
+          if (error.status) {
             console.error(error);
-            this.error = error.error;
+            this.error = error.error["msg"];
             this.router.navigateByUrl("/Login");
           }
         }

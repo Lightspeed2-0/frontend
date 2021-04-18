@@ -35,6 +35,7 @@ footer {
         padding: 0.2em 2em;
         border-radius: 0.2em;
         cursor: pointer;
+        background: #fff;
       }
       .share-wrap {
         display: flex;
@@ -56,10 +57,12 @@ footer {
       display: flex;
       align-items: center;
       i {
+        margin-top: -0.5em;
         font-size: 1.3em;
         margin-right: 0.2em;
       }
       img {
+        margin-top: -0.5em;
         width: 30px;
         height: 30px;
         margin-right: 0.5em;

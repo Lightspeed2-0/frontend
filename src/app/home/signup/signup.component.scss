@@ -6,32 +6,48 @@ $mainColor: #00a2fd;
   padding: 1em 5em;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   margin-top: 4em;
   height: 80vh;
   width: 100%;
-  background: url("../../../assets/loginbg.png");
-  background-size: contain;
-  background-repeat: no-repeat;
   .login-wrap {
-    padding: 1.2em 2.5em;
-    border-radius: 0.3em;
-    width: 30vw;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+    align-items: center;
+    width: 70vw;
+    border-radius: 20px;
     box-shadow: 0px 0px 5px 0.5px rgba(0, 0, 0, 0.2);
-    .users-wrap {
+    height: 33vw;
+    .image-wrap {
+      border-radius: 20px;
+      height: 100%;
+      width: 100%;
+      background-image: url("https://cdn.dribbble.com/users/642843/screenshots/12579174/media/fd0c8976f3b260bed36e6d91bfa58b0c.jpg?compress=1&resize=1000x750");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .auth-wrap {
       display: flex;
-      gap: 0.4em;
-      a {
-        text-decoration: none;
-        color: #000;
-        font-size: 1.1em;
-        font-weight: 500;
-      }
-      .vr {
-        margin-left: 0.3em;
-        border-left: 2.3px solid #cbcbcb;
-        height: 1.2em;
-        margin-right: 0.3em;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.2em 2.5em;
+      .users-wrap {
+        display: flex;
+        gap: 1em;
+        a {
+          text-decoration: none;
+          color: #000;
+          font-size: 1.3em;
+          font-weight: 500;
+        }
+        .vr {
+          margin-left: 0.3em;
+          border-left: 2.2px solid #cbcbcb;
+          height: 1.4em;
+          margin-right: 0.3em;
+        }
       }
     }
   }

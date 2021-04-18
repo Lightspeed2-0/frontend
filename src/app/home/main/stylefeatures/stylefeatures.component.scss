@@ -1,12 +1,12 @@
 .features {
   padding: 1em 3em;
   h3 {
-    font-size: 1.7em;
+    font-size: 2em;
+    font-weight: 500;
     text-transform: uppercase;
-    border-bottom: 3.5px solid;
-    border-image: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);
-    border-image-slice: 1;
-    display: inline-block;
+    background-image: linear-gradient(to top, #a406ff 0%, #fa71cd 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
   .img-wrap {
     display: flex;

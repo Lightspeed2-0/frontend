@@ -2,19 +2,22 @@
 <hr />
 <div class="login">
   <div class="login-wrap">
-    <div class="users-wrap">
-      <a
-        routerLink="./"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-        >Consignee</a
-      >
-      <div class="vr"></div>
-      <a routerLink="./TransporterSignup" routerLinkActive="active"
-        >Transporter</a
-      >
+    <div class="image-wrap"></div>
+    <div class="auth-wrap">
+      <div class="users-wrap">
+        <a
+          routerLink="./"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >Consignee</a
+        >
+        <div class="vr"></div>
+        <a routerLink="./TransporterSignup" routerLinkActive="active"
+          >Transporter</a
+        >
+      </div>
+      <router-outlet></router-outlet>
     </div>
-    <router-outlet></router-outlet>
   </div>
 </div>
 <div class="horizontal">

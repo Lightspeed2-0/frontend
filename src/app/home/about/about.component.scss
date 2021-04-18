@@ -5,7 +5,7 @@ $mainColor: #00a2fd;
   h3 {
     display: inline-block;
     font-size: 1.5em;
-    font-weight: 600;
+    font-weight: 500;
     border-bottom: 3px solid $mainColor;
   }
   .col-wrap {
@@ -40,18 +40,24 @@ $mainColor: #00a2fd;
           .dev_contents {
             .name {
               display: flex;
+              align-items: center;
+              gap: 1em;
               p {
-                font-size: 1.2em;
+                margin-top: 0.5em;
+                font-size: 1.3em;
                 font-weight: 500;
               }
               .team {
                 margin-left: 0.3em;
                 padding: 0.2em 0.5em;
                 color: #fff;
+                font-size: 1.1em;
+                font-weight: 500;
+                height: 1.7em;
               }
             }
             .nickname {
-              font-size: 1em;
+              font-size: 1.2em;
               color: rgb(110, 110, 110);
             }
             .contribution {

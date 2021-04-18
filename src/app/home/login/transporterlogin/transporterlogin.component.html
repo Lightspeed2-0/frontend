@@ -1,17 +1,3 @@
-<div class="Oauth-wrapper">
-  <button>
-    <img src="../../../assets/icons8-google-48.png" alt="" />
-    <p>Continue with Google</p>
-  </button>
-  <button>
-    <img src="../../../assets/icons8-facebook-48.png" alt="" />
-    <p>Continue with Facebook</p>
-  </button>
-  <button>
-    <img src="../../../assets/icons8-apple-logo-50.png" alt="" />
-    <p>Continue with Apple</p>
-  </button>
-</div>
 <form [formGroup]="form" (ngSubmit)="onLogin()">
   <p *ngIf="error">{{ error }} <button (click)="onClose()">X</button></p>
   <div class="spinner" *ngIf="clicked">
