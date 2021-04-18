@@ -13,23 +13,14 @@ export class ConsigneesignupComponent implements OnInit {
   clicked = false;
   error: any;
   private Response: any;
-  private user: {
-    Username: string;
-    MobileNo: number;
-    Email: string;
-    Password: string;
-  } = {
-    Username: "",
-    MobileNo: 0,
-    Email: "",
-    Password: "",
-  };
+  private user: any;
   private tokenObj: any;
   form: FormGroup = new FormGroup({
     Username: new FormControl(null, Validators.required),
     MobileNo: new FormControl(null, Validators.required),
     Email: new FormControl(null, [Validators.required, Validators.email]),
     Password: new FormControl(null, Validators.required),
+    PanCard: new FormControl(null, Validators.required),
   });
   constructor(private auth: AuthserviceService, private router: Router) {}
   ngOnInit(): void {}
@@ -40,6 +31,7 @@ export class ConsigneesignupComponent implements OnInit {
   onLogin() {
     this.clicked = true;
     this.user = this.form.value;
+    console.log(this.user);
     this.auth.consigneeRegister(this.user).subscribe(
       (res) => {
         this.Response = res;
@@ -47,14 +39,11 @@ export class ConsigneesignupComponent implements OnInit {
         console.log(this.Response.Email);
       },
       (error) => {
+        this.clicked = false;
         console.log(error);
         if (error instanceof HttpErrorResponse) {
-          if (error.status === 401) {
-            this.error = error.error;
-            this.router.navigateByUrl("/Signup");
-          }
-          if (error.status === 400) {
-            this.error = error.error;
+          if (error.status) {
+            this.error = error.error["msg"];
             this.router.navigateByUrl("/Signup");
           }
         }

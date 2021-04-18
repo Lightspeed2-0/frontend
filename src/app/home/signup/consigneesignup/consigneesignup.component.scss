@@ -6,6 +6,7 @@ form {
   align-items: center;
   margin-top: 3em;
   p {
+    width: 18em;
     padding: 0.3em;
     border-radius: 0.3em;
     color: #d8000c;
@@ -39,7 +40,10 @@ form {
       font-size: 1.2em;
       font-weight: 500;
     }
-    input {
+    input[type="text"],
+    input[type="number"],
+    input[type="password"],
+    input[type="email"] {
       width: 18em;
       outline: none;
       border: 2px solid $grey;
@@ -49,6 +53,14 @@ form {
       &:focus {
         border: 2px solid $mainColor;
       }
+    }
+    input[type="file"] {
+      width: 18em;
+      outline: none;
+      border: 2px solid #fff;
+      border-radius: 0.3em;
+      font-size: 1.3em;
+      padding: 0.3em 1em;
     }
     &:nth-child(n) {
       margin-top: -3.3em;

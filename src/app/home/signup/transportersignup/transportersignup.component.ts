@@ -12,23 +12,15 @@ import { AuthserviceService } from "src/app/auth/authservice.service";
 export class TransportersignupComponent implements OnInit {
   error: any;
   clicked = false;
-  private user: {
-    Username: string;
-    MobileNo: number;
-    Email: string;
-    Password: string;
-  } = {
-    Username: "",
-    MobileNo: 0,
-    Email: "",
-    Password: "",
-  };
+  private user: any;
   private tokenObj: any;
   form: FormGroup = new FormGroup({
     Username: new FormControl(null, Validators.required),
     MobileNo: new FormControl(null, Validators.required),
     Email: new FormControl(null, [Validators.required, Validators.email]),
     Password: new FormControl(null, Validators.required),
+    PanCard: new FormControl(null, Validators.required),
+    TinCard: new FormControl(null, Validators.required),
   });
   constructor(private auth: AuthserviceService, private router: Router) {}
   onClose() {
@@ -47,9 +39,10 @@ export class TransportersignupComponent implements OnInit {
         this.router.navigateByUrl(`/Consignee`);
       },
       (error) => {
+        this.clicked = false;
         if (error instanceof HttpErrorResponse) {
-          if (error.status === 401) {
-            this.error = error.error;
+          if (error.status) {
+            this.error = error.error["msg"];
             this.router.navigateByUrl("/Signup/TransporterSignup");
           }
         }
