@@ -57,7 +57,7 @@ export class TransportersignupComponent implements OnInit {
         console.log(res);
         this.tokenObj = res;
         localStorage.setItem("token", this.tokenObj.token);
-        this.router.navigateByUrl(`/Consignee`);
+        this.router.navigateByUrl(`/Verify/${this.form.value["Email"]}`);
       },
       (error) => {
         this.clicked = false;
