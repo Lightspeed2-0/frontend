@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="onLogin()" enctype="multipart/form-data">
+<form [formGroup]="form" (ngSubmit)="onLogin()">
   <p *ngIf="error">{{ error }} <button (click)="onClose()">X</button></p>
   <div class="spinner" *ngIf="clicked">
     <mat-progress-spinner
@@ -24,14 +24,14 @@
   </div>
   <div class="col">
     <label for="PanCard">Pancard</label>
-    <input type="file" formControlName="PanCard" />
+    <input type="file" (change)="onPan($event)" />
   </div>
   <div class="col">
     <label for="TinCard">Tincard</label>
-    <input type="file" formControlName="TinCard" />
+    <input type="file" (change)="onTin($event)" />
   </div>
   <div class="btn-wrap">
-    <button [disabled]="!form.valid">Sign Up</button>
+    <button [disabled]="!tinChanged">Sign Up</button>
   </div>
 </form>
 <div class="form-footer">

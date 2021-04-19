@@ -12,6 +12,10 @@ import { AuthserviceService } from "src/app/auth/authservice.service";
 export class TransportersignupComponent implements OnInit {
   error: any;
   clicked = false;
+  panChanged = false;
+  tinChanged = false;
+  private panCard: any;
+  private tinCard: any;
   private user: any;
   private tokenObj: any;
   form: FormGroup = new FormGroup({
@@ -19,8 +23,8 @@ export class TransportersignupComponent implements OnInit {
     MobileNo: new FormControl(null, Validators.required),
     Email: new FormControl(null, [Validators.required, Validators.email]),
     Password: new FormControl(null, Validators.required),
-    PanCard: new FormControl(null, Validators.required),
-    TinCard: new FormControl(null, Validators.required),
+    // PanCard: new FormControl(null, Validators.required),
+    // TinCard: new FormControl(null, Validators.required),
   });
   constructor(private auth: AuthserviceService, private router: Router) {}
   onClose() {
@@ -28,10 +32,27 @@ export class TransportersignupComponent implements OnInit {
     this.form.reset();
   }
   ngOnInit(): void {}
+  onPan(event: any) {
+    this.panChanged = true;
+    this.panCard = <File>event.target.files[0];
+  }
+  onTin(event: any) {
+    if (this.panChanged && this.form.valid) {
+      this.tinChanged = true;
+    }
+    this.tinCard = <File>event.target.files[0];
+  }
   onLogin() {
     this.clicked = true;
-    this.user = this.form.value;
-    this.auth.transporterRegsiter(this.user).subscribe(
+    const data = new FormData();
+    data.append("Username", this.form.value["Username"]);
+    data.append("MobileNo", this.form.value["MobileNo"]);
+    data.append("Email", this.form.value["Email"]);
+    data.append("Password", this.form.value["Password"]);
+    data.append("PanCard", this.panCard);
+    data.append("TinCard", this.tinCard);
+    data.forEach((key, value) => console.log(key, " : ", value));
+    this.auth.transporterRegsiter(data).subscribe(
       (res) => {
         console.log(res);
         this.tokenObj = res;

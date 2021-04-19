@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 @Injectable({
   providedIn: "root",
@@ -10,8 +10,9 @@ export class AuthserviceService {
     "https://lightning-backend.herokuapp.com/transporter/login";
   consigneeRegUrl =
     "https://lightning-backend.herokuapp.com/consignee/register";
-  transporterRegUrl =
-    "https://lightning-backend.herokuapp.com/transporter/register";
+  // transporterRegUrl =
+  //   "https://lightning-backend.herokuapp.com/transporter/register";
+  transporterRegUrl = "http://localhost:3000/transporter/register";
   consigneeLogin(data: { Email: string; Password: string }) {
     return this.http.post(this.consigneeLoginUrl, data);
   }
@@ -26,12 +27,7 @@ export class AuthserviceService {
   }) {
     return this.http.post(this.consigneeRegUrl, data);
   }
-  transporterRegsiter(data: {
-    Username: string;
-    MobileNo: number;
-    Email: string;
-    Password: string;
-  }) {
+  transporterRegsiter(data: any) {
     return this.http.post(this.transporterRegUrl, data);
   }
   getToken() {
