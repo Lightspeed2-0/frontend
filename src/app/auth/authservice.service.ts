@@ -12,7 +12,7 @@ export class AuthserviceService {
     "https://lightning-backend.herokuapp.com/consignee/register";
   // transporterRegUrl =
   //   "https://lightning-backend.herokuapp.com/transporter/register";
-  transporterRegUrl = "http://localhost:3000/transporter/register";
+  transporterRegUrl = "https://lightning-backend.herokuapp.com/transporter/register";
   consigneeLogin(data: { Email: string; Password: string }) {
     return this.http.post(this.consigneeLoginUrl, data);
   }
