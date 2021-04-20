@@ -1,18 +1,16 @@
 <app-navbar></app-navbar>
-<div class="verify">
-  <div class="content-wrapper">
-    <p>OTP has been sent to {{ Email }}</p>
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <p *ngIf="error">{{ error }} <button (click)="onClose()">X</button></p>
-      <div class="spinner" *ngIf="clicked">
-        <mat-progress-spinner
-          mode="indeterminate"
-          diameter="45"
-          color="accent"
-        ></mat-progress-spinner>
+<div class="stepper">
+  <div class="line"></div>
+  <div class="circle-wrap">
+    <button
+      (click)="onClick(i)"
+      *ngFor="let item of icons; let i = index"
+      [disabled]="isVerified[i] === false"
+    >
+      <div class="circle">
+        <i class="{{ item }}"></i>
       </div>
-      <input type="number" formControlName="OTP" placeholder="Enter the otp" />
-      <button [disabled]="!form.valid">verify</button>
-    </form>
+    </button>
   </div>
+  <router-outlet></router-outlet>
 </div>

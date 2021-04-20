@@ -6,7 +6,7 @@ import { AuthGuard } from "../../auth/auth.guard";
 
 const routes: Routes = [
   {
-    path: "Transporter",
+    path: "Transporter/:username",
     component: TransporterComponent,
     canActivate: [AuthGuard],
   },

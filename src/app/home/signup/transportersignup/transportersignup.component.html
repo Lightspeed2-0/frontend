@@ -23,6 +23,10 @@
     <input type="password" formControlName="Password" />
   </div>
   <div class="col">
+    <label for="PancardNO">Pancard Number</label>
+    <input type="number" formControlName="PanCardNo" maxlength="10" />
+  </div>
+  <div class="col">
     <label for="PanCard">Pancard</label>
     <input type="file" (change)="onPan($event)" />
   </div>

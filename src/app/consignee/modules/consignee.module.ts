@@ -1,4 +1,4 @@
-import { AppRoutingModule } from "../../appModules/app-routing.module";
+import { AppRoutingModule } from "../../app-routing.module";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { MatStepperModule } from "@angular/material/stepper";

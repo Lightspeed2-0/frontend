@@ -1,1 +1,2 @@
-<p>pancard works!</p>
+<button (click)="onRefresh()"><i class="fas fa-sync-alt"></i></button>
+<h3 *ngIf="!isverified"><i class="fas fa-hourglass-half"></i>{{ error }}</h3>

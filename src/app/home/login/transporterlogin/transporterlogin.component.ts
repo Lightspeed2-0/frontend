@@ -35,8 +35,9 @@ export class TransporterloginComponent implements OnInit {
       (res) => {
         console.log(res);
         this.tokenObj = res;
+        localStorage.setItem("Email", this.form.value["Email"]);
         localStorage.setItem("token", this.tokenObj.token);
-        this.router.navigateByUrl(`/Transporter`);
+        this.router.navigateByUrl(`/Transporter/${this.tokenObj.Username}`);
       },
       (error) => {
         if (error instanceof HttpErrorResponse) {

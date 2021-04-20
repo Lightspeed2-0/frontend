@@ -23,8 +23,7 @@ export class TransportersignupComponent implements OnInit {
     MobileNo: new FormControl(null, Validators.required),
     Email: new FormControl(null, [Validators.required, Validators.email]),
     Password: new FormControl(null, Validators.required),
-    // PanCard: new FormControl(null, Validators.required),
-    // TinCard: new FormControl(null, Validators.required),
+    PanCardNo: new FormControl(null, Validators.required),
   });
   constructor(private auth: AuthserviceService, private router: Router) {}
   onClose() {
@@ -49,6 +48,7 @@ export class TransportersignupComponent implements OnInit {
     data.append("MobileNo", this.form.value["MobileNo"]);
     data.append("Email", this.form.value["Email"]);
     data.append("Password", this.form.value["Password"]);
+    data.append("PanCardNo", this.form.value["PanCardNo"]);
     data.append("PanCard", this.panCard);
     data.append("TinCard", this.tinCard);
     data.forEach((key, value) => console.log(key, " : ", value));
@@ -56,6 +56,7 @@ export class TransportersignupComponent implements OnInit {
       (res) => {
         console.log(res);
         this.tokenObj = res;
+        localStorage.setItem("Email", this.form.value["Email"]);
         localStorage.setItem("token", this.tokenObj.token);
         this.router.navigateByUrl(`/Verify/${this.form.value["Email"]}`);
       },
