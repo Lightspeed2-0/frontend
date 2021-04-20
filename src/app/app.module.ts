@@ -7,6 +7,8 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AppRoutingModule } from "./app-routing.module";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
@@ -24,10 +26,11 @@ import { StylefeaturesComponent } from "./home/main/stylefeatures/stylefeatures.
 import { TransportersignupComponent } from "./home/signup/transportersignup/transportersignup.component";
 import { ConsigneesignupComponent } from "./home/signup/consigneesignup/consigneesignup.component";
 import { VerifyComponent } from "./home/signup/verify/verify.component";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { OtpComponent } from "./home/signup/verify/otp/otp.component";
 import { PancardComponent } from "./home/signup/verify/pancard/pancard.component";
+import { AdminComponent } from "./admin/admin.component";
+import { AdminLoginComponent } from "./admin/admin-login/admin-login.component";
+// import { AdminLoginComponent } from "./admin/admin-login/admin-login.component";
 
 @NgModule({
   declarations: [
@@ -48,15 +51,17 @@ import { PancardComponent } from "./home/signup/verify/pancard/pancard.component
     VerifyComponent,
     OtpComponent,
     PancardComponent,
+    AdminComponent,
+    AdminLoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    TransporterModule,
     ConsigneeModule,
     ConsigneeRoutingModule,
+    TransporterModule,
     TransporterRoutingModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,

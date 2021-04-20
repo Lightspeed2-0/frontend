@@ -1,3 +1,4 @@
+import { AdminLoginComponent } from "./admin/admin-login/admin-login.component";
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
@@ -50,6 +51,7 @@ const routes: Routes = [
     ],
     canActivate: [VerifyGuard],
   },
+  { path: "Adminlogin", component: AdminLoginComponent },
 ];
 
 @NgModule({
