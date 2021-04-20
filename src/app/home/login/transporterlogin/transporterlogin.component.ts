@@ -40,9 +40,15 @@ export class TransporterloginComponent implements OnInit {
       },
       (error) => {
         if (error instanceof HttpErrorResponse) {
-          if (error.status === 401) {
-            this.error = error.error;
-            this.router.navigateByUrl("/Login/TransporterLogin");
+          if (error.status) {
+            this.error = error.error.msg;
+            if (this.error === "nootp") {
+              this.router.navigateByUrl(`/Verified/${this.user.Email}`);
+            } else if (this.error === "notpan") {
+              this.router.navigateByUrl(`/Verified/${this.user.Email}/pan`);
+            } else {
+              this.router.navigateByUrl("/Login/TransporterLogin");
+            }
           }
         }
       }
