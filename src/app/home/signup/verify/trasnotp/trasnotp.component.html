@@ -1,0 +1,17 @@
+<div class="verify">
+  <div class="content-wrapper">
+    <p>OTP has been sent to {{ Email }}</p>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <p *ngIf="error">{{ error }} <button (click)="onClose()">X</button></p>
+      <div class="spinner" *ngIf="clicked">
+        <mat-progress-spinner
+          mode="indeterminate"
+          diameter="45"
+          color="accent"
+        ></mat-progress-spinner>
+      </div>
+      <input type="number" formControlName="OTP" placeholder="Enter the otp" />
+      <button [disabled]="!form.valid">verify</button>
+    </form>
+  </div>
+</div>

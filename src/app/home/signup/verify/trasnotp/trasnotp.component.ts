@@ -1,21 +1,19 @@
-import { VerfiyserviceService } from "./../verify-auth/verfiyservice.service";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
-  selector: "app-otp",
-  templateUrl: "./otp.component.html",
-  styleUrls: ["./otp.component.scss"],
+  selector: "app-trasnotp",
+  templateUrl: "./trasnotp.component.html",
+  styleUrls: ["./trasnotp.component.scss"],
 })
-export class OtpComponent implements OnInit {
+export class TrasnotpComponent implements OnInit {
   clicked = false;
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
-    private router: Router,
-    private verifyService: VerfiyserviceService
+    private router: Router
   ) {}
   form: FormGroup = new FormGroup({
     OTP: new FormControl(null, Validators.required),
@@ -34,7 +32,6 @@ export class OtpComponent implements OnInit {
   tokenObj: any;
   onSubmit() {
     this.clicked = true;
-    const role = this.route.snapshot.params["role"];
     this.http
       .post("https://lightning-backend.herokuapp.com/transporter/verify", {
         Email: this.Email,
@@ -43,22 +40,20 @@ export class OtpComponent implements OnInit {
       .subscribe(
         (res) => {
           this.tokenObj = res;
-          this.verifyService.isVerified[2] = true;
-          if (this.tokenObj.msg === "nopan") {
-            this.router.navigate(["pan"], { relativeTo: this.route });
-          }
+          localStorage.setItem("token", this.tokenObj.token);
+          this.router.navigateByUrl("/Transporter");
         },
         (error) => {
           if (error instanceof HttpErrorResponse) {
             if (error.status === 401) {
               console.log(error.error);
               this.error = error.error;
-              this.router.navigateByUrl(`/Verify/${this.Email}/${role}`);
+              this.router.navigateByUrl(`/Verify/${this.Email}`);
             }
             if (error.status === 400) {
               console.log(error.error);
               this.error = error.error;
-              this.router.navigateByUrl(`/Verify/${this.Email}/${role}`);
+              this.router.navigateByUrl(`/Verify/${this.Email}`);
             }
           }
         }

@@ -43,7 +43,7 @@ const routes: Routes = [
     ],
   },
   {
-    path: "Verify/:email",
+    path: "Verify/:email/:role",
     component: VerifyComponent,
     children: [
       { path: "", component: OtpComponent },

@@ -1,5 +1,6 @@
 .dashboard-wrapper {
   padding: 2em;
+  font-family: "Monsterrat", sans-serif;
   .dash-img {
     position: fixed;
     width: 96vw;
@@ -16,6 +17,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 1em;
+      margin-bottom: 1.5em;
       .icon-wrap {
         display: flex;
         align-items: center;
@@ -26,9 +28,10 @@
           height: 35px;
         }
         h3 {
+          font-family: "Montserrat", sans-serif;
           color: #fff;
           font-size: 2em;
-          font-weight: 500;
+          font-weight: 600;
         }
       }
       .profile-wrapper {
@@ -50,6 +53,12 @@
           cursor: pointer;
         }
       }
+    }
+    h3 {
+      text-align: center;
+      font-size: 5em;
+      color: White;
+      font-family: "Lobster", cursive;
     }
   }
   .main {
@@ -83,7 +92,7 @@
         }
       }
       .active {
-        color: #495783;
+        color: #2babb0;
       }
     }
     .main-content {

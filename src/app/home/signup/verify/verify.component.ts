@@ -26,7 +26,7 @@ export class VerifyComponent implements OnInit {
   onClick(index: number) {
     if (index === 2) {
       this.router.navigateByUrl(
-        `/Verify/${this.route.snapshot.params["email"]}`
+        `/Verify/${this.route.snapshot.params["email"]}/${this.route.snapshot.params["role"]}`
       );
     }
     if (index === 3) {

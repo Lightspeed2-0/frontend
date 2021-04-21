@@ -18,7 +18,7 @@ export class PancardComponent implements OnInit {
   isverified = false;
   error: any = "Pancard verification is pending";
   ngOnInit(): void {
-    this.isverified = this.verifyService.isVerified[2];
+    this.isverified = this.verifyService.isVerified[3];
   }
   onRefresh() {
     this.http

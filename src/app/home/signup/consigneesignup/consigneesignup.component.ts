@@ -35,7 +35,7 @@ export class ConsigneesignupComponent implements OnInit {
     this.auth.consigneeRegister(this.user).subscribe(
       (res) => {
         this.Response = res;
-        this.router.navigateByUrl(`/Verify/${this.Response.Email}`);
+        this.router.navigateByUrl(`/Verify/${this.Response.Email}/0`);
         console.log(this.Response.Email);
       },
       (error) => {
