@@ -1,0 +1,95 @@
+.dashboard-wrapper {
+  padding: 2em;
+  .dash-img {
+    position: fixed;
+    width: 96vw;
+    height: 17em;
+    border-radius: 20px;
+    z-index: 7;
+    background-image: url(../../assets/dashboard3.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    .header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1em;
+      .icon-wrap {
+        display: flex;
+        align-items: center;
+        gap: 0.75em;
+        img {
+          margin-top: -0.75em;
+          width: 35px;
+          height: 35px;
+        }
+        h3 {
+          color: #fff;
+          font-size: 2em;
+          font-weight: 500;
+        }
+      }
+      .profile-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 2.5em;
+        a {
+          color: #fff;
+          font-size: 1.5em;
+        }
+        button {
+          background: none;
+          outline: none;
+          font-size: 1.2em;
+          padding: 0.3em 0.5em;
+          border: 2px solid #fff;
+          border-radius: 1em;
+          color: #fff;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .main {
+    margin-top: 19em;
+    display: flex;
+    width: 100%;
+    .navbar-wrap {
+      width: 25%;
+      display: flex;
+      position: fixed;
+      flex-direction: column;
+      justify-content: center;
+      a {
+        display: flex;
+        align-items: center;
+        gap: 1em;
+        text-decoration: none;
+        padding: 0.75em 1em;
+        border: 2px solid gainsboro;
+        border-bottom: 2px solid #fff;
+        font-size: 1.5em;
+        color: rgb(114, 114, 114);
+        &:nth-child(1) {
+          border-top-left-radius: 0.5em;
+          border-top-right-radius: 0.5em;
+        }
+        &:nth-last-child(1) {
+          border-bottom: 2px solid gainsboro;
+          border-bottom-left-radius: 0.5em;
+          border-bottom-right-radius: 0.5em;
+        }
+      }
+      .active {
+        color: #495783;
+      }
+    }
+    .main-content {
+      margin-left: 25%;
+      width: 75%;
+      padding: 0em 1.5em;
+    }
+  }
+}

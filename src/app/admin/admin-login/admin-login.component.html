@@ -1,13 +1,17 @@
 <div class="login">
-  <form [formGroup]="form" (ngSubmit)="onLogin()">
-    <div class="col">
-      <label for="Username">Username</label>
-      <input type="text" formControlName="Username" />
-    </div>
-    <div class="col">
-      <label for="Password">Password</label>
-      <input type="password" formControlName="Password" />
-    </div>
-    <button type="submit">Login</button>
-  </form>
+  <div class="wrap">
+    <div class="image"></div>
+    <form [formGroup]="form" (ngSubmit)="onLogin()">
+      <h3>Admin</h3>
+      <div class="col">
+        <label for="Username">Username</label>
+        <input type="text" formControlName="Username" />
+      </div>
+      <div class="col">
+        <label for="Password">Password</label>
+        <input type="password" formControlName="Password" />
+      </div>
+      <button type="submit" [disabled]="!form.valid">Login</button>
+    </form>
+  </div>
 </div>

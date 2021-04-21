@@ -30,6 +30,8 @@ import { OtpComponent } from "./home/signup/verify/otp/otp.component";
 import { PancardComponent } from "./home/signup/verify/pancard/pancard.component";
 import { AdminComponent } from "./admin/admin.component";
 import { AdminLoginComponent } from "./admin/admin-login/admin-login.component";
+import { ConsigneeVerifyComponent } from './admin/consignee-verify/consignee-verify.component';
+import { TransporterVerifyComponent } from './admin/transporter-verify/transporter-verify.component';
 // import { AdminLoginComponent } from "./admin/admin-login/admin-login.component";
 
 @NgModule({
@@ -53,6 +55,8 @@ import { AdminLoginComponent } from "./admin/admin-login/admin-login.component";
     PancardComponent,
     AdminComponent,
     AdminLoginComponent,
+    ConsigneeVerifyComponent,
+    TransporterVerifyComponent,
   ],
   imports: [
     BrowserModule,

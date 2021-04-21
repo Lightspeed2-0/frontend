@@ -1,3 +1,6 @@
+import { ConsigneeVerifyComponent } from "./admin/consignee-verify/consignee-verify.component";
+import { TransporterVerifyComponent } from "./admin/transporter-verify/transporter-verify.component";
+import { AdminGuard } from "./admin/admin.guard";
 import { AdminLoginComponent } from "./admin/admin-login/admin-login.component";
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
@@ -17,6 +20,7 @@ import { MainComponent } from "./home/main/main.component";
 
 import { VerifyguardGuard } from "./home/signup/verify/verify-auth/verifyguard.guard";
 import { VerifyGuard } from "./home/signup/verify/verify-auth/verify.guard";
+import { AdminComponent } from "./admin/admin.component";
 
 const routes: Routes = [
   { path: "", component: MainComponent },
@@ -52,6 +56,14 @@ const routes: Routes = [
     canActivate: [VerifyGuard],
   },
   { path: "Adminlogin", component: AdminLoginComponent },
+  {
+    path: "Admins",
+    component: AdminComponent,
+    children: [
+      { path: "", component: TransporterVerifyComponent },
+      { path: "Consignee", component: ConsigneeVerifyComponent },
+    ],
+  },
 ];
 
 @NgModule({
