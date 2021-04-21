@@ -22,10 +22,9 @@ export class PancardComponent implements OnInit {
   }
   onRefresh() {
     this.http
-      .post(
-        "https://lightning-backend.herokuapp.com/transporter/register/panstatus",
-        { Email: this.route.snapshot.params["email"] }
-      )
+      .post("https://lightning-backend.herokuapp.com/transporter/panstatus", {
+        Email: this.route.snapshot.params["email"],
+      })
       .subscribe(
         (res) => {
           const tokenObj: any = res;

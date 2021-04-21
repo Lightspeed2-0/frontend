@@ -26,6 +26,7 @@ export class TransporterloginComponent implements OnInit {
   ngOnInit(): void {}
   onClose() {
     this.error = null;
+    this.clicked = false;
     this.form.reset();
   }
   onLogin() {
@@ -43,6 +44,7 @@ export class TransporterloginComponent implements OnInit {
         if (error instanceof HttpErrorResponse) {
           if (error.status) {
             this.error = error.error.msg;
+            this.clicked = false;
             if (this.error === "nootp") {
               this.router.navigateByUrl(`/Verify/${this.user.Email}/1`);
             } else if (this.error === "nopan") {

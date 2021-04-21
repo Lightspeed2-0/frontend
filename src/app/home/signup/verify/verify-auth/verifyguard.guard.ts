@@ -12,7 +12,7 @@ export class VerifyguardGuard implements CanActivate {
     private route: ActivatedRoute
   ) {}
   canActivate() {
-    if (this.verifyService.isVerified[2]) {
+    if (this.verifyService.isVerified[1]) {
       return true;
     } else {
       this.router.navigateByUrl(`/Signup`);
