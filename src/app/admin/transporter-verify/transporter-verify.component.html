@@ -1,1 +1,38 @@
-<p>transporter-verify works!</p>
+<div class="transporter">
+  <div *ngIf="spinner">
+    <mat-progress-spinner
+      mode="indeterminate"
+      diameter="45"
+    ></mat-progress-spinner>
+  </div>
+  <div class="nothing" *ngIf="nothing">No Verfifcations ....</div>
+  <div class="card" *ngFor="let item of transporter">
+    <div class="gradient" [ngStyle]="{ background: randomGradient() }"></div>
+    <div class="content-wrapper">
+      <div class="header">
+        <h3>Jitiendran</h3>
+        <h3></h3>
+      </div>
+      <div class="row">
+        <h3>Pancard</h3>
+        <a
+          href="https://lightning-backend.herokuapp.com/{{ item.PanCard }}"
+          target="_blank"
+          >Pancard</a
+        >
+      </div>
+      <div class="row">
+        <h3>Tincard</h3>
+        <a
+          href="https://lightning-backend.herokuapp.com/{{ item.TinCard }}"
+          target="_blank"
+          >Tincard</a
+        >
+      </div>
+      <div class="btn-wrap">
+        <button><i class="fas fa-check"></i> Verified</button>
+        <button><i class="fas fa-times"></i> Decline</button>
+      </div>
+    </div>
+  </div>
+</div>

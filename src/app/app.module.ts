@@ -9,6 +9,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AppRoutingModule } from "./app-routing.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatPaginatorModule } from "@angular/material/paginator";
 
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
@@ -30,9 +31,9 @@ import { OtpComponent } from "./home/signup/verify/otp/otp.component";
 import { PancardComponent } from "./home/signup/verify/pancard/pancard.component";
 import { AdminComponent } from "./admin/admin.component";
 import { AdminLoginComponent } from "./admin/admin-login/admin-login.component";
-import { ConsigneeVerifyComponent } from './admin/consignee-verify/consignee-verify.component';
-import { TransporterVerifyComponent } from './admin/transporter-verify/transporter-verify.component';
-import { TrasnotpComponent } from './home/signup/verify/trasnotp/trasnotp.component';
+import { ConsigneeVerifyComponent } from "./admin/consignee-verify/consignee-verify.component";
+import { TransporterVerifyComponent } from "./admin/transporter-verify/transporter-verify.component";
+import { TrasnotpComponent } from "./home/signup/verify/trasnotp/trasnotp.component";
 // import { AdminLoginComponent } from "./admin/admin-login/admin-login.component";
 
 @NgModule({
@@ -71,6 +72,7 @@ import { TrasnotpComponent } from './home/signup/verify/trasnotp/trasnotp.compon
     TransporterRoutingModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
+    MatPaginatorModule,
   ],
   providers: [
     {

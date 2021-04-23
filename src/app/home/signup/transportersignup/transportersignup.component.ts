@@ -11,6 +11,8 @@ import { AuthserviceService } from "src/app/auth/authservice.service";
 })
 export class TransportersignupComponent implements OnInit {
   error: any;
+  panError: any;
+  tinError: any;
   clicked = false;
   panChanged = false;
   tinChanged = false;
@@ -27,19 +29,40 @@ export class TransportersignupComponent implements OnInit {
   });
   constructor(private auth: AuthserviceService, private router: Router) {}
   onClose() {
+    this.clicked = false;
     this.error = null;
     this.form.reset();
   }
+
+  onError() {
+    this.panError = null;
+    this.tinError = null;
+    this.panCard = null;
+    this.tinCard = null;
+  }
+
   ngOnInit(): void {}
   onPan(event: any) {
-    this.panChanged = true;
     this.panCard = <File>event.target.files[0];
+    console.log(this.panCard["type"]);
+    if (this.panCard["type"] === "application/pdf") {
+      this.panChanged = true;
+    } else {
+      this.panError = "Upload only PDF files";
+    }
   }
   onTin(event: any) {
-    if (this.panChanged && this.form.valid) {
-      this.tinChanged = true;
-    }
     this.tinCard = <File>event.target.files[0];
+    console.log(this.tinCard["type"]);
+    if (
+      this.panChanged &&
+      this.form.valid &&
+      this.tinCard["type"] === "application/pdf"
+    ) {
+      this.tinChanged = true;
+    } else {
+      this.tinError = "Upload only PDF files or form is empty";
+    }
   }
   onLogin() {
     this.clicked = true;

@@ -24,12 +24,14 @@
   </div>
   <div class="col">
     <label for="PancardNO">Pancard Number</label>
-    <input type="number" formControlName="PanCardNo" maxlength="10" />
+    <input type="text" formControlName="PanCardNo" maxlength="10" />
   </div>
+  <p *ngIf="panError">{{ panError }} <button (click)="onError()">X</button></p>
   <div class="col">
     <label for="PanCard">Pancard</label>
     <input type="file" (change)="onPan($event)" />
   </div>
+  <p *ngIf="tinError">{{ tinError }} <button (click)="onError()">X</button></p>
   <div class="col">
     <label for="TinCard">Tincard</label>
     <input type="file" (change)="onTin($event)" />

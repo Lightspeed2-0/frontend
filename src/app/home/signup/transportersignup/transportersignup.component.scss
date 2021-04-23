@@ -6,7 +6,7 @@ form {
   align-items: center;
   margin-top: 3em;
   p {
-    width: 18em;
+    width: 20em;
     padding: 0.3em;
     border-radius: 0.3em;
     color: #d8000c;
@@ -14,11 +14,15 @@ form {
     border: 2px solid #d8000c;
     margin-bottom: 1.5em;
     button {
-      float: right;
+      width: 4em;
+      height: 2em;
+      text-align: center;
+      // background: #66a6ff;
       outline: none;
       border: none;
       cursor: pointer;
       color: white;
+      // background: #00a3fe;
       font-size: 1.2em;
       font-weight: 700;
       background: none;
@@ -61,6 +65,7 @@ form {
       border-radius: 0.3em;
       font-size: 1.3em;
       padding: 0.3em 1em;
+      cursor: pointer;
     }
     &:nth-child(n) {
       margin-top: -3.3em;
