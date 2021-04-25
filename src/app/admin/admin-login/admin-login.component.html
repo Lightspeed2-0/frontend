@@ -11,7 +11,15 @@
         <label for="Password">Password</label>
         <input type="password" formControlName="Password" />
       </div>
-      <button type="submit" [disabled]="!form.valid">Login</button>
+      <button type="submit" [disabled]="!form.valid">
+        Login
+        <div class="lds-ring" *ngIf="clicked">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </button>
     </form>
   </div>
 </div>

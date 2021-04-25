@@ -15,8 +15,10 @@ export class AdminLoginComponent implements OnInit {
   });
   constructor(private http: HttpClient, private router: Router) {}
   error: any;
+  clicked = false;
   ngOnInit(): void {}
   onLogin() {
+    this.clicked = true;
     this.http
       .post(
         "https://lightning-backend.herokuapp.com/admin/login",

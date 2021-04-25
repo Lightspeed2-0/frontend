@@ -7,6 +7,7 @@ import {
 } from "@angular/core";
 import { HttpErrorResponse } from "@angular/common/http";
 import { PageEvent } from "@angular/material/paginator";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-transporter-verify",
@@ -22,6 +23,9 @@ export class TransporterVerifyComponent implements OnInit, AfterViewInit {
     private change: ChangeDetectorRef
   ) {}
   gradient: any;
+  form: FormGroup = new FormGroup({
+    msg: new FormControl(null, Validators.required),
+  });
   gradients = [
     "linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%)",
     "linear-gradient(120deg, #f6d365 0%, #fda085 100%)",
@@ -35,7 +39,9 @@ export class TransporterVerifyComponent implements OnInit, AfterViewInit {
     "linear-gradient(to right, #ffe259, #ffa751)",
   ];
   transporter: any[] = [];
+  declined: boolean[] = [];
   nothing = false;
+  length = 0;
   randomGradient() {
     return this.gradients[Math.floor(Math.random() * this.gradients.length)];
   }
@@ -48,6 +54,7 @@ export class TransporterVerifyComponent implements OnInit, AfterViewInit {
         if (this.transporter.length === 0) {
           this.nothing = true;
         }
+        this.length = this.transporter.length;
         console.log(this.transporter);
       },
       (error) => {
@@ -58,7 +65,40 @@ export class TransporterVerifyComponent implements OnInit, AfterViewInit {
         }
       }
     );
+    for (let i = 0; i < this.length; i++) {
+      this.declined.push(false);
+    }
     this.change.detectChanges();
   }
+  _id: number = 0;
   ngOnInit() {}
+  onVerified(id: number) {
+    this.service.transporterVerify({ _id: id }).subscribe(
+      (res) => {
+        console.log(res);
+      },
+      (error) => {
+        if (error instanceof HttpErrorResponse) {
+          console.error(error);
+        }
+      }
+    );
+  }
+  onDecline(id: number, index: number) {
+    this._id = id;
+    this.declined[index] = true;
+  }
+  onSend() {
+    const data = { _id: this._id, ...this.form.value };
+    this.service.transporterDecline(data).subscribe(
+      (res) => {
+        console.log(res);
+      },
+      (error) => {
+        if (error instanceof HttpErrorResponse) {
+          console.error(error);
+        }
+      }
+    );
+  }
 }

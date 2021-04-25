@@ -63,6 +63,7 @@ const routes: Routes = [
       { path: "", component: TransporterVerifyComponent },
       { path: "Consignee", component: ConsigneeVerifyComponent },
     ],
+    canActivate: [AdminGuard],
   },
 ];
 

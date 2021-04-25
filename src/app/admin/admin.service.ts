@@ -12,4 +12,10 @@ export class AdminService {
   transporterGet() {
     return this.http.get<any>(this.trasnporterUrL);
   }
+  transporterVerify(id: any) {
+    return this.http.post<any>(this.trasnporterUrL, id);
+  }
+  transporterDecline(data: any) {
+    return this.http.post<any>(this.trasnporterUrL, data);
+  }
 }
