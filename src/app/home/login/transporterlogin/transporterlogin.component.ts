@@ -46,8 +46,10 @@ export class TransporterloginComponent implements OnInit {
             this.error = error.error.msg;
             this.clicked = false;
             if (this.error === "nootp") {
+              localStorage.setItem("Email", this.form.value["Email"]);
               this.router.navigateByUrl(`/Verify/${this.user.Email}/1`);
             } else if (this.error === "nopan") {
+              localStorage.setItem("Email", this.form.value["Email"]);
               this.router.navigateByUrl(`/Verify/${this.user.Email}/1/pan`);
             } else {
               this.router.navigateByUrl("/Login/TransporterLogin");

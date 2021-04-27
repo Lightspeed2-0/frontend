@@ -43,9 +43,17 @@ export class UserloginComponent implements OnInit {
         this.clicked = false;
         if (error instanceof HttpErrorResponse) {
           if (error.status) {
-            console.error(error);
-            this.error = error.error["msg"];
-            this.router.navigateByUrl("/Login");
+            this.error = error.error.msg;
+            this.clicked = false;
+            if (this.error === "nootp") {
+              localStorage.setItem("Email", this.form.value["Email"]);
+              this.router.navigateByUrl(`/Verify/${this.user.Email}/0`);
+            } else if (this.error === "nopan") {
+              localStorage.setItem("Email", this.form.value["Email"]);
+              this.router.navigateByUrl(`/Verify/${this.user.Email}/0/pan`);
+            } else {
+              this.router.navigateByUrl("/Login/TransporterLogin");
+            }
           }
         }
       }
