@@ -1,1 +1,49 @@
-<p>consignee-verify works!</p>
+<div class="transporter">
+  <div *ngIf="spinner">
+    <mat-progress-spinner
+      mode="indeterminate"
+      diameter="45"
+    ></mat-progress-spinner>
+  </div>
+  <div class="nothing" *ngIf="nothing">No Verfifcations ....</div>
+  <div class="card" *ngFor="let item of consignee; let i = index">
+    <div class="gradient" [ngStyle]="{ background: randomGradient() }"></div>
+    <div class="content-wrapper">
+      <div class="row">
+        <h3>Username</h3>
+        <p>{{ item.Username }}</p>
+      </div>
+      <div class="row">
+        <h3>Pancard</h3>
+        <a
+          href="https://lightning-backend.herokuapp.com/{{ item.PanCard }}"
+          target="_blank"
+          >Pancard</a
+        >
+      </div>
+      <div class="row">
+        <h3>Tincard</h3>
+        <a
+          href="https://lightning-backend.herokuapp.com/{{ item.TinCard }}"
+          target="_blank"
+          >Tincard</a
+        >
+      </div>
+      <div class="btn-wrap" *ngIf="!declined[i]">
+        <button (click)="onVerified(item._id)">
+          <i class="fas fa-check"></i> Verify
+        </button>
+        <button (click)="onDecline(item._id, i)">
+          <i class="fas fa-times"></i> Decline
+        </button>
+      </div>
+      <form *ngIf="declined[i]">
+        <label for=""></label>
+        <input type="text" name="" id="" />
+        <button (click)="onSend()">
+          <i class="fab fa-telegram-plane"></i>send
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

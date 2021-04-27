@@ -1,12 +1,5 @@
 <form [formGroup]="form" (ngSubmit)="onLogin()">
   <p *ngIf="error">{{ error }} <button (click)="onClose()">X</button></p>
-  <div class="spinner" *ngIf="clicked">
-    <mat-progress-spinner
-      mode="indeterminate"
-      color="accent"
-      diameter="45"
-    ></mat-progress-spinner>
-  </div>
   <div class="col">
     <label for="Name">Transporter Email</label>
     <input type="email" formControlName="Email" />
@@ -16,7 +9,15 @@
     <input type="password" formControlName="Password" />
   </div>
   <div class="btn-wrap">
-    <button [disabled]="!form.valid">Log in</button>
+    <button [disabled]="!form.valid">
+      Log in
+      <div class="lds-ring" *ngIf="clicked">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </button>
   </div>
 </form>
 <div class="form-footer">

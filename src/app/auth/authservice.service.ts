@@ -18,12 +18,7 @@ export class AuthserviceService {
   transporterLogin(data: { Email: string; Password: string }) {
     return this.http.post(this.transporterLoginUrl, data);
   }
-  consigneeRegister(data: {
-    Username: string;
-    MobileNo: number;
-    Email: string;
-    Password: string;
-  }) {
+  consigneeRegister(data: any) {
     return this.http.post(this.consigneeRegUrl, data);
   }
   transporterRegsiter(data: any) {

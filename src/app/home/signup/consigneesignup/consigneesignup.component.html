@@ -1,11 +1,5 @@
 <form [formGroup]="form" (ngSubmit)="onLogin()" enctype="multipart/form-data">
   <p *ngIf="error">{{ error }} <button (click)="onClose()">X</button></p>
-  <div class="spinner" *ngIf="clicked">
-    <mat-progress-spinner
-      mode="indeterminate"
-      diameter="45"
-    ></mat-progress-spinner>
-  </div>
   <div class="col">
     <label for="Name">Consignee Name</label>
     <input type="text" formControlName="Username" />
@@ -23,11 +17,29 @@
     <input type="password" formControlName="Password" />
   </div>
   <div class="col">
+    <label for="PancardNo">Pancard No</label>
+    <input
+      type="text"
+      formControlName="PanCardNo"
+      minlength="10"
+      maxlength="10"
+    />
+  </div>
+  <p *ngIf="panError">{{ panError }} <button (click)="onError()">X</button></p>
+  <div class="col">
     <label for="PanCard">Pancard</label>
-    <input type="file" formControlName="PanCard" />
+    <input type="file" (change)="onPan($event)" />
   </div>
   <div class="btn-wrap">
-    <button [disabled]="!form.valid">Sign Up</button>
+    <button [disabled]="!panChanged">
+      Sign Up
+      <div class="lds-ring" *ngIf="clicked">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </button>
   </div>
 </form>
 <div class="form-footer">

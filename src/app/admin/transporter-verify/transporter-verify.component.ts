@@ -18,6 +18,7 @@ export class TransporterVerifyComponent implements OnInit, AfterViewInit {
   error: any;
   pageEvent: any;
   spinner = true;
+  accepted = false;
   constructor(
     private service: AdminService,
     private change: ChangeDetectorRef
@@ -73,23 +74,30 @@ export class TransporterVerifyComponent implements OnInit, AfterViewInit {
   _id: number = 0;
   ngOnInit() {}
   onVerified(id: number) {
-    this.service.transporterVerify({ _id: id }).subscribe(
-      (res) => {
-        console.log(res);
-      },
-      (error) => {
-        if (error instanceof HttpErrorResponse) {
-          console.error(error);
+    this.accepted = true;
+    this.service
+      .transporterVerify({ _id: id, IsAccepted: this.accepted })
+      .subscribe(
+        (res) => {
+          console.log(res);
+        },
+        (error) => {
+          if (error instanceof HttpErrorResponse) {
+            console.error(error);
+          }
         }
-      }
-    );
+      );
   }
   onDecline(id: number, index: number) {
     this._id = id;
     this.declined[index] = true;
   }
   onSend() {
-    const data = { _id: this._id, ...this.form.value };
+    const data = {
+      _id: this._id,
+      ...this.form.value,
+      IsAccepted: this.accepted,
+    };
     this.service.transporterDecline(data).subscribe(
       (res) => {
         console.log(res);

@@ -35,8 +35,18 @@ export class OtpComponent implements OnInit {
   onSubmit() {
     this.clicked = true;
     const role = this.route.snapshot.params["role"];
+    const transUrl =
+      "https://lightning-backend.herokuapp.com/transporter/verify";
+    const consUrl = "https://lightning-backend.herokuapp.com/consignee/verify";
+    let url = "";
+    console.log(typeof this.route.snapshot.params["role"]);
+    if (this.route.snapshot.params["role"] === "0") {
+      url = consUrl;
+    } else {
+      url = transUrl;
+    }
     this.http
-      .post("https://lightning-backend.herokuapp.com/transporter/verify", {
+      .post(url, {
         Email: this.Email,
         ...this.form.value,
       })

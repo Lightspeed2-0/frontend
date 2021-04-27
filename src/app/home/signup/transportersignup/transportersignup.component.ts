@@ -27,7 +27,9 @@ export class TransportersignupComponent implements OnInit {
     Password: new FormControl(null, Validators.required),
     PanCardNo: new FormControl(null, Validators.required),
   });
+
   constructor(private auth: AuthserviceService, private router: Router) {}
+
   onClose() {
     this.clicked = false;
     this.error = null;
@@ -42,6 +44,7 @@ export class TransportersignupComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
   onPan(event: any) {
     this.panCard = <File>event.target.files[0];
     console.log(this.panCard["type"]);
@@ -51,6 +54,7 @@ export class TransportersignupComponent implements OnInit {
       this.panError = "Upload only PDF files";
     }
   }
+
   onTin(event: any) {
     this.tinCard = <File>event.target.files[0];
     console.log(this.tinCard["type"]);
@@ -64,6 +68,7 @@ export class TransportersignupComponent implements OnInit {
       this.tinError = "Upload only PDF files or form is empty";
     }
   }
+
   onLogin() {
     this.clicked = true;
     const data = new FormData();
@@ -74,7 +79,9 @@ export class TransportersignupComponent implements OnInit {
     data.append("PanCardNo", this.form.value["PanCardNo"]);
     data.append("PanCard", this.panCard);
     data.append("TinCard", this.tinCard);
+
     data.forEach((key, value) => console.log(key, " : ", value));
+
     this.auth.transporterRegsiter(data).subscribe(
       (res) => {
         console.log(res);

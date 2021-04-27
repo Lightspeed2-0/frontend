@@ -32,8 +32,18 @@ export class TrasnotpComponent implements OnInit {
   tokenObj: any;
   onSubmit() {
     this.clicked = true;
+    const transUrl =
+      "https://lightning-backend.herokuapp.com/transporter/verify";
+    const consUrl = "https://lightning-backend.herokuapp.com/consignee/verify";
+    let url = "";
+    console.log(this.route.snapshot.params["role"]);
+    if (this.route.snapshot.params["role"] === 0) {
+      url = consUrl;
+    } else {
+      url = transUrl;
+    }
     this.http
-      .post("https://lightning-backend.herokuapp.com/transporter/verify", {
+      .post(url, {
         Email: this.Email,
         ...this.form.value,
       })
