@@ -21,14 +21,6 @@
           >Pancard</a
         >
       </div>
-      <div class="row">
-        <h3>Tincard</h3>
-        <a
-          href="https://lightning-backend.herokuapp.com/{{ item.TinCard }}"
-          target="_blank"
-          >Tincard</a
-        >
-      </div>
       <div class="btn-wrap" *ngIf="!declined[i]">
         <button (click)="onVerified(item._id)">
           <i class="fas fa-check"></i> Verify
