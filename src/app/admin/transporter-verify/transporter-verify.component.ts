@@ -43,9 +43,11 @@ export class TransporterVerifyComponent implements OnInit, AfterViewInit {
   declined: boolean[] = [];
   nothing = false;
   length = 0;
+
   randomGradient() {
     return this.gradients[Math.floor(Math.random() * this.gradients.length)];
   }
+
   ngAfterViewInit() {
     this.service.transporterGet().subscribe(
       (res: any) => {
@@ -72,7 +74,11 @@ export class TransporterVerifyComponent implements OnInit, AfterViewInit {
     this.change.detectChanges();
   }
   _id: number = 0;
-  ngOnInit() {}
+
+  ngOnInit() {
+    console.log(this.transporter.length);
+  }
+
   onVerified(id: number) {
     this.accepted = true;
     this.service
@@ -80,6 +86,9 @@ export class TransporterVerifyComponent implements OnInit, AfterViewInit {
       .subscribe(
         (res) => {
           console.log(res);
+          if (res.msg === "success") {
+            this.transporter.splice(id, 1);
+          }
         },
         (error) => {
           if (error instanceof HttpErrorResponse) {
@@ -88,10 +97,13 @@ export class TransporterVerifyComponent implements OnInit, AfterViewInit {
         }
       );
   }
+
   onDecline(id: number, index: number) {
     this._id = id;
     this.declined[index] = true;
+    this.accepted = false;
   }
+
   onSend() {
     const data = {
       _id: this._id,
@@ -100,7 +112,9 @@ export class TransporterVerifyComponent implements OnInit, AfterViewInit {
     };
     this.service.transporterDecline(data).subscribe(
       (res) => {
-        console.log(res);
+        if (res.msg === "success") {
+          this.transporter.splice(this._id, 1);
+        }
       },
       (error) => {
         if (error instanceof HttpErrorResponse) {

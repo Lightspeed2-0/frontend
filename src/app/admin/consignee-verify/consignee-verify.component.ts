@@ -85,6 +85,9 @@ export class ConsigneeVerifyComponent implements OnInit, AfterViewInit {
       .subscribe(
         (res) => {
           console.log(res);
+          if (res.msg === "success") {
+            this.consignee.splice(id, 1);
+          }
         },
         (error) => {
           if (error instanceof HttpErrorResponse) {
@@ -108,6 +111,9 @@ export class ConsigneeVerifyComponent implements OnInit, AfterViewInit {
     this.service.consigneeDecline(data).subscribe(
       (res) => {
         console.log(res);
+        if (res.msg === "success") {
+          this.consignee.splice(this._id, 1);
+        }
       },
       (error) => {
         if (error instanceof HttpErrorResponse) {

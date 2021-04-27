@@ -14,7 +14,7 @@ import { Observable } from "rxjs";
 export class AdminGuard implements CanActivate {
   constructor(private router: Router) {}
   canActivate() {
-    if (localStorage.getItem("admintoken")) {
+    if (localStorage.getItem("token")) {
       return true;
     } else {
       this.router.navigateByUrl("/Adminlogin");

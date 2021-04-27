@@ -21,8 +21,20 @@ export class PancardComponent implements OnInit {
     this.isverified = this.verifyService.isVerified[3];
   }
   onRefresh() {
+    const role = this.route.snapshot.params["role"];
+    const transUrl =
+      "https://lightning-backend.herokuapp.com/transporter/panstatus";
+    const consUrl =
+      "https://lightning-backend.herokuapp.com/consignee/panstatus";
+    let url = "";
+    console.log(typeof this.route.snapshot.params["role"]);
+    if (this.route.snapshot.params["role"] === "0") {
+      url = consUrl;
+    } else {
+      url = transUrl;
+    }
     this.http
-      .post("https://lightning-backend.herokuapp.com/transporter/panstatus", {
+      .post(url, {
         Email: this.route.snapshot.params["email"],
       })
       .subscribe(

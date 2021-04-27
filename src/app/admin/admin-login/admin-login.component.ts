@@ -27,7 +27,7 @@ export class AdminLoginComponent implements OnInit {
       .subscribe(
         (res) => {
           const tokenObj: any = res;
-          localStorage.setItem("admintoken", tokenObj.token);
+          localStorage.setItem("token", tokenObj.token);
           this.router.navigateByUrl("/Admins");
         },
         (error) => {
