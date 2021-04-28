@@ -35,6 +35,7 @@ export class OtpComponent implements OnInit {
   onSubmit() {
     this.clicked = true;
     const role = this.route.snapshot.params["role"];
+    this.verifyService.role = role;
     const transUrl =
       "https://lightning-backend.herokuapp.com/transporter/verify";
     const consUrl = "https://lightning-backend.herokuapp.com/consignee/verify";
@@ -53,6 +54,7 @@ export class OtpComponent implements OnInit {
       .subscribe(
         (res) => {
           this.tokenObj = res;
+          console.log(this.tokenObj.msg);
           this.verifyService.isVerified[2] = true;
           if (this.tokenObj.msg === "nopan") {
             this.router.navigate(["pan"], { relativeTo: this.route });

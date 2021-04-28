@@ -17,18 +17,22 @@ export class PancardComponent implements OnInit {
   ) {}
   isverified = false;
   error: any = "Pancard verification is pending";
+  role: any;
   ngOnInit(): void {
     this.isverified = this.verifyService.isVerified[3];
+    this.role = this.route.snapshot.params["role"];
+    console.log(this.role);
   }
   onRefresh() {
     const role = this.route.snapshot.params["role"];
+    console.log(role);
     const transUrl =
       "https://lightning-backend.herokuapp.com/transporter/panstatus";
     const consUrl =
       "https://lightning-backend.herokuapp.com/consignee/panstatus";
     let url = "";
-    console.log(typeof this.route.snapshot.params["role"]);
-    if (this.route.snapshot.params["role"] === "0") {
+    console.log(this.verifyService.role);
+    if (this.verifyService.role === "0") {
       url = consUrl;
     } else {
       url = transUrl;

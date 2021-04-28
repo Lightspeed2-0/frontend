@@ -37,7 +37,7 @@ export class TrasnotpComponent implements OnInit {
     const consUrl = "https://lightning-backend.herokuapp.com/consignee/verify";
     let url = "";
     console.log(this.route.snapshot.params["role"]);
-    if (this.route.snapshot.params["role"] === 0) {
+    if (this.route.snapshot.params["role"] === "0") {
       url = consUrl;
     } else {
       url = transUrl;
