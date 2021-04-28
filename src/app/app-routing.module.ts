@@ -48,7 +48,7 @@ const routes: Routes = [
     children: [
       { path: "", component: OtpComponent },
       {
-        path: "pan",
+        path: "pan/:user",
         component: PancardComponent,
         canActivate: [VerifyguardGuard],
       },

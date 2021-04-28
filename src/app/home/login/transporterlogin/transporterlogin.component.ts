@@ -50,7 +50,9 @@ export class TransporterloginComponent implements OnInit {
               this.router.navigateByUrl(`/Verify/${this.user.Email}/1`);
             } else if (this.error === "nopan") {
               localStorage.setItem("Email", this.form.value["Email"]);
-              this.router.navigateByUrl(`/Verify/${this.user.Email}/1/pan`);
+              this.router.navigateByUrl(
+                `/Verify/${this.user.Email}/1/pan/transporter`
+              );
             } else {
               this.router.navigateByUrl("/Login/TransporterLogin");
             }

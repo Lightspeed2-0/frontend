@@ -57,7 +57,15 @@ export class OtpComponent implements OnInit {
           console.log(this.tokenObj.msg);
           this.verifyService.isVerified[2] = true;
           if (this.tokenObj.msg === "nopan") {
-            this.router.navigate(["pan"], { relativeTo: this.route });
+            if (this.route.snapshot.params["role"] === "0") {
+              this.router.navigate(["pan/consignee"], {
+                relativeTo: this.route,
+              });
+            } else {
+              this.router.navigate(["pan/transporter"], {
+                relativeTo: this.route,
+              });
+            }
           }
         },
         (error) => {
