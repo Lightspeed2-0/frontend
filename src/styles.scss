@@ -8,6 +8,7 @@
 body {
   font-family: "Montserrat", sans-serif;
 }
+
 .mat-step-header .mat-step-icon {
   background-color: gainsboro;
 }
@@ -25,4 +26,14 @@ body {
   border-radius: 50%;
   width: 40px !important;
   height: 40px !important;
+}
+
+.white-snackbar {
+  background: #fff;
+  color: #000;
+}
+
+.red-snackbar {
+  background: linear-gradient(to right, #ff416c, #ff4b2b);
+  color: #fff;
 }

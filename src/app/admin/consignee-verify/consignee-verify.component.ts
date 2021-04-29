@@ -6,6 +6,7 @@ import {
   OnInit,
 } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { AdminService } from "../admin.service";
 
 @Component({
@@ -42,7 +43,8 @@ export class ConsigneeVerifyComponent implements OnInit, AfterViewInit {
 
   constructor(
     private service: AdminService,
-    private change: ChangeDetectorRef
+    private change: ChangeDetectorRef,
+    private snack: MatSnackBar
   ) {}
 
   randomGradient() {
@@ -80,6 +82,10 @@ export class ConsigneeVerifyComponent implements OnInit, AfterViewInit {
 
   onVerified(id: number) {
     this.accepted = true;
+    this.snack.open("Verified Successfully !", "𝘅", {
+      duration: 900,
+      panelClass: ["white-snackbar"],
+    });
     this.service
       .consigneeVerify({ _id: id, IsAccepted: this.accepted })
       .subscribe(
@@ -108,6 +114,10 @@ export class ConsigneeVerifyComponent implements OnInit, AfterViewInit {
       ...this.form.value,
       IsAccepted: this.accepted,
     };
+    this.snack.open("Declined Successfully !", "", {
+      duration: 900,
+      panelClass: ["red-snackbar"],
+    });
     this.service.consigneeDecline(data).subscribe(
       (res) => {
         console.log(res);

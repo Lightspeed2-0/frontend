@@ -10,6 +10,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
@@ -73,6 +74,7 @@ import { TrasnotpComponent } from "./home/signup/verify/trasnotp/trasnotp.compon
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
     MatPaginatorModule,
+    MatSnackBarModule,
   ],
   providers: [
     {

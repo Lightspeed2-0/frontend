@@ -6,8 +6,8 @@ import {
   OnInit,
 } from "@angular/core";
 import { HttpErrorResponse } from "@angular/common/http";
-import { PageEvent } from "@angular/material/paginator";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: "app-transporter-verify",
@@ -21,7 +21,8 @@ export class TransporterVerifyComponent implements OnInit, AfterViewInit {
   accepted = false;
   constructor(
     private service: AdminService,
-    private change: ChangeDetectorRef
+    private change: ChangeDetectorRef,
+    private snack: MatSnackBar
   ) {}
   gradient: any;
   form: FormGroup = new FormGroup({
@@ -81,6 +82,10 @@ export class TransporterVerifyComponent implements OnInit, AfterViewInit {
 
   onVerified(id: number) {
     this.accepted = true;
+    this.snack.open("Verified Successfully", "𝘅", {
+      duration: 900,
+      panelClass: ["white-snackbar"],
+    });
     this.service
       .transporterVerify({ _id: id, IsAccepted: this.accepted })
       .subscribe(
@@ -110,6 +115,10 @@ export class TransporterVerifyComponent implements OnInit, AfterViewInit {
       ...this.form.value,
       IsAccepted: this.accepted,
     };
+    this.snack.open("Declined Successfully", "", {
+      duration: 900,
+      panelClass: ["red-snackbar"],
+    });
     this.service.transporterDecline(data).subscribe(
       (res) => {
         if (res.msg === "success") {
