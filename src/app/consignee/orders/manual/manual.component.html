@@ -1,0 +1,120 @@
+<div class="manual">
+  <mat-horizontal-stepper linear>
+    <div class="mat-wrap">
+      <mat-step [stepControl]="source" label="Source">
+        <form [formGroup]="source">
+          <div class="row">
+            <label>Address</label>
+            <input type="text" formControlName="Address" />
+          </div>
+          <div class="row">
+            <label>City</label>
+            <input type="text" formControlName="City" />
+          </div>
+          <div class="row">
+            <label>Pincode</label>
+            <input
+              type="number"
+              maxlength="6"
+              minlength="6"
+              formControlName="Pincode"
+            />
+          </div>
+          <div class="row">
+            <label>State</label>
+            <input type="text" formControlName="State" />
+          </div>
+          <button [disabled]="!source.valid" matStepperNext>next</button>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="destination" label="Destination">
+        <form [formGroup]="destination">
+          <div class="row">
+            <label>Address</label>
+            <input type="text" formControlName="Address" />
+          </div>
+          <div class="row">
+            <label>City</label>
+            <input type="text" formControlName="City" />
+          </div>
+          <div class="row">
+            <label>Pincode</label>
+            <input
+              type="number"
+              maxlength="6"
+              minlength="6"
+              formControlName="Pincode"
+            />
+          </div>
+          <div class="row">
+            <label>State</label>
+            <input type="text" formControlName="State" />
+          </div>
+          <div class="btn">
+            <button matStepperPrevious>prev</button>
+            <button
+              [disabled]="!destination.valid"
+              matStepperNext
+              (click)="getTrans()"
+            >
+              next
+            </button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step label="Transporter" [stepControl]="transporter">
+        <form [formGroup]="transporter">
+          <div *ngIf="clicked">
+            <mat-progress-spinner
+              mode="indeterminate"
+              diameter="45"
+            ></mat-progress-spinner>
+          </div>
+          <div class="row">
+            <input list="trans" formControlName="TransporterId" />
+          </div>
+          <datalist id="trans">
+            <option
+              *ngFor="let transporter of Transporters"
+              value="{{ transporter.Username }}"
+            ></option>
+          </datalist>
+          <div class="btn">
+            <button matStepperPrevious>prev</button>
+            <button [disabled]="!transporter.valid" matStepperNext>next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step label="Confirm" [stepControl]="confirmation">
+        <form [formGroup]="confirmation">
+          <div class="row">
+            <label>Delivery Date</label>
+            <input type="date" formControlName="OrderDate" />
+          </div>
+          <div class="row">
+            <label>Volume</label>
+            <input type="number" formControlName="Volume" />
+          </div>
+          <div class="row">
+            <label>Weight</label>
+            <input type="number" formControlName="Weight" />
+          </div>
+          <div class="row">
+            <label>Pooling</label>
+            <input
+              type="text"
+              formControlName="IsLTL"
+              placeholder="yes or no only...."
+            />
+          </div>
+          <div class="btn">
+            <button matStepperPrevious>prev</button>
+            <button [disabled]="!confirmation.valid" (click)="onSubmit()">
+              Submit
+            </button>
+          </div>
+        </form>
+      </mat-step>
+    </div>
+  </mat-horizontal-stepper>
+</div>

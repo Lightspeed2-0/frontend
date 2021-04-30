@@ -1,1 +1,50 @@
-<p>transporter works!</p>
+<div class="dashboard-wrapper">
+  <div class="dash-img">
+    <div class="header">
+      <div
+        class="icon-wrap"
+        [ngStyle]="{ marginTop: profile ? '-5.8em' : '0em' }"
+      >
+        <img src="../../assets/logo.png" />
+        <h3>LightSpeed</h3>
+      </div>
+      <div class="dropdown-wrap">
+        <div class="profile-wrapper" (click)="onProfile()">
+          <div class="circle">
+            <img src="../../assets/invisible.png" alt="" />
+          </div>
+          {{ Username }}
+          <!-- <button (click)="logOut()">Logout</button> -->
+        </div>
+        <div class="dropdown-wrapper" *ngIf="profile">
+          <button>Profile</button>
+          <button (click)="logOut()">Logout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="main">
+    <div class="navbar-wrap">
+      <a
+        routerLink="./"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <span class="material-icons">dashboard </span>
+        Dashboard</a
+      >
+      <a routerLink="./Orders" routerLinkActive="active"
+        ><span class="material-icons"> inventory_2 </span>Orders</a
+      >
+      <a routerLink="./Status" routerLinkActive="active">
+        <span class="material-icons"> info </span>Status</a
+      >
+      <a routerLink="./Payment" routerLinkActive="active"
+        ><span class="material-icons"> payment </span>Payment</a
+      >
+    </div>
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div> -->
+</div>

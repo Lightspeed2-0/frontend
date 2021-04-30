@@ -1,13 +1,11 @@
-<mat-horizontal-stepper linear>
-  <div class="mat-wrap">
-    <mat-step label="Order">
-      <h4>Order Details</h4>
-    </mat-step>
-    <mat-step label="Transportation">
-      <h4>Transportation</h4>
-    </mat-step>
-    <mat-step label="Confirm">
-      <h4>Confirm</h4>
-    </mat-step>
+<div class="Orders">
+  <button (click)="manual()">Manual Search</button>
+  <button>Bidding</button>
+  <button>Pooling</button>
+</div>
+<div *ngIf="manualSearch" class="popup">
+  <div class="wrap">
+    <button (click)="closeManual()">X</button>
+    <app-manual></app-manual>
   </div>
-</mat-horizontal-stepper>
+</div>
