@@ -27,11 +27,14 @@ export class PancardComponent implements OnInit {
       "https://lightning-backend.herokuapp.com/transporter/panstatus";
     const consUrl =
       "https://lightning-backend.herokuapp.com/consignee/panstatus";
-    let url = "";
+    let url = "",
+      user = "";
     if (this.route.snapshot.params["user"] === "consignee") {
       url = consUrl;
+      user = "Consignee";
     } else {
       url = transUrl;
+      user = "Transporter";
     }
     console.log(localStorage.getItem("Email"));
     this.http
@@ -43,7 +46,7 @@ export class PancardComponent implements OnInit {
           console.log("hello");
           const tokenObj: any = res;
           localStorage.setItem("token", tokenObj.token);
-          // this.router.navigateByUrl(`/Transporter/${tokenObj.Username}`);
+          this.router.navigateByUrl(`/${user}/${tokenObj.Username}`);
         },
         (error) => {
           if (error instanceof HttpErrorResponse) {
