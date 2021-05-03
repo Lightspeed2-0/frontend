@@ -1,3 +1,4 @@
+import { DriverRoutingModule } from "./driver/modules/driver-routing.module";
 import { ConsigneeModule } from "./consignee/modules/consignee.module";
 import { TransporterRoutingModule } from "./transporter/modules/transporter-routing.module";
 import { ConsigneeRoutingModule } from "./consignee/modules/consignee-routing.module";
@@ -35,6 +36,8 @@ import { AdminLoginComponent } from "./admin/admin-login/admin-login.component";
 import { ConsigneeVerifyComponent } from "./admin/consignee-verify/consignee-verify.component";
 import { TransporterVerifyComponent } from "./admin/transporter-verify/transporter-verify.component";
 import { TrasnotpComponent } from "./home/signup/verify/trasnotp/trasnotp.component";
+import { DriverComponent } from "./driver/driver.component";
+import { DriverModule } from "./driver/modules/driver.module";
 
 @NgModule({
   declarations: [
@@ -60,6 +63,7 @@ import { TrasnotpComponent } from "./home/signup/verify/trasnotp/trasnotp.compon
     ConsigneeVerifyComponent,
     TransporterVerifyComponent,
     TrasnotpComponent,
+    DriverComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,6 +74,8 @@ import { TrasnotpComponent } from "./home/signup/verify/trasnotp/trasnotp.compon
     ConsigneeRoutingModule,
     TransporterModule,
     TransporterRoutingModule,
+    DriverModule,
+    DriverRoutingModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
     MatPaginatorModule,

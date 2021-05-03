@@ -16,6 +16,7 @@ import { MoreorderComponent } from "../moreorder/moreorder.component";
 import { ViewbidsComponent } from "../viewbids/viewbids.component";
 import { PaymentdetailsComponent } from "../paymentdetails/paymentdetails.component";
 import { ShortenPipePipe } from "../shorten-pipe.pipe";
+import { ProfileComponent } from "../profile/profile.component";
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ShortenPipePipe } from "../shorten-pipe.pipe";
     ViewbidsComponent,
     PaymentdetailsComponent,
     ShortenPipePipe,
+    ProfileComponent,
   ],
   imports: [
     CommonModule,

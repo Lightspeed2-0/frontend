@@ -1,0 +1,44 @@
+<div class="profile">
+  <!-- <button (click)="onClose()">X</button> -->
+  <div class="profile-wrap">
+    <div class="circle-wrap">
+      <div class="circle"></div>
+      <div class="user-short">
+        <div class="Username">Surya</div>
+        <div class="Email">surya7102000@gmail.com</div>
+        <div class="rating">
+          <label for="Rating">Rating</label>
+          <div class="row">
+            <p>4.4</p>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="profile-contents">
+      <div *ngIf="loaded">
+        <mat-progress-spinner
+          diameter="45"
+          mode="indeterminate"
+        ></mat-progress-spinner>
+      </div>
+      <h3>User details</h3>
+      <div class="row">
+        <div class="Title">Username</div>
+        <div class="Content">Surya</div>
+      </div>
+      <div class="row">
+        <div class="Title">Email</div>
+        <div class="Content">surya7102000@gmail.com</div>
+      </div>
+      <div class="row">
+        <div class="Title">Contact</div>
+        <div class="Content">1234567890</div>
+      </div>
+      <div class="row">
+        <div class="Title">No of Orders</div>
+        <div class="Content">121</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,82 @@
+<div class="request">
+  <div *ngIf="loaded">
+    <mat-progress-spinner
+      mode="indeterminate"
+      diameter="45"
+    ></mat-progress-spinner>
+  </div>
+  <div class="request-wrap" *ngFor="let request of Req; let i = index">
+    <mat-accordion>
+      <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title>Order</mat-panel-title>
+          <mat-panel-description>{{ request.OrderDate }}</mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="request-details">
+          <div class="row">
+            <div class="title">OrderId</div>
+            <div class="content">{{ request._id }}</div>
+          </div>
+          <div class="row">
+            <div class="title">Source</div>
+            <div class="content">
+              {{ request.Indent.Source.Address }}
+              {{ request.Indent.Source.Pincode }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="title">Destination</div>
+            <div class="content">
+              {{ request.Indent.Destination.Address }}
+              {{ request.Indent.Destination.Pincode }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="title">Delivery Date</div>
+            <div class="content">{{ request.OrderDate }}</div>
+          </div>
+          <div class="row">
+            <div class="title">Weight</div>
+            <div class="content">{{ request.Weight }}</div>
+          </div>
+          <div class="row">
+            <div class="title">Volume</div>
+            <div class="content">{{ request.Volume }}</div>
+          </div>
+          <div class="row">
+            <div class="title">IsLTL</div>
+            <div class="content">{{ request.IsLTL }}</div>
+          </div>
+          <div class="row">
+            <div class="title">Consignee Profile</div>
+            <a
+              href="https://lightspeed2021.herokuapp.com/Consignee/{{
+                request.Consignee.ConsigneeName
+              }}/Profile/{{ request.ConsigneeId }}"
+              target="_blank"
+              >{{ request.Consignee.ConsigneeName }}</a
+            >
+          </div>
+          <div class="row" *ngIf="!accept[i]">
+            <button (click)="onAccept(i)">Accept</button>
+            <button (click)="onDecline(request._id, i)">Decline</button>
+          </div>
+          <form
+            *ngIf="accept[i]"
+            [formGroup]="form"
+            (ngSubmit)="enterAmount(request._id, i)"
+          >
+            <input type="text" formControlName="Amount" />
+            <button class="send" type="submit" [disabled]="!form.valid">
+              send
+            </button>
+            <button (click)="onBack(i)">X</button>
+          </form>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

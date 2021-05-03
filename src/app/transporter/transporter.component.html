@@ -1,5 +1,5 @@
 <div class="dashboard-wrapper">
-  <div class="dash-img">
+  <div class="dash-img" [ngStyle]="{ zIndex: popup || UserProfile ? 0 : 2 }">
     <div class="header">
       <div
         class="icon-wrap"
@@ -14,16 +14,15 @@
             <img src="../../assets/invisible.png" alt="" />
           </div>
           {{ Username }}
-          <!-- <button (click)="logOut()">Logout</button> -->
         </div>
         <div class="dropdown-wrapper" *ngIf="profile">
-          <button>Profile</button>
+          <button (click)="Userprofile()">Profile</button>
           <button (click)="logOut()">Logout</button>
         </div>
       </div>
     </div>
   </div>
-  <!-- <div class="main">
+  <div class="main">
     <div class="navbar-wrap">
       <a
         routerLink="./"
@@ -33,18 +32,18 @@
         <span class="material-icons">dashboard </span>
         Dashboard</a
       >
-      <a routerLink="./Orders" routerLinkActive="active"
-        ><span class="material-icons"> inventory_2 </span>Orders</a
+      <a
+        routerLink="./Request"
+        routerLinkActive="active"
+        (click)="changeZIndex()"
+        ><span class="material-icons"> inventory_2 </span>Request</a
       >
-      <a routerLink="./Status" routerLinkActive="active">
-        <span class="material-icons"> info </span>Status</a
-      >
-      <a routerLink="./Payment" routerLinkActive="active"
-        ><span class="material-icons"> payment </span>Payment</a
-      >
+      <!-- <a routerLink="./Your Payments" routerLinkActive="active"
+        ><span class="material-icons"> payment </span>Your Payment</a
+      > -->
     </div>
     <div class="main-content">
       <router-outlet></router-outlet>
     </div>
-  </div> -->
+  </div>
 </div>

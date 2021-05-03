@@ -1,5 +1,5 @@
 <div class="dashboard-wrapper">
-  <div class="dash-img" [ngStyle]="{ zIndex: popup ? 0 : 2 }">
+  <div class="dash-img" [ngStyle]="{ zIndex: popup || UserProfile ? 0 : 2 }">
     <div class="header">
       <div
         class="icon-wrap"
@@ -14,10 +14,9 @@
             <img src="../../assets/invisible.png" alt="" />
           </div>
           {{ Username }}
-          <!-- <button (click)="logOut()">Logout</button> -->
         </div>
         <div class="dropdown-wrapper" *ngIf="profile">
-          <button>Profile</button>
+          <button (click)="Userprofile()">Profile</button>
           <button (click)="logOut()">Logout</button>
         </div>
       </div>
@@ -39,7 +38,11 @@
       <a routerLink="./View Bids" routerLinkActive="active">
         <span class="material-icons"> gavel </span>Bids</a
       >
-      <a routerLink="./Your Orders" routerLinkActive="active">
+      <a
+        routerLink="./Your Orders"
+        routerLinkActive="active"
+        (click)="changeZIndex()"
+      >
         <span class="material-icons"> more </span>Your Orders</a
       >
       <a routerLink="./Your Payments" routerLinkActive="active"
