@@ -87,7 +87,7 @@ export class ManualComponent implements OnInit {
       Weight: this.confirmation.value["Weight"],
       IsLTL: isltl,
     };
-    // console.log(data);
+    console.log(data);
     this.service.indentCreate(data).subscribe(
       (res) => {
         console.log(res);

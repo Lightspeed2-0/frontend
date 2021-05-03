@@ -12,7 +12,7 @@ import { PaymentdetailsComponent } from "../paymentdetails/paymentdetails.compon
 
 const routes: Routes = [
   {
-    path: "Consignee",
+    path: "Consignee/:Username",
     component: ConsigneeComponent,
     canActivate: [AuthGuard],
     children: [

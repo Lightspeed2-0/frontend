@@ -12,10 +12,12 @@ export class OrdersComponent implements OnInit {
   ngOnInit(): void {}
 
   manual() {
+    this.service.popup = true;
     this.manualSearch = true;
   }
 
   closeManual() {
+    this.service.popup = false;
     this.manualSearch = false;
   }
 }

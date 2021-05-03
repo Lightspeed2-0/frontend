@@ -1,0 +1,33 @@
+.order {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
+  .order-wrap {
+    margin-bottom: 1em;
+    width: 50vw;
+    .status {
+      width: 100%;
+      .order-details {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .row {
+          width: 30em;
+          display: flex;
+          align-items: center;
+          h3 {
+            width: 15em;
+            font-weight: 500;
+            text-align: left;
+          }
+          h4 {
+            width: 15em;
+            text-align: left;
+          }
+        }
+      }
+    }
+  }
+}

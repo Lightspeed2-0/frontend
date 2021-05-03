@@ -1,1 +1,56 @@
-<p>moreorder works!</p>
+<div class="order">
+  <div *ngIf="clicked">
+    <mat-progress-spinner
+      mode="indeterminate"
+      diameter="45"
+    ></mat-progress-spinner>
+  </div>
+  <div class="order-wrap" *ngFor="let order of Orders">
+    <mat-accordion>
+      <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title
+            [ngStyle]="{
+              color:
+                order.Status === -1
+                  ? 'orange'
+                  : order.Status < 4
+                  ? 'palegreen'
+                  : 'black'
+            }"
+            >{{
+              order.Status === -1
+                ? "Order Pending"
+                : order.Status < 4
+                ? "Order created"
+                : "Order delivered"
+            }}</mat-panel-title
+          >
+          <mat-panel-description>{{ order.OrderDate }}</mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="status">
+          <div class="order-details">
+            <div class="row">
+              <h3>OrderID</h3>
+              <h4>{{ order._id }}</h4>
+            </div>
+            <div class="row">
+              <h3>Source</h3>
+              <h4>{{ order.Source.Address | shortenPipe: 20 }}</h4>
+            </div>
+            <div class="row">
+              <h3>Destination</h3>
+              <h4>{{ order.Destination.Address | shortenPipe: 20 }}</h4>
+            </div>
+          </div>
+          <div *ngIf="order.Status > 0">
+            <app-status></app-status>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

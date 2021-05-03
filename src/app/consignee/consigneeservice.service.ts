@@ -6,9 +6,11 @@ import { Injectable } from "@angular/core";
 })
 export class ConsigneeserviceService {
   constructor(private http: HttpClient) {}
+  popup = false;
   getTransporterUrl =
     "https://lightning-backend.herokuapp.com/consignee/getTransporter";
   indentUrl = "https://lightning-backend.herokuapp.com/consignee/createIndent";
+  getOrderUrl = "https://lightning-backend.herokuapp.com/consignee/yourOrders";
 
   getTransporter() {
     return this.http.get<any>(this.getTransporterUrl);
@@ -16,5 +18,8 @@ export class ConsigneeserviceService {
 
   indentCreate(data: any) {
     return this.http.post<any>(this.indentUrl, data);
+  }
+  getOrder() {
+    return this.http.get<any>(this.getOrderUrl);
   }
 }

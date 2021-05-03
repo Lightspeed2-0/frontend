@@ -1,5 +1,5 @@
 <div class="dashboard-wrapper">
-  <div class="dash-img">
+  <div class="dash-img" [ngStyle]="{ zIndex: popup ? 0 : 2 }">
     <div class="header">
       <div
         class="icon-wrap"
@@ -22,32 +22,32 @@
         </div>
       </div>
     </div>
-    <div class="main">
-      <div class="navbar-wrap">
-        <a
-          routerLink="./"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }"
-        >
-          <span class="material-icons">dashboard </span>
-          Dashboard</a
-        >
-        <a routerLink="./Orders" routerLinkActive="active"
-          ><span class="material-icons"> inventory_2 </span>Orders</a
-        >
-        <a routerLink="./View Bids" routerLinkActive="active">
-          <span class="material-icons"> gavel </span>Bids</a
-        >
-        <a routerLink="./Your Orders" routerLinkActive="active">
-          <span class="material-icons"> more </span>Your Orders</a
-        >
-        <a routerLink="./Your Payments" routerLinkActive="active"
-          ><span class="material-icons"> payment </span>Your Payment</a
-        >
-      </div>
-      <div class="main-content">
-        <router-outlet></router-outlet>
-      </div>
+  </div>
+  <div class="main">
+    <div class="navbar-wrap">
+      <a
+        routerLink="./"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <span class="material-icons">dashboard </span>
+        Dashboard</a
+      >
+      <a routerLink="./Orders" routerLinkActive="active"
+        ><span class="material-icons"> inventory_2 </span>Orders</a
+      >
+      <a routerLink="./View Bids" routerLinkActive="active">
+        <span class="material-icons"> gavel </span>Bids</a
+      >
+      <a routerLink="./Your Orders" routerLinkActive="active">
+        <span class="material-icons"> more </span>Your Orders</a
+      >
+      <a routerLink="./Your Payments" routerLinkActive="active"
+        ><span class="material-icons"> payment </span>Your Payment</a
+      >
+    </div>
+    <div class="main-content">
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

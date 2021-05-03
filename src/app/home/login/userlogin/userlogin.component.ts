@@ -37,7 +37,7 @@ export class UserloginComponent implements OnInit {
         console.log(res);
         this.tokenObj = res;
         localStorage.setItem("token", this.tokenObj.token);
-        this.router.navigateByUrl(`/Consignee`);
+        this.router.navigateByUrl(`/Consignee/${this.tokenObj.Username}`);
       },
       (error) => {
         this.clicked = false;
