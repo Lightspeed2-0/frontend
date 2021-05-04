@@ -6,20 +6,26 @@ import { Injectable } from "@angular/core";
 })
 export class TransporterService {
   Username = "";
-  getRequestUrl =
+  private getRequestUrl =
     "https://lightning-backend.herokuapp.com/transporter/requests";
 
-  requestUrl =
+  private requestUrl =
     "https://lightning-backend.herokuapp.com/transporter/respondRequest";
 
-  addDriverUrl =
+  private addDriverUrl =
     "https://lightning-backend.herokuapp.com/transporter/addDriver";
 
-  removeDriverUrl =
+  private removeDriverUrl =
     "https://lightning-backend.herokuapp.com/transporter/removeDriver";
 
-  getDriverUrl =
+  private getDriverUrl =
     "https://lightning-backend.herokuapp.com/transporter/getDriver";
+
+  private getOrderUrl =
+    "https://lightning-backend.herokuapp.com/transporter/getOrders";
+
+  private orderDeclineUrl =
+    "https://lightning-backend.herokuapp.com/transporter/declineOrder";
 
   constructor(private http: HttpClient) {}
 
@@ -46,5 +52,13 @@ export class TransporterService {
 
   getDriver(data: any) {
     return this.http.post<any>(this.getDriverUrl, data);
+  }
+
+  getOrders() {
+    return this.http.get<any>(this.getOrderUrl);
+  }
+
+  orderDecline(data: any) {
+    return this.http.post<any>(this.orderDeclineUrl, data);
   }
 }

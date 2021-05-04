@@ -20,6 +20,7 @@ export class ConsigneeComponent implements OnInit, AfterContentChecked {
   Username = this.route.snapshot.params["Username"];
 
   ngOnInit(): void {
+    localStorage.removeItem("Email");
     this.service.Username = this.Username;
   }
 

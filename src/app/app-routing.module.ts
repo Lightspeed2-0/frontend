@@ -1,3 +1,4 @@
+import { DriverloginComponent } from "./home/login/driverlogin/driverlogin.component";
 import { ConsigneeVerifyComponent } from "./admin/consignee-verify/consignee-verify.component";
 import { TransporterVerifyComponent } from "./admin/transporter-verify/transporter-verify.component";
 import { AdminGuard } from "./admin/admin.guard";
@@ -32,6 +33,7 @@ const routes: Routes = [
     children: [
       { path: "", component: UserloginComponent },
       { path: "TransporterLogin", component: TransporterloginComponent },
+      { path: "DriverLogin", component: DriverloginComponent },
     ],
   },
   {

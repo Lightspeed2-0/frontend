@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { TshortpipePipe } from "../tshortpipe.pipe";
 import { DriveraddComponent } from "../driveradd/driveradd.component";
 import { DrivermanageComponent } from "../drivermanage/drivermanage.component";
+import { TransvieworderComponent } from "../transvieworder/transvieworder.component";
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { DrivermanageComponent } from "../drivermanage/drivermanage.component";
     TshortpipePipe,
     DriveraddComponent,
     DrivermanageComponent,
+    TransvieworderComponent,
   ],
   imports: [
     CommonModule,

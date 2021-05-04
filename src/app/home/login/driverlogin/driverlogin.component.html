@@ -1,0 +1,22 @@
+<form [formGroup]="form" (ngSubmit)="onLogin()">
+  <p *ngIf="error">{{ error }} <button (click)="onClose()">X</button></p>
+  <div class="col">
+    <label for="Name">Driver Email</label>
+    <input type="email" formControlName="Email" />
+  </div>
+  <div class="col">
+    <label for="Password">Password</label>
+    <input type="password" formControlName="Password" />
+  </div>
+  <div class="btn-wrap">
+    <button [disabled]="!form.valid">
+      Log in
+      <div class="lds-ring" *ngIf="clicked">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </button>
+  </div>
+</form>

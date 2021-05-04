@@ -79,6 +79,17 @@
           }
         }
       }
+      button {
+        font-size: 1.2em;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        width: 7em;
+        font-weight: 500;
+        padding: 0.3em 0.75em;
+        color: #fff;
+        background: linear-gradient(to right, #ff416c, #ff4b2b);
+      }
     }
   }
 }

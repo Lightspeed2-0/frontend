@@ -12,12 +12,14 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { DriverModule } from "./driver/modules/driver.module";
 
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { FooterComponent } from "./footer/footer.component";
 import { MainComponent } from "./home/main/main.component";
+import { DriverloginComponent } from "./home/login/driverlogin/driverlogin.component";
 import { AboutComponent } from "./home/about/about.component";
 import { ContactComponent } from "./home/contact/contact.component";
 import { LoginComponent } from "./home/login/login.component";
@@ -36,8 +38,6 @@ import { AdminLoginComponent } from "./admin/admin-login/admin-login.component";
 import { ConsigneeVerifyComponent } from "./admin/consignee-verify/consignee-verify.component";
 import { TransporterVerifyComponent } from "./admin/transporter-verify/transporter-verify.component";
 import { TrasnotpComponent } from "./home/signup/verify/trasnotp/trasnotp.component";
-import { DriverComponent } from "./driver/driver.component";
-import { DriverModule } from "./driver/modules/driver.module";
 
 @NgModule({
   declarations: [
@@ -63,7 +63,7 @@ import { DriverModule } from "./driver/modules/driver.module";
     ConsigneeVerifyComponent,
     TransporterVerifyComponent,
     TrasnotpComponent,
-    DriverComponent,
+    DriverloginComponent,
   ],
   imports: [
     BrowserModule,

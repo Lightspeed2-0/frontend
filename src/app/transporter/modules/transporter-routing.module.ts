@@ -8,6 +8,7 @@ import { AuthGuard } from "../../auth/auth.guard";
 import { TransDashboardComponent } from "../trans-dashboard/trans-dashboard.component";
 import { RequestComponent } from "../request/request.component";
 import { DrivermanageComponent } from "../drivermanage/drivermanage.component";
+import { TransvieworderComponent } from "../transvieworder/transvieworder.component";
 
 const routes: Routes = [
   {
@@ -18,6 +19,7 @@ const routes: Routes = [
       { path: "", component: TransDashboardComponent },
       { path: "Profile", component: TransprofileComponent },
       { path: "Request", component: RequestComponent },
+      { path: "View Orders", component: TransvieworderComponent },
       { path: "Add Driver", component: DriveraddComponent },
       { path: "Manage Driver", component: DrivermanageComponent },
     ],

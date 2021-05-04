@@ -1,0 +1,70 @@
+<div class="request">
+  <div *ngIf="loaded">
+    <mat-progress-spinner
+      mode="indeterminate"
+      diameter="45"
+    ></mat-progress-spinner>
+  </div>
+  <div class="request-wrap" *ngFor="let order of Orders; let i = index">
+    <mat-accordion>
+      <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title>Order</mat-panel-title>
+          <mat-panel-description>{{ order.updatedAt }}</mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="request-details">
+          <div class="row">
+            <div class="title">OrderId</div>
+            <div class="content">{{ order._id | tshortpipe: 20 }}</div>
+          </div>
+          <div class="row">
+            <div class="title">Source</div>
+            <div class="content">
+              {{ order.Indent.Source.Address }}
+              {{ order.Indent.Source.Pincode }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="title">Destination</div>
+            <div class="content">
+              {{ order.Indent.Destination.Address }}
+              {{ order.Indent.Destination.Pincode }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="title">Delivery Date</div>
+            <div class="content">{{ order.updatedAt }}</div>
+          </div>
+          <div class="row">
+            <div class="title">Weight</div>
+            <div class="content">{{ order.Indent.Weight }}</div>
+          </div>
+          <div class="row">
+            <div class="title">Volume</div>
+            <div class="content">{{ order.Indent.Volume }}</div>
+          </div>
+          <div class="row">
+            <div class="title">IsLTL</div>
+            <div class="content">{{ order.Indent.IsLTL }}</div>
+          </div>
+          <div class="row">
+            <div class="title">Consignee Profile</div>
+            <a
+              href="https://lightspeed2021.herokuapp.com/Consignee/{{
+                order.Consignee.Username
+              }}/Profile/{{ order.ConsigneeId }}"
+              target="_blank"
+              >{{ order.Consignee.Username }}</a
+            >
+          </div>
+          <div class="row" *ngIf="!accept[i]">
+            <button (click)="onDecline(order._id, i)">Decline</button>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

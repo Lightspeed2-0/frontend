@@ -9,12 +9,17 @@ export class ConsigneeserviceService {
   popup = false;
   UserProfile = false;
   Username = "";
-  getTransporterUrl =
+  private getTransporterUrl =
     "https://lightning-backend.herokuapp.com/consignee/getTransporter";
-  indentUrl = "https://lightning-backend.herokuapp.com/consignee/createIndent";
-  getOrderUrl = "https://lightning-backend.herokuapp.com/consignee/yourOrders";
-  getConsigneeUrl =
-    "https://lightning-backend.herokuapp.com/transporter/getConsignee";
+  private indentUrl =
+    "https://lightning-backend.herokuapp.com/consignee/createIndent";
+  private getOrderUrl =
+    "https://lightning-backend.herokuapp.com/consignee/yourOrders";
+  private getConsigneeUrl =
+    "https://lightning-backend.herokuapp.com/transporter/viewConsignee";
+
+  private amountUrl =
+    "https://lightning-backend.herokuapp.com/transporter/paid";
 
   getTransporter() {
     return this.http.get<any>(this.getTransporterUrl);
@@ -29,5 +34,12 @@ export class ConsigneeserviceService {
 
   getConsignee(data: any) {
     return this.http.post<any>(this.getConsigneeUrl, data);
+  }
+
+  postPayment(data: any) {
+    return this.http.post<any>(this.amountUrl, data);
+  }
+  postDecline(data: any) {
+    return this.http.post<any>(this.amountUrl, data);
   }
 }

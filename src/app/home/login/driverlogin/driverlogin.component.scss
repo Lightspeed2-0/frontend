@@ -1,0 +1,141 @@
+$grey: #adadad;
+$mainColor: #00a3fe;
+form {
+  margin-top: 2em;
+  p {
+    padding: 0.3em;
+    border-radius: 0.3em;
+    color: #d8000c;
+    background-color: #ffbaba;
+    border: 2px solid #d8000c;
+    margin-bottom: 2em;
+    button {
+      float: right;
+      outline: none;
+      border: none;
+      cursor: pointer;
+      color: white;
+      font-size: 1.2em;
+      font-weight: 700;
+      background: none;
+    }
+  }
+  .spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.3em;
+  }
+  .col {
+    margin-left: 0.2em;
+    margin-top: -2em;
+    padding: 2em 0em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    label {
+      font-size: 1.2em;
+      font-weight: 500;
+    }
+    input {
+      width: 18em;
+      outline: none;
+      border: 2px solid $grey;
+      border-radius: 0.3em;
+      font-size: 1.3em;
+      padding: 0.3em 1em;
+      &:focus {
+        border: 2px solid $mainColor;
+      }
+    }
+    &:nth-child(2) {
+      margin-top: -3.3em;
+    }
+  }
+  .btn-wrap {
+    // margin-top: -1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2em;
+      cursor: pointer;
+      padding: 0.3em;
+      width: 18em;
+      border: none;
+      background-image: linear-gradient(
+        to right,
+        #458eda 0%,
+        #ce84b8 25%,
+        #fcb0a9 50%,
+        #ffc39c 80%,
+        #feea9a 100%
+      );
+      outline: none;
+      border-radius: 0.3em;
+      font-size: 1.3em;
+      font-weight: 600;
+      color: #fff;
+      &:disabled {
+        background: gainsboro;
+        cursor: not-allowed;
+      }
+      .lds-ring {
+        display: inline-block;
+        position: relative;
+        width: 28px;
+        height: 28px;
+        div {
+          box-sizing: border-box;
+          display: block;
+          position: absolute;
+          width: 28px;
+          height: 28px;
+          border: 4.5px solid #fff;
+          border-radius: 50%;
+          animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+          border-color: #fff transparent transparent transparent;
+          &:nth-child(1) {
+            animation-delay: -0.45s;
+          }
+          &:nth-child(2) {
+            animation-delay: -0.3s;
+          }
+          &:nth-child(3) {
+            animation-delay: -0.15s;
+          }
+        }
+        @keyframes lds-ring {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      }
+    }
+  }
+}
+.form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2em;
+  gap: 0.5em;
+  margin-top: 1em;
+  p {
+    font-size: 1.2em;
+  }
+  a {
+    margin-top: -0.5em;
+    font-size: 1.2em;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
