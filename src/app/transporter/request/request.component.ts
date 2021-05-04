@@ -30,7 +30,12 @@ export class RequestComponent implements OnInit {
       (res) => {
         this.loaded = false;
         const response = res;
-        this.Req = response["requests"];
+        // this.Req = response["requests"];
+        for (let i = 0; i < response["requests"].length; i++) {
+          if (response["requests"][i].Amount == -1) {
+            this.Req.push(response["requests"][i]);
+          }
+        }
         console.log(this.Req);
         this.accept.length = this.Req.length;
         this.accept.fill(false);

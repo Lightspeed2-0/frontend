@@ -19,7 +19,7 @@ export class ConsigneeserviceService {
     "https://lightning-backend.herokuapp.com/transporter/viewConsignee";
 
   private amountUrl =
-    "https://lightning-backend.herokuapp.com/transporter/confirmIndent";
+    "https://lightning-backend.herokuapp.com/transporter/indentConfirm";
 
   getTransporter() {
     return this.http.get<any>(this.getTransporterUrl);

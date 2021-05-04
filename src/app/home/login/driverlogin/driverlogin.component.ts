@@ -30,8 +30,10 @@ export class DriverloginComponent implements OnInit {
     this.form.reset();
   }
   onLogin() {
+    this.clicked = true;
     this.auth.driverLogin(this.form.value).subscribe(
       (res) => {
+        this.clicked = false;
         this.tokenObj = res;
         localStorage.setItem("token", this.tokenObj.token);
         this.router.navigateByUrl(`/Driver/${this.tokenObj.Username}`);

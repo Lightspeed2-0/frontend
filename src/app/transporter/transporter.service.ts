@@ -19,7 +19,7 @@ export class TransporterService {
     "https://lightning-backend.herokuapp.com/transporter/removeDriver";
 
   private getDriverUrl =
-    "https://lightning-backend.herokuapp.com/transporter/getDriver";
+    "https://lightning-backend.herokuapp.com/transporter/allocateDriver";
 
   private getOrderUrl =
     "https://lightning-backend.herokuapp.com/transporter/getOrders";

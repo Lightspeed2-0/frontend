@@ -45,8 +45,8 @@
               <h3>Destination</h3>
               <h4>{{ order.Destination.Address | shortenPipe: 20 }}</h4>
             </div>
-            <div class="row" *ngIf="order.Amount < 0">
-              <h3>{{ order.Amount }} to be paid</h3>
+            <div class="row" *ngIf="order.request.Amount > 0">
+              <h3>{{ order.request.Amount }} to be paid</h3>
               <div class="payment">
                 <button (click)="onProceed(order._id, i)">Proceed pay</button>
                 <button (click)="onDecline(order._id, i)">Decline</button>

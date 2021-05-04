@@ -33,6 +33,6 @@ export class DriverComponent implements OnInit {
 
   logOut() {
     localStorage.removeItem("token");
-    this.router.navigateByUrl("/DriverLogin");
+    this.router.navigateByUrl("/Login");
   }
 }
