@@ -1,3 +1,4 @@
+import { DriveraddComponent } from "./../driveradd/driveradd.component";
 import { TransprofileComponent } from "./../transprofile/transprofile.component";
 import { RouterModule, Routes } from "@angular/router";
 import { NgModule } from "@angular/core";
@@ -6,6 +7,7 @@ import { TransporterComponent } from "../transporter.component";
 import { AuthGuard } from "../../auth/auth.guard";
 import { TransDashboardComponent } from "../trans-dashboard/trans-dashboard.component";
 import { RequestComponent } from "../request/request.component";
+import { DrivermanageComponent } from "../drivermanage/drivermanage.component";
 
 const routes: Routes = [
   {
@@ -16,6 +18,8 @@ const routes: Routes = [
       { path: "", component: TransDashboardComponent },
       { path: "Profile", component: TransprofileComponent },
       { path: "Request", component: RequestComponent },
+      { path: "Add Driver", component: DriveraddComponent },
+      { path: "Manage Driver", component: DrivermanageComponent },
     ],
   },
 ];

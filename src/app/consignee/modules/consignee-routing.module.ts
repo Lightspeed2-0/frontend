@@ -22,9 +22,9 @@ const routes: Routes = [
       { path: "View Bids", component: ViewbidsComponent },
       { path: "Your Orders", component: MoreorderComponent },
       { path: "Your Payments", component: PaymentdetailsComponent },
-      { path: "Profile/:id", component: ProfileComponent },
     ],
   },
+  { path: "Consignee/:Username/Profile/:id", component: ProfileComponent },
 ];
 
 @NgModule({

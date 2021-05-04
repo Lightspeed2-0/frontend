@@ -1,0 +1,44 @@
+<div class="request">
+  <div *ngIf="loaded">
+    <mat-progress-spinner
+      mode="indeterminate"
+      diameter="45"
+    ></mat-progress-spinner>
+  </div>
+  <div class="request-wrap" *ngFor="let driver of Drivers; let i = index">
+    <mat-accordion>
+      <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{ driver.Username }}</mat-panel-title>
+          <mat-panel-description>{{ driver.Email }}</mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="request-details">
+          <div class="row">
+            <div class="title">DriverId</div>
+            <div class="content">{{ driver._id | tshortpipe: 20 }}</div>
+          </div>
+          <div class="row">
+            <div class="title">Driver Name</div>
+            <div class="content">{{ driver.Username }}</div>
+          </div>
+          <div class="row">
+            <div class="title">Driver Email</div>
+            <div class="content">{{ driver.Email }}</div>
+          </div>
+          <div class="row">
+            <div class="title">Driver MobileNo</div>
+            <div class="content">{{ driver.MobileNo }}</div>
+          </div>
+          <div class="row">
+            <div class="title">Driver LicenseNo</div>
+            <div class="content">{{ driver.DrivingLicense }}</div>
+          </div>
+          <button (click)="onDecline(driver._id, i)">Decline</button>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

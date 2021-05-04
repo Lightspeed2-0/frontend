@@ -1,0 +1,88 @@
+.driver {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
+  form {
+    width: 45vw;
+    padding: 2em;
+    box-shadow: 0px 0px 5px 0.5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5em;
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 30em;
+      label {
+        font-size: 1.4em;
+      }
+      input {
+        outline: none;
+        border: 2px solid gainsboro;
+        padding: 0.3em;
+        font-size: 1.2em;
+        &:focus {
+          border-image: linear-gradient(to right, #da22ff, #9733ee) 1;
+        }
+      }
+    }
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5em;
+      border: none;
+      outline: none;
+      border-radius: 0.3em;
+      width: 23em;
+      padding: 0.3em 0.75em;
+      font-size: 1.3em;
+      font-weight: 600;
+      cursor: pointer;
+      color: #fff;
+      background: linear-gradient(to right, #da22ff, #9733ee);
+      &:disabled {
+        cursor: not-allowed;
+        background: gainsboro;
+      }
+      .lds-ring {
+        display: inline-block;
+        position: relative;
+        width: 20px;
+        height: 20px;
+        div {
+          box-sizing: border-box;
+          display: block;
+          position: absolute;
+          width: 20px;
+          height: 20px;
+          border: 2.5px solid #fff;
+          border-radius: 50%;
+          animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+          border-color: #fff transparent transparent transparent;
+          &:nth-child(1) {
+            animation-delay: -0.45s;
+          }
+          &:nth-child(2) {
+            animation-delay: -0.3s;
+          }
+          &:nth-child(3) {
+            animation-delay: -0.15s;
+          }
+        }
+        @keyframes lds-ring {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      }
+    }
+  }
+}

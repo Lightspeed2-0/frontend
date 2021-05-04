@@ -1,0 +1,44 @@
+<div class="driver">
+  <form [formGroup]="form" (ngSubmit)="onAdd()">
+    <div class="row">
+      <label>Username</label>
+      <input type="text" formControlName="Username" />
+    </div>
+    <div class="row">
+      <label>Email</label>
+      <input type="email" formControlName="Email" />
+    </div>
+    <div class="row">
+      <label>Mobile Number</label>
+      <input
+        type="number"
+        maxlength="10"
+        minlength="10"
+        formControlName="MobileNo"
+      />
+    </div>
+    <div class="row">
+      <label>License Number</label>
+      <input
+        type="text"
+        maxlength="16"
+        minlength="16"
+        pattern="^(([A-Z]{2}[0-9]{2})( )|([A-Z]{2}-[0-9]{2}))((19|20)[0-9][0-9])[0-9]{7}$"
+        formControlName="DrivingLicense"
+      />
+    </div>
+    <div class="row">
+      <label>Password</label>
+      <input type="password" formControlName="Password" />
+    </div>
+    <button [disabled]="!form.valid">
+      <i class="fas fa-plus"></i> Add
+      <div class="lds-ring" *ngIf="clicked">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </button>
+  </form>
+</div>

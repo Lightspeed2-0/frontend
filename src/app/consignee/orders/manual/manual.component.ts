@@ -2,6 +2,7 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { ConsigneeserviceService } from "./../../consigneeservice.service";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-manual",
@@ -9,11 +10,15 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./manual.component.scss"],
 })
 export class ManualComponent implements OnInit {
-  constructor(private service: ConsigneeserviceService) {}
+  constructor(
+    private service: ConsigneeserviceService,
+    private router: Router
+  ) {}
 
   Transporters: any[] = [];
 
   clicked = false;
+  loaded = false;
 
   source: FormGroup = new FormGroup({
     Address: new FormControl(null, Validators.required),
@@ -88,9 +93,12 @@ export class ManualComponent implements OnInit {
       IsLTL: isltl,
     };
     console.log(data);
+    this.loaded = true;
     this.service.indentCreate(data).subscribe(
       (res) => {
+        this.loaded = false;
         console.log(res);
+        this.router.navigateByUrl(`/Consignee/${this.service.Username}`);
       },
       (error) => {
         if (error instanceof HttpErrorResponse) {

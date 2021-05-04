@@ -28,6 +28,6 @@ export class ConsigneeserviceService {
   }
 
   getConsignee(data: any) {
-    return this.http.post<any>(data, this.getConsigneeUrl);
+    return this.http.post<any>(this.getConsigneeUrl, data);
   }
 }

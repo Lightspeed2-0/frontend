@@ -9,6 +9,9 @@ import { RequestComponent } from "../request/request.component";
 import { TransprofileComponent } from "../transprofile/transprofile.component";
 import { TransDashboardComponent } from "../trans-dashboard/trans-dashboard.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { TshortpipePipe } from "../tshortpipe.pipe";
+import { DriveraddComponent } from "../driveradd/driveradd.component";
+import { DrivermanageComponent } from "../drivermanage/drivermanage.component";
 
 @NgModule({
   declarations: [
@@ -16,6 +19,9 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     TransprofileComponent,
     RequestComponent,
     TransDashboardComponent,
+    TshortpipePipe,
+    DriveraddComponent,
+    DrivermanageComponent,
   ],
   imports: [
     CommonModule,

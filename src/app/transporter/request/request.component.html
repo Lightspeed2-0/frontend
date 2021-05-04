@@ -13,12 +13,12 @@
       >
         <mat-expansion-panel-header>
           <mat-panel-title>Order</mat-panel-title>
-          <mat-panel-description>{{ request.OrderDate }}</mat-panel-description>
+          <mat-panel-description>{{ request.updatedAt }}</mat-panel-description>
         </mat-expansion-panel-header>
         <div class="request-details">
           <div class="row">
             <div class="title">OrderId</div>
-            <div class="content">{{ request._id }}</div>
+            <div class="content">{{ request._id | tshortpipe: 20 }}</div>
           </div>
           <div class="row">
             <div class="title">Source</div>
@@ -36,28 +36,28 @@
           </div>
           <div class="row">
             <div class="title">Delivery Date</div>
-            <div class="content">{{ request.OrderDate }}</div>
+            <div class="content">{{ request.updatedAt }}</div>
           </div>
           <div class="row">
             <div class="title">Weight</div>
-            <div class="content">{{ request.Weight }}</div>
+            <div class="content">{{ request.Indent.Weight }}</div>
           </div>
           <div class="row">
             <div class="title">Volume</div>
-            <div class="content">{{ request.Volume }}</div>
+            <div class="content">{{ request.Indent.Volume }}</div>
           </div>
           <div class="row">
             <div class="title">IsLTL</div>
-            <div class="content">{{ request.IsLTL }}</div>
+            <div class="content">{{ request.Indent.IsLTL }}</div>
           </div>
           <div class="row">
             <div class="title">Consignee Profile</div>
             <a
               href="https://lightspeed2021.herokuapp.com/Consignee/{{
-                request.Consignee.ConsigneeName
+                request.Consignee.Username
               }}/Profile/{{ request.ConsigneeId }}"
               target="_blank"
-              >{{ request.Consignee.ConsigneeName }}</a
+              >{{ request.Consignee.Username }}</a
             >
           </div>
           <div class="row" *ngIf="!accept[i]">
@@ -69,10 +69,8 @@
             [formGroup]="form"
             (ngSubmit)="enterAmount(request._id, i)"
           >
-            <input type="text" formControlName="Amount" />
-            <button class="send" type="submit" [disabled]="!form.valid">
-              send
-            </button>
+            <input type="number" formControlName="Amount" />
+            <button class="send" [disabled]="!form.valid">send</button>
             <button (click)="onBack(i)">X</button>
           </form>
         </div>

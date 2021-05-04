@@ -30,7 +30,7 @@ export class RequestComponent implements OnInit {
       (res) => {
         this.loaded = false;
         const response = res;
-        this.Req = response;
+        this.Req = response["requests"];
         console.log(this.Req);
         this.accept.length = this.Req.length;
         this.accept.fill(false);
@@ -50,9 +50,20 @@ export class RequestComponent implements OnInit {
   }
 
   onDecline(id: string, index: number) {
-    const data = { RequestId: id, IsAccepted: this.Isaccepted };
     this.Isaccepted = false;
-    this.Req.splice(index, 1);
+    const data = { RequestId: id, IsAccepted: this.Isaccepted };
+    this.service.putDecline(data).subscribe(
+      (res) => {
+        console.log(res);
+        this.Req.splice(index, 1);
+        this.accept.splice(index, 1);
+      },
+      (error) => {
+        if (error instanceof HttpErrorResponse) {
+          console.error(error);
+        }
+      }
+    );
   }
 
   onBack(index: number) {
@@ -60,12 +71,23 @@ export class RequestComponent implements OnInit {
   }
 
   enterAmount(id: string, index: number) {
-    this.Req.splice(index, 1);
     const data = {
       RequestId: id,
       ...this.form.value,
       IsAccepted: this.Isaccepted,
     };
-    console.log(data);
+    // console.log(data);
+    this.service.putAccept(data).subscribe(
+      (res) => {
+        console.log(res);
+        this.Req.splice(index, 1);
+        this.accept.splice(index, 1);
+      },
+      (error) => {
+        if (error instanceof HttpErrorResponse) {
+          console.error(error);
+        }
+      }
+    );
   }
 }
