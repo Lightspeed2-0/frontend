@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.service.getConsignee({ ConsigneeId: this.id }).subscribe(
       (res) => {
-        this.User = res;
+        this.User = res["consignee"];
         console.log(res);
       },
       (error) => {

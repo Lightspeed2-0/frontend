@@ -4,8 +4,8 @@
     <div class="circle-wrap">
       <div class="circle"></div>
       <div class="user-short">
-        <div class="Username">Surya</div>
-        <div class="Email">surya7102000@gmail.com</div>
+        <div class="Username">{{ User.Username }}</div>
+        <div class="Email">{{ User.Email }}</div>
         <div class="rating">
           <label for="Rating">Rating</label>
           <div class="row">
@@ -25,15 +25,15 @@
       <h3>User details</h3>
       <div class="row">
         <div class="Title">Username</div>
-        <div class="Content">Surya</div>
+        <div class="Content">{{ User.Username }}</div>
       </div>
       <div class="row">
         <div class="Title">Email</div>
-        <div class="Content">surya7102000@gmail.com</div>
+        <div class="Content">{{ User.Email }}</div>
       </div>
       <div class="row">
         <div class="Title">Contact</div>
-        <div class="Content">1234567890</div>
+        <div class="Content">{{ User.MobileNo }}</div>
       </div>
       <div class="row">
         <div class="Title">No of Orders</div>
