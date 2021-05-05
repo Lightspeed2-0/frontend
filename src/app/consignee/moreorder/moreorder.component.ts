@@ -63,7 +63,7 @@ export class MoreorderComponent implements OnInit {
   onPayment() {
     this.service
       .postPayment({
-        Indentid: this.orderId,
+        IndentId: this.orderId,
         RequestId: this.requestId,
         IsAccepted: true,
       })

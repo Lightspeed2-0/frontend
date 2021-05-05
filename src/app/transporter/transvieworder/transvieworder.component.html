@@ -14,7 +14,9 @@
       >
         <mat-expansion-panel-header>
           <mat-panel-title>Order</mat-panel-title>
-          <mat-panel-description>{{ order.updatedAt }}</mat-panel-description>
+          <mat-panel-description>{{
+            order.updatedAt | tshortpipe: 10
+          }}</mat-panel-description>
         </mat-expansion-panel-header>
         <div class="request-details">
           <div class="row">
@@ -24,15 +26,15 @@
           <div class="row">
             <div class="title">Source</div>
             <div class="content">
-              {{ order.Indent.Source.Address }}
-              {{ order.Indent.Source.Pincode }}
+              {{ order.Indents.Source.Address }}
+              {{ order.Indents.Source.Pincode }}
             </div>
           </div>
           <div class="row">
             <div class="title">Destination</div>
             <div class="content">
-              {{ order.Indent.Destination.Address }}
-              {{ order.Indent.Destination.Pincode }}
+              {{ order.Indents.Destination.Address }}
+              {{ order.Indents.Destination.Pincode }}
             </div>
           </div>
           <div class="row">
@@ -41,15 +43,15 @@
           </div>
           <div class="row">
             <div class="title">Weight</div>
-            <div class="content">{{ order.Indent.Weight }}</div>
+            <div class="content">{{ order.Indents.Weight }}</div>
           </div>
           <div class="row">
             <div class="title">Volume</div>
-            <div class="content">{{ order.Indent.Volume }}</div>
+            <div class="content">{{ order.Indents.Volume }}</div>
           </div>
           <div class="row">
             <div class="title">IsLTL</div>
-            <div class="content">{{ order.Indent.IsLTL }}</div>
+            <div class="content">{{ order.Indents.IsLTL }}</div>
           </div>
           <div class="row">
             <div class="title">Consignee Profile</div>
@@ -60,6 +62,10 @@
               target="_blank"
               >{{ order.Consignee.Username }}</a
             >
+          </div>
+          <div class="row">
+            <div class="title">Driver Name</div>
+            <div class="content">helo</div>
           </div>
           <div class="row" *ngIf="!accept[i]">
             <button (click)="onDecline(order._id, i)">Decline</button>
