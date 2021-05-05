@@ -5,6 +5,7 @@
       diameter="45"
     ></mat-progress-spinner>
   </div>
+  <div *ngIf="isEmpty">No requests available</div>
   <div class="request-wrap" *ngFor="let request of Req; let i = index">
     <mat-accordion>
       <mat-expansion-panel
@@ -13,12 +14,30 @@
       >
         <mat-expansion-panel-header>
           <mat-panel-title
-            [ngStyle]="{ color: request.Status === 5 ? 'palegreen' : 'black' }"
-            >Order</mat-panel-title
+            [ngStyle]="{
+              color:
+                request.Status === 0
+                  ? 'palegreen'
+                  : request.Status === 2
+                  ? 'orange'
+                  : request.Status === 1 || request.Status === 3
+                  ? 'red'
+                  : 'black'
+            }"
           >
+            {{
+              request.Status === 2
+                ? "Waiting for payment"
+                : request.Status === 3
+                ? "Order canceled by consignee"
+                : request.Status === 1
+                ? "Order canceled by you"
+                : "New Order"
+            }}
+          </mat-panel-title>
           <mat-panel-description>{{ request.updatedAt }}</mat-panel-description>
         </mat-expansion-panel-header>
-        <div class="request-details">
+        <div class="request-details" *ngIf="request.Status !== 2">
           <div class="row">
             <div class="title">OrderId</div>
             <div class="content">{{ request._id | tshortpipe: 20 }}</div>
@@ -68,26 +87,44 @@
               [formGroup]="driverForm"
               (ngSubmit)="onAllocate(request._id, i)"
             >
-              <input list="driver" formControlName="DriverId" />
-              <datalist id="driver" *ngFor="let driver of Drivers">
-                <option value="{{ driver.Username }}"></option>
-              </datalist>
               <div class="row">
-                <button [disabled]="!driverForm.valid">
-                  Allocate
-                  <div class="lds-ring" *ngIf="clicked[i]">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                  </div>
-                </button>
+                <input list="driver" formControlName="DriverId" />
+                <datalist id="driver" *ngFor="let driver of Drivers">
+                  <option value="{{ driver.Username }}"></option>
+                </datalist>
+                <div class="row">
+                  <button [disabled]="!driverForm.valid">
+                    Allocate
+                    <div class="lds-ring" *ngIf="clicked[i]">
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                    </div>
+                  </button>
+                </div>
               </div>
             </form>
           </div>
-          <div class="row" *ngIf="!accept[i] && request.Status < 5">
-            <button (click)="onAccept(i)">Accept</button>
-            <button (click)="onDecline(request._id, i)">Decline</button>
+          <div class="row" *ngIf="!accept[i] && request.Status === 0">
+            <button (click)="onAccept(i)">
+              Accept
+              <div class="lds-ring" *ngIf="clicked[i]">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </button>
+            <button (click)="onDecline(request._id, i)">
+              Decline
+              <div class="lds-ring" *ngIf="dclicked[i]">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </button>
           </div>
           <form
             *ngIf="accept[i]"

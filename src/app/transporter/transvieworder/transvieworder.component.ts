@@ -12,14 +12,20 @@ export class TransvieworderComponent implements OnInit {
   loaded = false;
   Orders: any[] = [];
   accept: any[] = [];
+  isEmpty = true;
 
   constructor(private service: TransporterService) {}
 
   ngOnInit(): void {
+    this.loaded = true;
     this.service.getOrders().subscribe(
       (res) => {
         console.log(res);
-        this.Orders = res;
+        this.loaded = false;
+        this.Orders = res["Orders"];
+        if (this.Orders.length > 0) {
+          this.isEmpty = false;
+        }
         this.accept.length = this.Orders.length;
         this.accept.fill(false);
       },

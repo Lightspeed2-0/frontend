@@ -15,7 +15,9 @@ export class MoreorderComponent implements OnInit {
   orderTitle = "";
   Orders: any[] = [];
   orderId = "";
+  requestId = "";
   index = 0;
+  isEmpty = true;
 
   constructor(private service: ConsigneeserviceService) {}
 
@@ -26,6 +28,9 @@ export class MoreorderComponent implements OnInit {
         this.clicked = false;
         const response = res["indents"];
         this.Orders = response;
+        if (this.Orders.length > 0) {
+          this.isEmpty = false;
+        }
         console.log(response);
       },
       (err) => {
@@ -36,18 +41,19 @@ export class MoreorderComponent implements OnInit {
     );
   }
 
-  onProceed(id: string, index: number) {
+  onProceed(indentid: string, reqid: string, index: number) {
     this.popup = true;
     this.msg = "Pay";
     this.index = index;
-    this.orderId = id;
+    this.orderId = indentid;
+    this.requestId = reqid;
   }
 
   onDecline(id: string, index: number) {
     this.popup = true;
     this.msg = "Decline";
     this.index = index;
-    this.orderId = id;
+    this.requestId = id;
   }
 
   onClose() {
@@ -55,21 +61,30 @@ export class MoreorderComponent implements OnInit {
   }
 
   onPayment() {
-    this.service.postPayment({ _id: this.orderId, IsAccpeted: true }).subscribe(
-      (res) => {
-        console.log(res);
-      },
-      (error) => {
-        if (error instanceof HttpErrorResponse) {
-          console.error(error.error);
+    this.service
+      .postPayment({
+        Indentid: this.orderId,
+        RequestId: this.requestId,
+        IsAccepted: true,
+      })
+      .subscribe(
+        (res) => {
+          console.log(res);
+          if (res.msg === "Payment Successful") {
+            this.popup = false;
+          }
+        },
+        (error) => {
+          if (error instanceof HttpErrorResponse) {
+            console.error(error.error);
+          }
         }
-      }
-    );
+      );
   }
 
   Declined() {
     this.service
-      .postDecline({ _id: this.orderId, IsAccepted: false })
+      .postDecline({ RequestId: this.requestId, IsAccepted: false })
       .subscribe(
         (res) => {
           console.log(res);

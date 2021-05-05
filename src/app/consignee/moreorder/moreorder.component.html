@@ -5,6 +5,7 @@
       diameter="45"
     ></mat-progress-spinner>
   </div>
+  <div *ngIf="isEmpty">No orders please come later.....</div>
   <div class="order-wrap" *ngFor="let order of Orders; let i = index">
     <mat-accordion>
       <mat-expansion-panel
@@ -12,19 +13,36 @@
         (closed)="panelOpenState = false"
       >
         <mat-expansion-panel-header>
-          <mat-panel-title>
-            <!-- {{
-              order.Status === -1
-                ? "Order Pending"
-                : order.Status < 4
-                ? "Order created"
-                : "Order delivered"
-            }} -->
-            Order
+          <mat-panel-title
+            [ngStyle]="{
+              color: order.IsPaid
+                ? 'darkgreen'
+                : order.request.Status === 0
+                ? 'palegreen'
+                : order.request.Status === 1 || order.request.Status === 3
+                ? 'red'
+                : order.request.Status === 2
+                ? 'orange'
+                : 'black'
+            }"
+          >
+            {{
+              order.IsPaid
+                ? "Order paid"
+                : order.request.Status === 1
+                ? "Order is Canceled by Transporter"
+                : order.request.Status === 3
+                ? "Order is Canceled by you"
+                : order.request.Status === 2
+                ? "Payment pending"
+                : "New Order"
+            }}
           </mat-panel-title>
-          <mat-panel-description>{{ order.OrderDate }}</mat-panel-description>
+          <mat-panel-description>{{
+            order.OrderDate | shortenPipe: 10
+          }}</mat-panel-description>
         </mat-expansion-panel-header>
-        <div class="status">
+        <div class="status" *ngIf="order.Status !== 1 || order.Status !== 3">
           <div class="order-details">
             <div class="row">
               <h3>OrderID</h3>
@@ -32,17 +50,28 @@
             </div>
             <div class="row">
               <h3>Source</h3>
-              <h4>{{ order.Source.Address | shortenPipe: 20 }}</h4>
+              <h4>{{ order.Source.Address | shortenPipe: 25 }}</h4>
             </div>
             <div class="row">
               <h3>Destination</h3>
-              <h4>{{ order.Destination.Address | shortenPipe: 20 }}</h4>
+              <h4>{{ order.Destination.Address | shortenPipe: 25 }}</h4>
             </div>
-            <div class="row" *ngIf="order.request.Amount > 0">
+            <div
+              class="row"
+              *ngIf="
+                order.request.Amount > 0 &&
+                !order.IsPaid &&
+                order.request.Status !== 1
+              "
+            >
               <h3>{{ order.request.Amount }} to be paid</h3>
               <div class="payment">
-                <button (click)="onProceed(order._id, i)">Proceed pay</button>
-                <button (click)="onDecline(order._id, i)">Decline</button>
+                <button (click)="onProceed(order._id, order.request._id, i)">
+                  Proceed pay
+                </button>
+                <button (click)="onDecline(order.request._id, i)">
+                  Decline
+                </button>
               </div>
             </div>
           </div>

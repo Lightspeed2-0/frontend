@@ -22,12 +22,13 @@ export class RequestComponent implements OnInit {
   Req: any[] = [];
   Drivers: any[] = [];
   accept: any[] = [];
+  clicked: any[] = [];
+  dclicked: any[] = [];
 
   loaded = false;
   panelOpenState = false;
   Isaccepted = false;
-  clicked: any[] = [];
-  dclicked: any[] = [];
+  isEmpty = true;
 
   constructor(private service: TransporterService) {}
 
@@ -39,7 +40,9 @@ export class RequestComponent implements OnInit {
         const response = res;
         this.Req = response["requests"];
         console.log(this.Req);
-
+        if (this.Req.length > 0) {
+          this.isEmpty = false;
+        }
         this.accept.length = this.Req.length;
         this.accept.fill(false);
 
@@ -57,7 +60,7 @@ export class RequestComponent implements OnInit {
       }
     );
 
-    this.service.getDriver({ msg: "hello" }).subscribe(
+    this.service.getDriver().subscribe(
       (res) => {
         console.log(res);
         this.Drivers = res["drivers"];
@@ -72,11 +75,13 @@ export class RequestComponent implements OnInit {
 
   onAccept(index: number) {
     this.accept[index] = true;
+    this.clicked[index] = true;
     this.Isaccepted = true;
   }
 
   onDecline(id: string, index: number) {
     this.Isaccepted = false;
+    this.dclicked[index] = true;
     const data = { RequestId: id, IsAccepted: this.Isaccepted };
     this.service.putDecline(data).subscribe(
       (res) => {
@@ -106,9 +111,11 @@ export class RequestComponent implements OnInit {
     this.service.putAccept(data).subscribe(
       (res) => {
         console.log(res);
-        this.Req.splice(index, 1);
-        this.accept.splice(index, 1);
-        this.form.reset();
+        if (res.msg === "success") {
+          this.Req.splice(index, 1);
+          this.accept.splice(index, 1);
+          this.form.reset();
+        }
       },
       (error) => {
         if (error instanceof HttpErrorResponse) {

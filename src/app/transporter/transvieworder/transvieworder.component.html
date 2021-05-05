@@ -5,6 +5,7 @@
       diameter="45"
     ></mat-progress-spinner>
   </div>
+  <div *ngIf="isEmpty">No orders available...</div>
   <div class="request-wrap" *ngFor="let order of Orders; let i = index">
     <mat-accordion>
       <mat-expansion-panel

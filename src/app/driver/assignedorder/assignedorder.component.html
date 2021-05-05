@@ -1,1 +1,40 @@
-<p>assignedorder works!</p>
+<div class="order">
+  <div *ngIf="clicked">
+    <mat-progress-spinner
+      mode="indeterminate"
+      diameter="45"
+    ></mat-progress-spinner>
+  </div>
+  <div *ngIf="isEmpty">No orders please come later.....</div>
+  <div class="order-wrap" *ngFor="let order of Orders; let i = index">
+    <mat-accordion>
+      <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title [ngStyle]="{ color: 'orange' }">
+            Order
+          </mat-panel-title>
+          <mat-panel-description>{{ order.OrderDate }}</mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="status" *ngIf="order.Status !== 1 || order.Status !== 3">
+          <div class="order-details">
+            <div class="row">
+              <h3>OrderID</h3>
+              <h4>{{ order._id }}</h4>
+            </div>
+            <div class="row">
+              <h3>Source</h3>
+              <h4>{{ order.Source.Address }}</h4>
+            </div>
+            <div class="row">
+              <h3>Destination</h3>
+              <h4>{{ order.Destination.Address }}</h4>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

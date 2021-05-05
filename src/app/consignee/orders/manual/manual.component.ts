@@ -98,7 +98,9 @@ export class ManualComponent implements OnInit {
       (res) => {
         this.loaded = false;
         console.log(res);
-        this.router.navigateByUrl(`/Consignee/${this.service.Username}`);
+        this.router.navigateByUrl(
+          `/Consignee/${this.service.Username}/Your Orders`
+        );
       },
       (error) => {
         if (error instanceof HttpErrorResponse) {

@@ -53,8 +53,8 @@ export class TransporterService {
     return this.http.post<any>(this.removeDriverUrl, data);
   }
 
-  getDriver(data: any) {
-    return this.http.post<any>(this.getDriverUrl, data);
+  getDriver() {
+    return this.http.get<any>(this.getDriverUrl);
   }
 
   getOrders() {

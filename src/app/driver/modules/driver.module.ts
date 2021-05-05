@@ -1,3 +1,7 @@
+import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule } from "@angular/forms";
+import { MatExpansionModule } from "@angular/material/expansion";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { AppRoutingModule } from "src/app/app-routing.module";
@@ -11,6 +15,13 @@ import { StatusupdaterComponent } from "../statusupdater/statusupdater.component
     AssignedorderComponent,
     StatusupdaterComponent,
   ],
-  imports: [CommonModule, AppRoutingModule],
+  imports: [
+    CommonModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatProgressSpinnerModule,
+    MatExpansionModule,
+  ],
 })
 export class DriverModule {}

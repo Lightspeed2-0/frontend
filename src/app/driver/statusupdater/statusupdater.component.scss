@@ -1,0 +1,176 @@
+.order {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
+  .order-wrap {
+    margin-bottom: 1em;
+    width: 58vw;
+    .status {
+      width: 100%;
+      .order-details {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .row {
+          width: 35em;
+          display: flex;
+          align-items: center;
+          h3 {
+            width: 17.5em;
+            font-weight: 500;
+            text-align: left;
+          }
+          h4 {
+            width: 17.5em;
+            text-align: left;
+          }
+          form {
+            width: 17.5em;
+            .row {
+              display: flex;
+              align-items: center;
+              gap: 0.75em;
+              input {
+                font-size: 1.2em;
+                padding: 0.3em;
+                outline: none;
+                border-image: linear-gradient(to right, #11998e, #38ef7d) 1;
+              }
+              button {
+                cursor: pointer;
+                outline: none;
+                border: none;
+                font-size: 1.3em;
+                padding: 0.4em;
+                width: 7em;
+                color: #fff;
+                margin-left: 1.5em;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: linear-gradient(to right, #11998e, #38ef7d);
+
+                .lds-ring {
+                  display: inline-block;
+                  position: relative;
+                  width: 20px;
+                  height: 20px;
+                  div {
+                    box-sizing: border-box;
+                    display: block;
+                    position: absolute;
+                    width: 20px;
+                    height: 20px;
+                    border: 2.5px solid #fff;
+                    border-radius: 50%;
+                    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1)
+                      infinite;
+                    border-color: #fff transparent transparent transparent;
+                    &:nth-child(1) {
+                      animation-delay: -0.45s;
+                    }
+                    &:nth-child(2) {
+                      animation-delay: -0.3s;
+                    }
+                    &:nth-child(3) {
+                      animation-delay: -0.15s;
+                    }
+                  }
+                  @keyframes lds-ring {
+                    0% {
+                      transform: rotate(0deg);
+                    }
+                    100% {
+                      transform: rotate(360deg);
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .payment {
+            width: 17.5em;
+            display: flex;
+            align-items: center;
+            gap: 1em;
+            button {
+              border: none;
+              outline: none;
+              border-radius: 0.3em;
+              cursor: pointer;
+              padding: 0.4em 0.75em;
+              font-size: 1.2em;
+              font-weight: 500;
+              color: #fff;
+              &:nth-child(1) {
+                background: linear-gradient(to right, #00c6ff, #0072ff);
+              }
+              &:nth-child(2) {
+                background: linear-gradient(to right, #ff416c, #ff4b2b);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.confirm-wrap {
+  top: 0px;
+  left: 0px;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.1);
+  .confirm-popup {
+    z-index: 10;
+    width: 40vw;
+    padding: 2em;
+    background: #fff;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5em;
+      .msg {
+        font-size: 1.3em;
+        font-weight: 500;
+      }
+      button {
+        cursor: pointer;
+        border: none;
+        outline: none;
+        background: none;
+        font-size: 1.3em;
+        color: gray;
+      }
+    }
+    .btn {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+      button {
+        cursor: pointer;
+        border: none;
+        outline: none;
+        padding: 0.3em 1em;
+        font-size: 1.2em;
+        border-radius: 1em;
+        color: #fff;
+        &:nth-child(1) {
+          background: linear-gradient(to right, #a8ff78, #78ffd6);
+        }
+        &:nth-child(2) {
+          background: linear-gradient(to right, #ff416c, #ff4b2b);
+        }
+      }
+    }
+  }
+}

@@ -11,12 +11,16 @@ export class DrivermanageComponent implements OnInit {
   loaded = false;
   panelOpenState = false;
   Drivers: any[] = [];
+  isEmpty = true;
   constructor(private service: TransporterService) {}
 
   ngOnInit(): void {
-    this.service.getDriver({ msg: "hello" }).subscribe(
+    this.service.getDriver().subscribe(
       (res) => {
         this.Drivers = res["drivers"];
+        if (this.Drivers.length > 0) {
+          this.isEmpty = false;
+        }
         console.log(this.Drivers);
       },
       (error) => {

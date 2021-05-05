@@ -5,6 +5,7 @@
       diameter="45"
     ></mat-progress-spinner>
   </div>
+  <div *ngIf="isEmpty">No drivers available</div>
   <div class="request-wrap" *ngFor="let driver of Drivers; let i = index">
     <mat-accordion>
       <mat-expansion-panel
