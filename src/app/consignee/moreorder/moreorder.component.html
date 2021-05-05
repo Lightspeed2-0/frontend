@@ -12,23 +12,16 @@
         (closed)="panelOpenState = false"
       >
         <mat-expansion-panel-header>
-          <mat-panel-title
-            [ngStyle]="{
-              color:
-                order.Status === -1
-                  ? 'orange'
-                  : order.Status < 4
-                  ? 'palegreen'
-                  : 'black'
-            }"
-            >{{
+          <mat-panel-title>
+            <!-- {{
               order.Status === -1
                 ? "Order Pending"
                 : order.Status < 4
                 ? "Order created"
                 : "Order delivered"
-            }}</mat-panel-title
-          >
+            }} -->
+            Order
+          </mat-panel-title>
           <mat-panel-description>{{ order.OrderDate }}</mat-panel-description>
         </mat-expansion-panel-header>
         <div class="status">

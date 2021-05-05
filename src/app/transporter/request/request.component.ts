@@ -15,12 +15,19 @@ export class RequestComponent implements OnInit {
     Amount: new FormControl(null, Validators.required),
   });
 
+  driverForm: FormGroup = new FormGroup({
+    DriverId: new FormControl(null, Validators.required),
+  });
+
   Req: any[] = [];
+  Drivers: any[] = [];
+  accept: any[] = [];
 
   loaded = false;
   panelOpenState = false;
-  accept: any[] = [];
   Isaccepted = false;
+  clicked: any[] = [];
+  dclicked: any[] = [];
 
   constructor(private service: TransporterService) {}
 
@@ -30,16 +37,30 @@ export class RequestComponent implements OnInit {
       (res) => {
         this.loaded = false;
         const response = res;
-        // this.Req = response["requests"];
-        for (let i = 0; i < response["requests"].length; i++) {
-          if (response["requests"][i].Amount == -1) {
-            this.Req.push(response["requests"][i]);
-          }
-        }
+        this.Req = response["requests"];
         console.log(this.Req);
+
         this.accept.length = this.Req.length;
         this.accept.fill(false);
-        // console.log(this.accept, this.Req.length);
+
+        for (let i = 0; i < this.Req.length; i++) {
+          if (this.Req[i].Status === 5) {
+            this.clicked.push(false);
+            this.dclicked.push(false);
+          }
+        }
+      },
+      (error) => {
+        if (error instanceof HttpErrorResponse) {
+          console.error(error);
+        }
+      }
+    );
+
+    this.service.getDriver({ msg: "hello" }).subscribe(
+      (res) => {
+        console.log(res);
+        this.Drivers = res["drivers"];
       },
       (error) => {
         if (error instanceof HttpErrorResponse) {
@@ -87,6 +108,7 @@ export class RequestComponent implements OnInit {
         console.log(res);
         this.Req.splice(index, 1);
         this.accept.splice(index, 1);
+        this.form.reset();
       },
       (error) => {
         if (error instanceof HttpErrorResponse) {
@@ -94,5 +116,30 @@ export class RequestComponent implements OnInit {
         }
       }
     );
+  }
+
+  getDriverid(data: string) {
+    const driver = this.Drivers.find((driver) => driver.Username === data);
+    return driver._id;
+  }
+
+  onAllocate(requestId: string, index: number) {
+    this.clicked[index] = true;
+    this.service
+      .allocateDriver({
+        DriverId: this.getDriverid(this.driverForm.value["DriverId"]),
+        RequestId: requestId,
+      })
+      .subscribe(
+        (res) => {
+          this.clicked[index] = false;
+          console.log(res);
+        },
+        (error) => {
+          if (error instanceof HttpErrorResponse) {
+            console.error(error);
+          }
+        }
+      );
   }
 }

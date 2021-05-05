@@ -12,7 +12,10 @@
         (closed)="panelOpenState = false"
       >
         <mat-expansion-panel-header>
-          <mat-panel-title>Order</mat-panel-title>
+          <mat-panel-title
+            [ngStyle]="{ color: request.Status === 5 ? 'palegreen' : 'black' }"
+            >Order</mat-panel-title
+          >
           <mat-panel-description>{{ request.updatedAt }}</mat-panel-description>
         </mat-expansion-panel-header>
         <div class="request-details">
@@ -60,7 +63,29 @@
               >{{ request.Consignee.Username }}</a
             >
           </div>
-          <div class="row" *ngIf="!accept[i]">
+          <div class="row" *ngIf="request.Status === 5">
+            <form
+              [formGroup]="driverForm"
+              (ngSubmit)="onAllocate(request._id, i)"
+            >
+              <input list="driver" formControlName="DriverId" />
+              <datalist id="driver" *ngFor="let driver of Drivers">
+                <option value="{{ driver.Username }}"></option>
+              </datalist>
+              <div class="row">
+                <button [disabled]="!driverForm.valid">
+                  Allocate
+                  <div class="lds-ring" *ngIf="clicked[i]">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="row" *ngIf="!accept[i] && request.Status < 5">
             <button (click)="onAccept(i)">Accept</button>
             <button (click)="onDecline(request._id, i)">Decline</button>
           </div>

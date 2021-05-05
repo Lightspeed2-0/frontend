@@ -11,15 +11,18 @@ export class ConsigneeserviceService {
   Username = "";
   private getTransporterUrl =
     "https://lightning-backend.herokuapp.com/consignee/getTransporter";
+
   private indentUrl =
     "https://lightning-backend.herokuapp.com/consignee/createIndent";
+
   private getOrderUrl =
     "https://lightning-backend.herokuapp.com/consignee/yourOrders";
+
   private getConsigneeUrl =
     "https://lightning-backend.herokuapp.com/transporter/viewConsignee";
 
   private amountUrl =
-    "https://lightning-backend.herokuapp.com/transporter/indentConfirm";
+    "https://lightning-backend.herokuapp.com/consignee/indentConfirm";
 
   getTransporter() {
     return this.http.get<any>(this.getTransporterUrl);
@@ -39,6 +42,7 @@ export class ConsigneeserviceService {
   postPayment(data: any) {
     return this.http.post<any>(this.amountUrl, data);
   }
+
   postDecline(data: any) {
     return this.http.post<any>(this.amountUrl, data);
   }

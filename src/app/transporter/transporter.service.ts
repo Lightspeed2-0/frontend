@@ -19,13 +19,16 @@ export class TransporterService {
     "https://lightning-backend.herokuapp.com/transporter/removeDriver";
 
   private getDriverUrl =
-    "https://lightning-backend.herokuapp.com/transporter/allocateDriver";
+    "https://lightning-backend.herokuapp.com/transporter/getDriver";
 
   private getOrderUrl =
     "https://lightning-backend.herokuapp.com/transporter/getOrders";
 
   private orderDeclineUrl =
     "https://lightning-backend.herokuapp.com/transporter/declineOrder";
+
+  private allocateDriverUrl =
+    "https://lightning-backend.herokuapp.com/transporter/allocateDriver";
 
   constructor(private http: HttpClient) {}
 
@@ -60,5 +63,9 @@ export class TransporterService {
 
   orderDecline(data: any) {
     return this.http.post<any>(this.orderDeclineUrl, data);
+  }
+
+  allocateDriver(data: any) {
+    return this.http.post<any>(this.allocateDriverUrl, data);
   }
 }
