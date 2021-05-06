@@ -39,7 +39,9 @@
                 : "New Order"
             }}
           </mat-panel-title>
-          <mat-panel-description>{{ request.updatedAt }}</mat-panel-description>
+          <mat-panel-description>{{
+            request.Indent.OrderDate | tshortpipe: 10
+          }}</mat-panel-description>
         </mat-expansion-panel-header>
         <div class="request-details" *ngIf="request.Status !== 2">
           <div class="row">
@@ -62,7 +64,9 @@
           </div>
           <div class="row">
             <div class="title">Delivery Date</div>
-            <div class="content">{{ request.updatedAt }}</div>
+            <div class="content">
+              {{ request.Indent.OrderDate | tshortpipe: 10 }}
+            </div>
           </div>
           <div class="row">
             <div class="title">Weight</div>

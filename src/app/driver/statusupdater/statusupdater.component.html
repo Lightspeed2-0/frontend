@@ -16,7 +16,9 @@
           <mat-panel-title [ngStyle]="{ color: 'orange' }">
             Order
           </mat-panel-title>
-          <mat-panel-description>{{ order.OrderDate }}</mat-panel-description>
+          <mat-panel-description>{{
+            order.Indents[0].OrderDate
+          }}</mat-panel-description>
         </mat-expansion-panel-header>
         <div class="status">
           <div class="order-details">
@@ -26,11 +28,11 @@
             </div>
             <div class="row">
               <h3>Source</h3>
-              <h4>{{ order.Source.Address }}</h4>
+              <h4>{{ order.Indents[0].Source.Address }}</h4>
             </div>
             <div class="row">
               <h3>Destination</h3>
-              <h4>{{ order.Destination.Address }}</h4>
+              <h4>{{ order.Indents[0].Destination.Address }}</h4>
             </div>
             <div class="row">
               <h3>Status</h3>

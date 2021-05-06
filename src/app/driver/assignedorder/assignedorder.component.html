@@ -26,11 +26,21 @@
             </div>
             <div class="row">
               <h3>Source</h3>
-              <h4>{{ order.Source.Address }}</h4>
+              <h4>{{ order.Indents[0].Source.Address }}</h4>
             </div>
             <div class="row">
               <h3>Destination</h3>
-              <h4>{{ order.Destination.Address }}</h4>
+              <h4>{{ order.Indents[0].Destination.Address }}</h4>
+            </div>
+            <div class="row">
+              <h3>Consignee Profile</h3>
+              <a
+                href="https://lightspeed2021.herokuapp.com/Consignee/{{
+                  order.Indents[0].Consignee.Username
+                }}/Profile/{{ order.Indents[0].Consignee._id }}"
+                target="_blank"
+                >{{ order.Indents[0].Consignee.Username }}</a
+              >
             </div>
           </div>
         </div>

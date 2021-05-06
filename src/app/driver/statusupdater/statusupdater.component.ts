@@ -36,7 +36,7 @@ export class StatusupdaterComponent implements OnInit {
       (res) => {
         this.clicked = false;
         console.log(res);
-        this.Orders += res["Orders"];
+        this.Orders = res["Orders"];
         if (this.Orders.length > 0) {
           this.isEmpty = false;
         }

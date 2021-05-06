@@ -37,3 +37,10 @@ body {
   background: linear-gradient(to right, #ff416c, #ff4b2b);
   color: #fff;
 }
+
+.mat-expansion-panel-header {
+  font-size: 1.2em !important;
+}
+.mat-expansion-panel-header-title {
+  width: 50%;
+}
