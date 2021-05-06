@@ -2,19 +2,101 @@
   <p *ngIf="error">{{ error }} <button (click)="onClose()">X</button></p>
   <div class="col">
     <label for="Name">Transporter Name</label>
-    <input type="text" formControlName="Username" />
+    <input
+      type="text"
+      formControlName="Username"
+      required
+      [ngStyle]="{
+        border:
+          formControls.Username.invalid &&
+          (formControls.Username.dirty || formControls.Username.touched)
+            ? '2px solid red'
+            : ''
+      }"
+    />
+    <h5
+      *ngIf="
+        formControls.Username.invalid &&
+        (formControls.Username.dirty || formControls.Username.touched)
+      "
+      [ngStyle]="{ color: 'red' }"
+    >
+      Username required
+    </h5>
   </div>
   <div class="col">
     <label for="Name">Mobile number</label>
-    <input type="number" formControlName="MobileNo" />
+    <input
+      type="text"
+      formControlName="MobileNo"
+      maxlength="10"
+      minlength="10"
+      required
+      [ngStyle]="{
+        border:
+          formControls.MobileNo.invalid &&
+          (formControls.MobileNo.dirty || formControls.MobileNo.touched)
+            ? '2px solid red'
+            : ''
+      }"
+    />
+    <h5
+      *ngIf="
+        formControls.MobileNo.invalid &&
+        (formControls.MobileNo.dirty || formControls.MobileNo.touched)
+      "
+      [ngStyle]="{ color: 'red' }"
+    >
+      Mobile number required or should contain 10 digits
+    </h5>
   </div>
   <div class="col">
     <label for="Name">Email</label>
-    <input type="email" formControlName="Email" />
+    <input
+      type="email"
+      formControlName="Email"
+      required
+      [ngStyle]="{
+        border:
+          formControls.Email.invalid &&
+          (formControls.Email.dirty || formControls.Email.touched)
+            ? '2px solid red'
+            : ''
+      }"
+    />
+    <h5
+      *ngIf="
+        formControls.Email.invalid &&
+        (formControls.Email.dirty || formControls.Email.touched)
+      "
+      [ngStyle]="{ color: 'red' }"
+    >
+      Email required or not valid Mail Id
+    </h5>
   </div>
   <div class="col">
     <label for="Password">Password</label>
-    <input type="password" formControlName="Password" />
+    <input
+      type="password"
+      formControlName="Password"
+      required
+      [ngStyle]="{
+        border:
+          formControls.Password.invalid &&
+          (formControls.Password.dirty || formControls.Password.touched)
+            ? '2px solid red'
+            : ''
+      }"
+    />
+    <h5
+      *ngIf="
+        formControls.Password.invalid &&
+        (formControls.Password.dirty || formControls.Password.touched)
+      "
+      [ngStyle]="{ color: 'red' }"
+    >
+      Password required
+    </h5>
   </div>
   <div class="col">
     <label for="PancardNO">Pancard Number</label>
@@ -23,7 +105,24 @@
       formControlName="PanCardNo"
       minlength="10"
       maxlength="10"
+      required
+      [ngStyle]="{
+        border:
+          formControls.PanCardNo.invalid &&
+          (formControls.PanCardNo.dirty || formControls.PanCardNo.touched)
+            ? '2px solid red'
+            : ''
+      }"
     />
+    <h5
+      *ngIf="
+        formControls.PanCardNo.invalid &&
+        (formControls.PanCardNo.dirty || formControls.PanCardNo.touched)
+      "
+      [ngStyle]="{ color: 'red' }"
+    >
+      Pancard number contains or should contain 10 digits
+    </h5>
   </div>
   <p *ngIf="panError">{{ panError }} <button (click)="onError()">X</button></p>
   <div class="col">

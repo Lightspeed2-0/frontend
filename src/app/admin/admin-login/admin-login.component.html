@@ -5,11 +5,51 @@
       <h3>Admin</h3>
       <div class="col">
         <label for="Username">Username</label>
-        <input type="text" formControlName="Username" />
+        <input
+          type="text"
+          formControlName="Username"
+          required
+          [ngStyle]="{
+            border:
+              formControls.Username.invalid &&
+              (formControls.Username.touched || formControls.Username.dirty)
+                ? '2px solid red'
+                : '2px solid #da22ff'
+          }"
+        />
+        <h5
+          [ngStyle]="{ color: 'red' }"
+          *ngIf="
+            formControls.Username.invalid &&
+            (formControls.Username.touched || formControls.Username.dirty)
+          "
+        >
+          Username required
+        </h5>
       </div>
       <div class="col">
         <label for="Password">Password</label>
-        <input type="password" formControlName="Password" />
+        <input
+          type="password"
+          formControlName="Password"
+          required
+          [ngStyle]="{
+            border:
+              formControls.Password.invalid &&
+              (formControls.Password.touched || formControls.Password.dirty)
+                ? '2px solid red'
+                : '2px solid #da22ff'
+          }"
+        />
+        <h5
+          [ngStyle]="{ color: 'red' }"
+          *ngIf="
+            formControls.Password.invalid &&
+            (formControls.Password.touched || formControls.Password.dirty)
+          "
+        >
+          Password required
+        </h5>
       </div>
       <button type="submit" [disabled]="!form.valid">
         Login

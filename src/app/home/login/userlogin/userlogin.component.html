@@ -1,19 +1,52 @@
 <form [formGroup]="form" (ngSubmit)="onLogin()">
-  <p *ngIf="error">{{ error }} <button (click)="onClose()">x</button></p>
-  <!-- <div class="spinner" *ngIf="clicked">
-    <mat-progress-spinner
-      mode="indeterminate"
-      color="accent"
-      diameter="45"
-    ></mat-progress-spinner>
-  </div> -->
+  <p *ngIf="error">{{ error }} <button (click)="onClose()">X</button></p>
   <div class="col">
     <label for="Name">User Email</label>
-    <input type="text" formControlName="Email" />
+    <input
+      type="email"
+      formControlName="Email"
+      required
+      [ngStyle]="{
+        border:
+          formControl.Email.invalid &&
+          (formControl.Email.dirty || formControl.Email.touched)
+            ? '2px solid red'
+            : ''
+      }"
+    />
+    <h5
+      *ngIf="
+        formControl.Email.invalid &&
+        (formControl.Email.dirty || formControl.Email.touched)
+      "
+      [ngStyle]="{ color: 'red' }"
+    >
+      Email Id required or not valid
+    </h5>
   </div>
   <div class="col">
     <label for="Password">Password</label>
-    <input type="password" formControlName="Password" />
+    <input
+      type="password"
+      formControlName="Password"
+      [ngStyle]="{
+        border:
+          formControl.Password.invalid &&
+          (formControl.Password.dirty || formControl.Password.touched)
+            ? '2px solid red'
+            : ''
+      }"
+      required
+    />
+    <h5
+      *ngIf="
+        formControl.Password.invalid &&
+        (formControl.Password.dirty || formControl.Password.touched)
+      "
+      [ngStyle]="{ color: 'red' }"
+    >
+      Password required
+    </h5>
   </div>
   <div class="btn-wrap">
     <button [disabled]="!form.valid">

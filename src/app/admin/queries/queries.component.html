@@ -1,0 +1,59 @@
+<div class="request">
+  <div *ngIf="loaded">
+    <mat-progress-spinner
+      mode="indeterminate"
+      diameter="45"
+    ></mat-progress-spinner>
+  </div>
+  <div *ngIf="isEmpty">No orders available...</div>
+  <div class="request-wrap" *ngFor="let query of Queries; let i = index">
+    <mat-accordion>
+      <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{ query.Name }}</mat-panel-title>
+          <mat-panel-description>{{ query.Email }}</mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="request-details">
+          <div class="row">
+            <div class="title">Username</div>
+            <div class="content">{{ query.Name }}</div>
+          </div>
+          <div class="row">
+            <div class="title">Email</div>
+            <div class="content">{{ query.Email }}</div>
+          </div>
+          <div class="row">
+            <div class="title">Message</div>
+            <div class="content">{{ query.Message }}</div>
+          </div>
+          <div class="row" *ngIf="!clicked[i]">
+            <button
+              (click)="
+                onReply(
+                  {
+                    Name: query.Name,
+                    Email: query.Email,
+                    Message: query.Message
+                  },
+                  i
+                )
+              "
+            >
+              Reply
+            </button>
+            <button (click)="onDelete(query._id)">Delete</button>
+          </div>
+          <div class="row" *ngIf="clicked[i]">
+            <form [formGroup]="form" (ngSubmit)="onSend()">
+              <input type="text" formControlName="Reply" />
+              <button [disabled]="!form.valid">send</button>
+            </form>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

@@ -19,7 +19,10 @@ export class ConsigneesignupComponent implements OnInit {
 
   form: FormGroup = new FormGroup({
     Username: new FormControl(null, Validators.required),
-    MobileNo: new FormControl(null, Validators.required),
+    MobileNo: new FormControl(null, [
+      Validators.required,
+      Validators.minLength(10),
+    ]),
     Email: new FormControl(null, [Validators.required, Validators.email]),
     Password: new FormControl(null, Validators.required),
     PanCardNo: new FormControl(null, Validators.required),
@@ -28,6 +31,10 @@ export class ConsigneesignupComponent implements OnInit {
   constructor(private auth: AuthserviceService, private router: Router) {}
 
   ngOnInit(): void {}
+
+  get formControls() {
+    return this.form.controls;
+  }
 
   onClose() {
     this.error = null;

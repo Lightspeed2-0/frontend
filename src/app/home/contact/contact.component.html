@@ -65,18 +65,58 @@
   </div>
 </div>
 <div class="contact-form">
-  <form [formGroup]="contactFrom" ngSubmit="onSubmit()">
+  <form [formGroup]="contactFrom" (ngSubmit)="onSubmit()">
     <fieldset>
       <legend>Contact Form</legend>
       <div class="row-wrap">
         <div class="row">
           <label for="Name">Name</label>
-          <input type="text" formControlName="Name" />
+          <input
+            type="text"
+            formControlName="Name"
+            required
+            [ngStyle]="{
+              border:
+                formControls.Name.invalid &&
+                (formControls.Name.touched || formControls.Name.dirty)
+                  ? '2px solid red'
+                  : ''
+            }"
+          />
         </div>
+        <h5
+          [ngStyle]="{ color: 'red' }"
+          *ngIf="
+            formControls.Name.invalid &&
+            (formControls.Name.touched || formControls.Name.dirty)
+          "
+        >
+          Name required
+        </h5>
         <div class="row">
           <label for="Email">Email</label>
-          <input type="email" formControlName="Email" />
+          <input
+            type="email"
+            formControlName="Email"
+            required
+            [ngStyle]="{
+              border:
+                formControls.Email.invalid &&
+                (formControls.Email.touched || formControls.Email.dirty)
+                  ? '2px solid red'
+                  : ''
+            }"
+          />
         </div>
+        <h5
+          [ngStyle]="{ color: 'red' }"
+          *ngIf="
+            formControls.Email.invalid &&
+            (formControls.Email.touched || formControls.Email.dirty)
+          "
+        >
+          Email required or not valid
+        </h5>
       </div>
       <div class="row-wrap">
         <div class="row">
@@ -87,8 +127,25 @@
             cols="30"
             rows="10"
             formControlName="Message"
+            required
+            [ngStyle]="{
+              border:
+                formControls.Message.invalid &&
+                (formControls.Message.touched || formControls.Message.dirty)
+                  ? '2px solid red'
+                  : ''
+            }"
           ></textarea>
         </div>
+        <h5
+          [ngStyle]="{ color: 'red' }"
+          *ngIf="
+            formControls.Message.invalid &&
+            (formControls.Message.touched || formControls.Message.dirty)
+          "
+        >
+          Message required
+        </h5>
         <button [disabled]="!contactFrom.valid">Submit</button>
       </div>
     </fieldset>

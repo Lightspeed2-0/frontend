@@ -12,23 +12,33 @@ import { AuthserviceService } from "src/app/auth/authservice.service";
 export class DriverloginComponent implements OnInit {
   clicked = false;
   error: any;
+
   form: FormGroup = new FormGroup({
     Email: new FormControl(null, [Validators.required, Validators.email]),
     Password: new FormControl(null, Validators.required),
   });
+
   private user: { Email: string; Password: string } = {
     Email: "",
     Password: "",
   };
+
   private tokenObj: any;
+
   constructor(private auth: AuthserviceService, private router: Router) {}
 
   ngOnInit(): void {}
+
+  get formControl() {
+    return this.form.controls;
+  }
+
   onClose() {
     this.error = null;
     this.clicked = false;
     this.form.reset();
   }
+
   onLogin() {
     this.clicked = true;
     this.auth.driverLogin(this.form.value).subscribe(

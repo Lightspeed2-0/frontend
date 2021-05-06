@@ -1,25 +1,35 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 @Injectable({
   providedIn: "root",
 })
 export class AuthserviceService {
-  constructor(private http: HttpClient) {}
-  consigneeLoginUrl = "https://lightning-backend.herokuapp.com/consignee/login";
-  transporterLoginUrl =
+  private consigneeLoginUrl =
+    "https://lightning-backend.herokuapp.com/consignee/login";
+
+  private transporterLoginUrl =
     "https://lightning-backend.herokuapp.com/transporter/login";
-  driverLoginUrl = "https://lightning-backend.herokuapp.com/driver/login";
-  consigneeRegUrl =
+
+  private driverLoginUrl =
+    "https://lightning-backend.herokuapp.com/driver/login";
+
+  private consigneeRegUrl =
     "https://lightning-backend.herokuapp.com/consignee/register";
-  transporterRegUrl =
+
+  private transporterRegUrl =
     "https://lightning-backend.herokuapp.com/transporter/register";
 
+  private sendContactUrl =
+    "https://lightning-backend.herokuapp.com/contactForm";
+
+  constructor(private http: HttpClient) {}
+
   consigneeLogin(data: { Email: string; Password: string }) {
-    return this.http.post(this.consigneeLoginUrl, data);
+    return this.http.post<any>(this.consigneeLoginUrl, data);
   }
 
   transporterLogin(data: { Email: string; Password: string }) {
-    return this.http.post(this.transporterLoginUrl, data);
+    return this.http.post<any>(this.transporterLoginUrl, data);
   }
 
   driverLogin(data: any) {
@@ -27,14 +37,18 @@ export class AuthserviceService {
   }
 
   consigneeRegister(data: any) {
-    return this.http.post(this.consigneeRegUrl, data);
+    return this.http.post<any>(this.consigneeRegUrl, data);
   }
 
   transporterRegsiter(data: any) {
-    return this.http.post(this.transporterRegUrl, data);
+    return this.http.post<any>(this.transporterRegUrl, data);
   }
 
   getToken() {
     return localStorage.getItem("token");
+  }
+
+  sendContact(data: any) {
+    return this.http.post<any>(this.sendContactUrl, data);
   }
 }

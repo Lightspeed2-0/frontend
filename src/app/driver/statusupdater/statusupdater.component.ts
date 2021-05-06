@@ -58,18 +58,21 @@ export class StatusupdaterComponent implements OnInit {
   }
 
   onUpdate(id: string, index: number) {
+    this.updated[index] = true;
     this.serive
       .updateStatus({
-        _id: id,
+        IndentId: id,
         Status: this.getStatus(this.statusForm.value["Status"]),
       })
       .subscribe(
         (res) => {
           console.log(res);
+          this.updated[index] = false;
         },
         (error) => {
+          // console.error(error.error.msg);
           if (error instanceof HttpErrorResponse) {
-            console.error(error);
+            console.error(error.error);
           }
         }
       );

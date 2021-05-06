@@ -3,7 +3,13 @@
     <p>OTP has been sent to {{ Email }}</p>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <p *ngIf="error">{{ error }} <button (click)="onClose()">X</button></p>
-      <input type="number" formControlName="OTP" placeholder="Enter the otp" />
+      <input
+        type="text"
+        formControlName="OTP"
+        placeholder="Enter the otp"
+        minlength="6"
+        maxlength="6"
+      />
       <button [disabled]="!form.valid">
         verify
         <div class="lds-ring" *ngIf="clicked">

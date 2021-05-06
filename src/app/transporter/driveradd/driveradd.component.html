@@ -2,12 +2,52 @@
   <form [formGroup]="form" (ngSubmit)="onAdd()">
     <div class="row">
       <label>Username</label>
-      <input type="text" formControlName="Username" />
+      <input
+        type="text"
+        formControlName="Username"
+        required
+        [ngStyle]="{
+          border:
+            formControls.Username.invalid &&
+            (formControls.Username.touched || formControls.Username.dirty)
+              ? '2px solid red'
+              : ''
+        }"
+      />
     </div>
+    <h5
+      [ngStyle]="{ color: 'red' }"
+      *ngIf="
+        formControls.Username.invalid &&
+        (formControls.Username.touched || formControls.Username.dirty)
+      "
+    >
+      Username required
+    </h5>
     <div class="row">
       <label>Email</label>
-      <input type="email" formControlName="Email" />
+      <input
+        type="email"
+        formControlName="Email"
+        required
+        [ngStyle]="{
+          border:
+            formControls.Email.invalid &&
+            (formControls.Email.touched || formControls.Email.dirty)
+              ? '2px solid red'
+              : ''
+        }"
+      />
     </div>
+    <h5
+      [ngStyle]="{ color: 'red' }"
+      *ngIf="
+        formControls.Email.invalid &&
+        (formControls.Email.touched || formControls.Email.dirty)
+      "
+    >
+      Email required or not valid
+    </h5>
     <div class="row">
       <label>Mobile Number</label>
       <input
@@ -15,8 +55,25 @@
         maxlength="10"
         minlength="10"
         formControlName="MobileNo"
+        required
+        [ngStyle]="{
+          border:
+            formControls.MobileNo.invalid &&
+            (formControls.MobileNo.touched || formControls.MobileNo.dirty)
+              ? '2px solid red'
+              : ''
+        }"
       />
     </div>
+    <h5
+      [ngStyle]="{ color: 'red' }"
+      *ngIf="
+        formControls.MobileNo.invalid &&
+        (formControls.MobileNo.touched || formControls.MobileNo.dirty)
+      "
+    >
+      MobileNo required or should contain 10 digits
+    </h5>
     <div class="row">
       <label>License Number</label>
       <input
@@ -26,12 +83,51 @@
         pattern="^(([A-Z]{2}[0-9]{2})( )|([A-Z]{2}-[0-9]{2}))((19|20)[0-9][0-9])[0-9]{7}$"
         formControlName="DrivingLicense"
         placeholder="TN-0619850034761"
+        required
+        [ngStyle]="{
+          border:
+            formControls.DrivingLicense.invalid &&
+            (formControls.DrivingLicense.touched ||
+              formControls.DrivingLicense.dirty)
+              ? '2px solid red'
+              : ''
+        }"
       />
     </div>
+    <h5
+      [ngStyle]="{ color: 'red' }"
+      *ngIf="
+        formControls.DrivingLicense.invalid &&
+        (formControls.DrivingLicense.touched ||
+          formControls.DrivingLicense.dirty)
+      "
+    >
+      DrivingLicense required or not valid
+    </h5>
     <div class="row">
       <label>Password</label>
-      <input type="password" formControlName="Password" />
+      <input
+        type="password"
+        formControlName="Password"
+        required
+        [ngStyle]="{
+          border:
+            formControls.Password.invalid &&
+            (formControls.Password.touched || formControls.Password.dirty)
+              ? '2px solid red'
+              : ''
+        }"
+      />
     </div>
+    <h5
+      [ngStyle]="{ color: 'red' }"
+      *ngIf="
+        formControls.Password.invalid &&
+        (formControls.Password.touched || formControls.Password.dirty)
+      "
+    >
+      Password required
+    </h5>
     <button [disabled]="!form.valid">
       <i class="fas fa-plus"></i> Add
       <div class="lds-ring" *ngIf="clicked">

@@ -24,6 +24,9 @@ export class ConsigneeserviceService {
   private amountUrl =
     "https://lightning-backend.herokuapp.com/consignee/indentConfirm";
 
+  private canelOrderUrl =
+    "https://lightning-backend.herokuapp.com/consignee/cancelOrder";
+
   getTransporter() {
     return this.http.get<any>(this.getTransporterUrl);
   }
@@ -45,5 +48,9 @@ export class ConsigneeserviceService {
 
   postDecline(data: any) {
     return this.http.post<any>(this.amountUrl, data);
+  }
+
+  cancelOrder(data: any) {
+    return this.http.post<any>(this.canelOrderUrl, data);
   }
 }

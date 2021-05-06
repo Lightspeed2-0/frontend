@@ -17,21 +17,31 @@ export class OtpComponent implements OnInit {
     private router: Router,
     private verifyService: VerfiyserviceService
   ) {}
+
   form: FormGroup = new FormGroup({
     OTP: new FormControl(null, Validators.required),
   });
+
   Email: string = "";
   error: any;
+
+  get formControls() {
+    return this.form.controls;
+  }
+
   ngOnInit(): void {
     this.Email = this.route.snapshot.params["email"];
     console.log(this.Email);
   }
+
   onClose() {
     this.clicked = false;
     this.error = null;
     this.form.reset();
   }
+
   tokenObj: any;
+
   onSubmit() {
     this.clicked = true;
     const role = this.route.snapshot.params["role"];

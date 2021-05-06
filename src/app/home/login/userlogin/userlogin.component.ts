@@ -24,27 +24,37 @@ export class UserloginComponent implements OnInit {
   constructor(private auth: AuthserviceService, private router: Router) {}
 
   ngOnInit(): void {}
+
   onClose() {
     this.error = null;
+    this.clicked = false;
     this.form.reset();
   }
+
+  get formControl() {
+    return this.form.controls;
+  }
+
   onLogin() {
-    this.user = this.form.value;
     this.clicked = true;
+    this.user = this.form.value;
     this.auth.consigneeLogin(this.user).subscribe(
       (res) => {
         this.clicked = false;
         console.log(res);
         this.tokenObj = res;
         localStorage.setItem("token", this.tokenObj.token);
+        localStorage.setItem("Email", this.form.value["Email"]);
         this.router.navigateByUrl(`/Consignee/${this.tokenObj.Username}`);
       },
       (error) => {
-        this.clicked = false;
         if (error instanceof HttpErrorResponse) {
           if (error.status) {
-            this.error = error.error.msg;
             this.clicked = false;
+            this.error = error.error.msg;
+
+            console.log(this.error);
+
             if (this.error === "nootp") {
               localStorage.setItem("Email", this.form.value["Email"]);
               this.router.navigateByUrl(`/Verify/${this.user.Email}/0`);
@@ -54,7 +64,7 @@ export class UserloginComponent implements OnInit {
                 `/Verify/${this.user.Email}/0/pan/consignee`
               );
             } else {
-              this.router.navigateByUrl("/Login/TransporterLogin");
+              this.router.navigateByUrl("/Login");
             }
           }
         }

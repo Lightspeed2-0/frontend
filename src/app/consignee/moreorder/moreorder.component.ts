@@ -18,6 +18,7 @@ export class MoreorderComponent implements OnInit {
   requestId = "";
   index = 0;
   isEmpty = true;
+  cancel: any[] = [];
 
   constructor(private service: ConsigneeserviceService) {}
 
@@ -31,6 +32,8 @@ export class MoreorderComponent implements OnInit {
         if (this.Orders.length > 0) {
           this.isEmpty = false;
         }
+        this.cancel.length = this.Orders.length;
+        this.cancel.fill(false);
         console.log(response);
       },
       (err) => {
@@ -95,5 +98,20 @@ export class MoreorderComponent implements OnInit {
           }
         }
       );
+  }
+
+  onCancel(id: string, index: number) {
+    this.cancel[index] = true;
+    this.service.cancelOrder({ IndentId: id }).subscribe(
+      (res) => {
+        this.cancel[index] = false;
+        console.log(res);
+      },
+      (error) => {
+        if (error instanceof HttpErrorResponse) {
+          console.log(error.error.msg);
+        }
+      }
+    );
   }
 }

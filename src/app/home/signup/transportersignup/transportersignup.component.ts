@@ -30,6 +30,10 @@ export class TransportersignupComponent implements OnInit {
 
   constructor(private auth: AuthserviceService, private router: Router) {}
 
+  get formControls() {
+    return this.form.controls;
+  }
+
   onClose() {
     this.clicked = false;
     this.error = null;

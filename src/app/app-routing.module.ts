@@ -22,6 +22,7 @@ import { MainComponent } from "./home/main/main.component";
 import { VerifyguardGuard } from "./home/signup/verify/verify-auth/verifyguard.guard";
 import { VerifyGuard } from "./home/signup/verify/verify-auth/verify.guard";
 import { AdminComponent } from "./admin/admin.component";
+import { QueriesComponent } from "./admin/queries/queries.component";
 
 const routes: Routes = [
   { path: "", component: MainComponent },
@@ -64,6 +65,7 @@ const routes: Routes = [
     children: [
       { path: "", component: TransporterVerifyComponent },
       { path: "Consignee", component: ConsigneeVerifyComponent },
+      { path: "Queries", component: QueriesComponent },
     ],
     canActivate: [AdminGuard],
   },

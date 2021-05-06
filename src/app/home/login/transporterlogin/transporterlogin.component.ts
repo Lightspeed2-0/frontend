@@ -16,25 +16,35 @@ export class TransporterloginComponent implements OnInit {
     Email: new FormControl(null, [Validators.required, Validators.email]),
     Password: new FormControl(null, Validators.required),
   });
+
   private user: { Email: string; Password: string } = {
     Email: "",
     Password: "",
   };
+
   private tokenObj: any;
+
   constructor(private auth: AuthserviceService, private router: Router) {}
 
   ngOnInit(): void {}
+
+  get formControl() {
+    return this.form.controls;
+  }
+
   onClose() {
     this.error = null;
     this.clicked = false;
     this.form.reset();
   }
+
   onLogin() {
     this.clicked = true;
     this.user = this.form.value;
     this.auth.transporterLogin(this.user).subscribe(
       (res) => {
         console.log(res);
+        this.clicked = false;
         this.tokenObj = res;
         localStorage.setItem("Email", this.form.value["Email"]);
         localStorage.setItem("token", this.tokenObj.token);

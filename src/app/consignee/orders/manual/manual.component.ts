@@ -45,6 +45,18 @@ export class ManualComponent implements OnInit {
     IsLTL: new FormControl(null, Validators.required),
   });
 
+  get sourceControls() {
+    return this.source.controls;
+  }
+
+  get destinationControls() {
+    return this.destination.controls;
+  }
+
+  get confirmationControls() {
+    return this.confirmation.controls;
+  }
+
   ngOnInit(): void {}
 
   onSource() {

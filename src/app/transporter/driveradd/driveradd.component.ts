@@ -22,6 +22,10 @@ export class DriveraddComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  get formControls() {
+    return this.form.controls;
+  }
+
   onAdd() {
     this.clicked = true;
     this.serivce.addDriver(this.form.value).subscribe(

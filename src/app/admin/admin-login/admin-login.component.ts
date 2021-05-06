@@ -13,10 +13,18 @@ export class AdminLoginComponent implements OnInit {
     Username: new FormControl(null, Validators.required),
     Password: new FormControl(null, Validators.required),
   });
+
   constructor(private http: HttpClient, private router: Router) {}
+
   error: any;
   clicked = false;
+
+  get formControls() {
+    return this.form.controls;
+  }
+
   ngOnInit(): void {}
+
   onLogin() {
     this.clicked = true;
     this.http

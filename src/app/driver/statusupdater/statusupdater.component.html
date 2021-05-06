@@ -26,40 +26,45 @@
               <h3>OrderID</h3>
               <h4>{{ order._id }}</h4>
             </div>
-            <div class="row">
-              <h3>Source</h3>
-              <h4>{{ order.Indents[0].Source.Address }}</h4>
-            </div>
-            <div class="row">
-              <h3>Destination</h3>
-              <h4>{{ order.Indents[0].Destination.Address }}</h4>
-            </div>
-            <div class="row">
-              <h3>Status</h3>
-              <form
-                [formGroup]="statusForm"
-                (ngSubmit)="onUpdate(order._id, i)"
-              >
+            <div *ngFor="let indent of order.Indents; let j = index">
+              <h3>Order {{ indent.Status < 5 ? j + 1 : "Canceled" }}</h3>
+              <div *ngIf="indent.Status < 5">
                 <div class="row">
-                  <input list="stat" formControlName="Status" />
-                  <datalist id="stat">
-                    <option *ngFor="let stats of Status">
-                      {{ stats.status }}
-                    </option>
-                  </datalist>
-                  <div class="row">
-                    <button>
-                      Update
-                      <div class="lds-ring" *ngIf="updated[i]">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                      </div>
-                    </button>
-                  </div>
+                  <h3>Source</h3>
+                  <h4>{{ indent.Source.Address }}</h4>
                 </div>
-              </form>
+                <div class="row">
+                  <h3>Destination</h3>
+                  <h4>{{ indent.Destination.Address }}</h4>
+                </div>
+                <div class="row">
+                  <h3>Status</h3>
+                  <form
+                    [formGroup]="statusForm"
+                    (ngSubmit)="onUpdate(indent._id, j)"
+                  >
+                    <div class="row">
+                      <input list="stat" formControlName="Status" />
+                      <datalist id="stat">
+                        <option>
+                          {{ Status[indent.StatusStack.length].status }}
+                        </option>
+                      </datalist>
+                      <div class="row">
+                        <button>
+                          Update
+                          <div class="lds-ring" *ngIf="updated[j]">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                          </div>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
         </div>
