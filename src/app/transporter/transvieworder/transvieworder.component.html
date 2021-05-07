@@ -23,54 +23,77 @@
             <div class="title">OrderId</div>
             <div class="content">{{ order._id | tshortpipe: 20 }}</div>
           </div>
-          <div class="row">
-            <div class="title">Source</div>
-            <div class="content">
-              {{ order.Indents[0].Source["Address"] }}
-              {{ order.Indents[0].Source["Pincode"] }}
+          <div *ngFor="let indent of order.Indents; let j = index">
+            <h3 *ngIf="indent.Status <= 4">Order {{ j + 1 }}</h3>
+            <h3 *ngIf="indent.Status == 5" [ngStyle]="{ color: 'red' }">
+              Order {{ j + 1 }} Canceled
+            </h3>
+            <div>
+              <div class="row">
+                <div class="title">Source</div>
+                <div class="content">
+                  {{ indent.Source["Address"] }}
+                  {{ indent.Source["Pincode"] }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="title">Destination</div>
+                <div class="content">
+                  {{ indent.Destination.Address }}
+                  {{ indent.Destination.Pincode }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="title">Delivery Date</div>
+                <div class="content">
+                  {{ indent.OrderDate | tshortpipe: 10 }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="title">Weight</div>
+                <div class="content">{{ indent.Weight }}</div>
+              </div>
+              <div class="row">
+                <div class="title">Volume</div>
+                <div class="content">{{ indent.Volume }}</div>
+              </div>
+              <div class="row">
+                <div class="title">IsLTL</div>
+                <div class="content">{{ indent.IsLTL }}</div>
+              </div>
+              <div class="row">
+                <div class="title">Driver</div>
+                <div class="content">{{ order.Driver.Username }}</div>
+              </div>
+              <div class="row">
+                <div class="title">Consignee Profile</div>
+                <a
+                  href="https://lightspeed2021.herokuapp.com/Consignee/{{
+                    indent.Consignee.Username
+                  }}/Profile/{{ indent.Consignee._id }}"
+                  target="_blank"
+                  >{{ indent.Consignee.Username }}</a
+                >
+              </div>
+              <div
+                class="row"
+                *ngIf="
+                  !accept[i] &&
+                  indent.StatusStack.length <= 2 &&
+                  indent.Status <= 4
+                "
+              >
+                <button
+                  (click)="onDecline(indent._id, i)"
+                  [ngStyle]="{
+                    background: 'linear-gradient(to right, #ff416c, #ff4b2b)'
+                  }"
+                >
+                  Cancel
+                </button>
+              </div>
+              <app-transstatus [Status]="indent.StatusStack"></app-transstatus>
             </div>
-          </div>
-          <div class="row">
-            <div class="title">Destination</div>
-            <div class="content">
-              {{ order.Indents[0].Destination.Address }}
-              {{ order.Indents[0].Destination.Pincode }}
-            </div>
-          </div>
-          <div class="row">
-            <div class="title">Delivery Date</div>
-            <div class="content">
-              {{ order.Indents[0].OrderDate | tshortpipe: 10 }}
-            </div>
-          </div>
-          <div class="row">
-            <div class="title">Weight</div>
-            <div class="content">{{ order.Indents[0].Weight }}</div>
-          </div>
-          <div class="row">
-            <div class="title">Volume</div>
-            <div class="content">{{ order.Indents[0].Volume }}</div>
-          </div>
-          <div class="row">
-            <div class="title">IsLTL</div>
-            <div class="content">{{ order.Indents[0].IsLTL }}</div>
-          </div>
-          <div class="row">
-            <div class="title">Driver</div>
-            <div class="content">{{ order.Driver.Username }}</div>
-          </div>
-          <div class="row">
-            <div class="title">Consignee Profile</div>
-            <a
-              href="https://lightspeed2021.herokuapp.com/Consignee/{{
-                order.Indents[0].Consignee.Username
-              }}/Profile/{{ order.Indents[0].Consignee._id }}"
-              target="_blank"
-              >{{ order.Indents[0].Consignee.Username }}</a
-            >
-          </div>
-          <div class="row" *ngIf="!accept[i]">
-            <button (click)="onDecline(order._id, i)">Decline</button>
           </div>
         </div>
       </mat-expansion-panel>

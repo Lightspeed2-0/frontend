@@ -24,23 +24,28 @@
               <h3>OrderID</h3>
               <h4>{{ order._id }}</h4>
             </div>
-            <div class="row">
-              <h3>Source</h3>
-              <h4>{{ order.Indents[0].Source.Address }}</h4>
-            </div>
-            <div class="row">
-              <h3>Destination</h3>
-              <h4>{{ order.Indents[0].Destination.Address }}</h4>
-            </div>
-            <div class="row">
-              <h3>Consignee Profile</h3>
-              <a
-                href="https://lightspeed2021.herokuapp.com/Consignee/{{
-                  order.Indents[0].Consignee.Username
-                }}/Profile/{{ order.Indents[0].Consignee._id }}"
-                target="_blank"
-                >{{ order.Indents[0].Consignee.Username }}</a
-              >
+            <div *ngFor="let indent of order.Indents; let j = index">
+              <h3 [ngStyle]="{ color: indent.Status < 5 ? 'black' : 'red' }">
+                Order {{ indent.Status < 5 ? j + 1 : j + 1 + "  Canceled" }}
+              </h3>
+              <div class="row">
+                <h3>Source</h3>
+                <h4>{{ indent.Source.Address }}</h4>
+              </div>
+              <div class="row">
+                <h3>Destination</h3>
+                <h4>{{ indent.Destination.Address }}</h4>
+              </div>
+              <div class="row">
+                <h3>Consignee Profile</h3>
+                <a
+                  href="https://lightspeed2021.herokuapp.com/Consignee/{{
+                    indent.Consignee.Username
+                  }}/Profile/{{ indent.Consignee._id }}"
+                  target="_blank"
+                  >{{ indent.Consignee.Username }}</a
+                >
+              </div>
             </div>
           </div>
         </div>

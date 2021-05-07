@@ -13,6 +13,7 @@ import { TshortpipePipe } from "../tshortpipe.pipe";
 import { DriveraddComponent } from "../driveradd/driveradd.component";
 import { DrivermanageComponent } from "../drivermanage/drivermanage.component";
 import { TransvieworderComponent } from "../transvieworder/transvieworder.component";
+import { TransstatusComponent } from "../transstatus/transstatus.component";
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { TransvieworderComponent } from "../transvieworder/transvieworder.compon
     DriveraddComponent,
     DrivermanageComponent,
     TransvieworderComponent,
+    TransstatusComponent,
   ],
   imports: [
     CommonModule,

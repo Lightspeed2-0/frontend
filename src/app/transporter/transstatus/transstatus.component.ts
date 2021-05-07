@@ -1,10 +1,12 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Input } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+
 @Component({
-  selector: "app-status",
-  templateUrl: "./status.component.html",
-  styleUrls: ["./status.component.scss"],
+  selector: "app-transstatus",
+  templateUrl: "./transstatus.component.html",
+  styleUrls: ["./transstatus.component.scss"],
 })
-export class StatusComponent implements OnInit {
+export class TransstatusComponent implements OnInit {
   @Input() Status: any[] = [];
   iconArray = [
     "fas fa-check",

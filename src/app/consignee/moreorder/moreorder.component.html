@@ -99,7 +99,7 @@
               <h3>Destination</h3>
               <h4>{{ order.Destination.Address | shortenPipe: 25 }}</h4>
             </div>
-            <div class="row">
+            <div class="row" *ngIf="order.StatusStack.length <= 2">
               <button (click)="onCancel(order._id, i)">
                 Cancel
                 <div class="lds-ring" *ngIf="cancel[i]">
@@ -111,7 +111,7 @@
               </button>
             </div>
           </div>
-          <app-status></app-status>
+          <app-status [Status]="order.StatusStack"></app-status>
         </div>
       </mat-expansion-panel>
     </mat-accordion>

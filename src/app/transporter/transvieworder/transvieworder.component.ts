@@ -42,7 +42,7 @@ export class TransvieworderComponent implements OnInit {
   }
 
   onDecline(id: string, index: number) {
-    this.service.orderDecline({ _id: id }).subscribe(
+    this.service.cancelOrder({ IndentId: id }).subscribe(
       (res) => {
         console.log(res);
         this.loaded = true;

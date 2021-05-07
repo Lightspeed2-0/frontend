@@ -30,6 +30,9 @@ export class TransporterService {
   private allocateDriverUrl =
     "https://lightning-backend.herokuapp.com/transporter/allocateDriver";
 
+  private cancelOrderUrl =
+    "https://lightning-backend.herokuapp.com/transporter/cancelOrder";
+
   constructor(private http: HttpClient) {}
 
   getRequest() {
@@ -67,5 +70,9 @@ export class TransporterService {
 
   allocateDriver(data: any) {
     return this.http.post<any>(this.allocateDriverUrl, data);
+  }
+
+  cancelOrder(data: any) {
+    return this.http.post<any>(this.cancelOrderUrl, data);
   }
 }
