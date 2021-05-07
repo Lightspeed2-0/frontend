@@ -22,8 +22,7 @@ export class QueriesComponent implements OnInit {
 
   constructor(private service: AdminService) {}
 
-  ngOnInit(): void {
-    this.loaded = true;
+  getContact() {
     this.service.getQuery().subscribe(
       (res) => {
         this.loaded = false;
@@ -43,6 +42,11 @@ export class QueriesComponent implements OnInit {
     );
   }
 
+  ngOnInit(): void {
+    this.loaded = true;
+    this.getContact();
+  }
+
   onReply(data: any, index: number) {
     this.clicked[index] = true;
     this.contact = data;
@@ -52,6 +56,8 @@ export class QueriesComponent implements OnInit {
     this.service.delteQuery({ _id: id }).subscribe(
       (res) => {
         console.log(res);
+        this.loaded = true;
+        this.getContact();
       },
       (error) => {
         if (error instanceof HttpErrorResponse) {
@@ -65,6 +71,8 @@ export class QueriesComponent implements OnInit {
     this.service.sendReply({ ...this.contact, ...this.form.value }).subscribe(
       (res) => {
         console.log(res);
+        this.loaded = true;
+        this.getContact();
       },
       (error) => {
         if (error instanceof HttpErrorResponse) {

@@ -32,8 +32,7 @@ export class RequestComponent implements OnInit {
 
   constructor(private service: TransporterService) {}
 
-  ngOnInit(): void {
-    this.loaded = true;
+  getRequest() {
     this.service.getRequest().subscribe(
       (res) => {
         this.loaded = false;
@@ -59,6 +58,12 @@ export class RequestComponent implements OnInit {
         }
       }
     );
+  }
+
+  ngOnInit(): void {
+    this.loaded = true;
+
+    this.getRequest();
 
     this.service.getDriver().subscribe(
       (res) => {
@@ -86,8 +91,10 @@ export class RequestComponent implements OnInit {
     this.service.putDecline(data).subscribe(
       (res) => {
         console.log(res);
-        this.Req.splice(index, 1);
-        this.accept.splice(index, 1);
+        this.loaded = true;
+        this.getRequest();
+        // this.Req.splice(index, 1);
+        // this.accept.splice(index, 1);
       },
       (error) => {
         if (error instanceof HttpErrorResponse) {
@@ -112,8 +119,10 @@ export class RequestComponent implements OnInit {
       (res) => {
         console.log(res);
         if (res.msg === "success") {
-          this.Req.splice(index, 1);
-          this.accept.splice(index, 1);
+          // this.Req.splice(index, 1);
+          this.loaded = true;
+          this.getRequest();
+          // this.accept.splice(index, 1);
           this.form.reset();
         }
       },
@@ -140,6 +149,8 @@ export class RequestComponent implements OnInit {
       .subscribe(
         (res) => {
           this.clicked[index] = false;
+          this.loaded = true;
+          this.getRequest();
           console.log(res);
         },
         (error) => {

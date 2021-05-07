@@ -51,7 +51,7 @@ export class ConsigneeVerifyComponent implements OnInit, AfterViewInit {
     return this.gradients[Math.floor(Math.random() * this.gradients.length)];
   }
 
-  ngAfterViewInit() {
+  getConsignee() {
     this.service.consigneeGet().subscribe(
       (res: any) => {
         this.spinner = false;
@@ -71,6 +71,10 @@ export class ConsigneeVerifyComponent implements OnInit, AfterViewInit {
         }
       }
     );
+  }
+
+  ngAfterViewInit() {
+    this.getConsignee();
     for (let i = 0; i < this.length; i++) {
       this.declined.push(false);
     }
@@ -92,7 +96,8 @@ export class ConsigneeVerifyComponent implements OnInit, AfterViewInit {
         (res) => {
           console.log(res);
           if (res.msg === "success") {
-            this.consignee.splice(id, 1);
+            this.getConsignee();
+            // this.consignee.splice(id, 1);
           }
         },
         (error) => {

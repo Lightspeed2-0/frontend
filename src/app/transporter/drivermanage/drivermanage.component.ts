@@ -12,11 +12,13 @@ export class DrivermanageComponent implements OnInit {
   panelOpenState = false;
   Drivers: any[] = [];
   isEmpty = true;
+
   constructor(private service: TransporterService) {}
 
-  ngOnInit(): void {
+  getDrivers() {
     this.service.getDriver().subscribe(
       (res) => {
+        this.loaded = false;
         this.Drivers = res["drivers"];
         if (this.Drivers.length > 0) {
           this.isEmpty = false;
@@ -30,13 +32,19 @@ export class DrivermanageComponent implements OnInit {
       }
     );
   }
+  ngOnInit(): void {
+    this.loaded = true;
+    this.getDrivers();
+  }
 
   onDecline(id: string, index: number) {
     this.service.removeDriver({ _id: id }).subscribe(
       (res) => {
         console.log(res);
         if (res.msg === "removed") {
-          this.Drivers.splice(index, 1);
+          this.loaded = true;
+          this.getDrivers();
+          // this.Drivers.splice(index, 1);
         }
       },
       (error) => {

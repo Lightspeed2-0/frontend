@@ -30,8 +30,7 @@ export class StatusupdaterComponent implements OnInit {
 
   constructor(private serive: DriverService) {}
 
-  ngOnInit(): void {
-    this.clicked = true;
+  getOrder() {
     this.serive.getOrder().subscribe(
       (res) => {
         this.clicked = false;
@@ -52,6 +51,11 @@ export class StatusupdaterComponent implements OnInit {
     );
   }
 
+  ngOnInit(): void {
+    this.clicked = true;
+    this.getOrder();
+  }
+
   getStatus(data: any) {
     const status = this.Status.find((Status) => Status.status === data);
     return status!._id;
@@ -67,12 +71,14 @@ export class StatusupdaterComponent implements OnInit {
       .subscribe(
         (res) => {
           console.log(res);
+          this.clicked = true;
+          this.getOrder();
           this.updated[index] = false;
         },
         (error) => {
           // console.error(error.error.msg);
           if (error instanceof HttpErrorResponse) {
-            console.error(error.error);
+            console.error(error.error.msg);
           }
         }
       );

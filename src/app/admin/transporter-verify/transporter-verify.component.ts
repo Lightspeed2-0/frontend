@@ -49,7 +49,7 @@ export class TransporterVerifyComponent implements OnInit, AfterViewInit {
     return this.gradients[Math.floor(Math.random() * this.gradients.length)];
   }
 
-  ngAfterViewInit() {
+  getTransporter() {
     this.service.transporterGet().subscribe(
       (res: any) => {
         this.spinner = false;
@@ -69,6 +69,10 @@ export class TransporterVerifyComponent implements OnInit, AfterViewInit {
         }
       }
     );
+  }
+
+  ngAfterViewInit() {
+    this.getTransporter();
     for (let i = 0; i < this.length; i++) {
       this.declined.push(false);
     }
@@ -92,7 +96,8 @@ export class TransporterVerifyComponent implements OnInit, AfterViewInit {
         (res) => {
           console.log(res);
           if (res.msg === "success") {
-            this.transporter.splice(id, 1);
+            this.getTransporter();
+            // this.transporter.splice(id, 1);
           }
         },
         (error) => {
@@ -122,7 +127,8 @@ export class TransporterVerifyComponent implements OnInit, AfterViewInit {
     this.service.transporterDecline(data).subscribe(
       (res) => {
         if (res.msg === "success") {
-          this.transporter.splice(this._id, 1);
+          this.getTransporter();
+          // this.transporter.splice(this._id, 1);
         }
       },
       (error) => {

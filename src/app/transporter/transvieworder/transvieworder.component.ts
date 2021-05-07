@@ -16,8 +16,7 @@ export class TransvieworderComponent implements OnInit {
 
   constructor(private service: TransporterService) {}
 
-  ngOnInit(): void {
-    this.loaded = true;
+  getOrders() {
     this.service.getOrders().subscribe(
       (res) => {
         console.log(res);
@@ -37,14 +36,21 @@ export class TransvieworderComponent implements OnInit {
     );
   }
 
+  ngOnInit(): void {
+    this.loaded = true;
+    this.getOrders();
+  }
+
   onDecline(id: string, index: number) {
     this.service.orderDecline({ _id: id }).subscribe(
       (res) => {
         console.log(res);
+        this.loaded = true;
+        this.getOrders();
       },
       (error) => {
         if (error instanceof HttpErrorResponse) {
-          console.error(error.error);
+          console.error(error.error.msg);
         }
       }
     );

@@ -22,8 +22,7 @@ export class MoreorderComponent implements OnInit {
 
   constructor(private service: ConsigneeserviceService) {}
 
-  ngOnInit(): void {
-    this.clicked = true;
+  getOrders() {
     this.service.getOrder().subscribe(
       (res) => {
         this.clicked = false;
@@ -42,6 +41,11 @@ export class MoreorderComponent implements OnInit {
         }
       }
     );
+  }
+
+  ngOnInit(): void {
+    this.clicked = true;
+    this.getOrders();
   }
 
   onProceed(indentid: string, reqid: string, index: number) {
@@ -75,6 +79,7 @@ export class MoreorderComponent implements OnInit {
           console.log(res);
           if (res.msg === "Payment Successful") {
             this.popup = false;
+            this.getOrders();
           }
         },
         (error) => {
@@ -91,6 +96,7 @@ export class MoreorderComponent implements OnInit {
       .subscribe(
         (res) => {
           console.log(res);
+          this.getOrders();
         },
         (error) => {
           if (error instanceof HttpErrorResponse) {
@@ -106,6 +112,7 @@ export class MoreorderComponent implements OnInit {
       (res) => {
         this.cancel[index] = false;
         console.log(res);
+        this.getOrders();
       },
       (error) => {
         if (error instanceof HttpErrorResponse) {
