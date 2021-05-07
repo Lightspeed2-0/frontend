@@ -1,0 +1,375 @@
+<div class="manual">
+  <mat-horizontal-stepper linear>
+    <div class="mat-wrap">
+      <mat-step [stepControl]="source" label="Source">
+        <form [formGroup]="source">
+          <div class="row">
+            <label>Address</label>
+            <input
+              type="text"
+              formControlName="Address"
+              required
+              [ngStyle]="{
+                border:
+                  sourceControls.Address.invalid &&
+                  (sourceControls.Address.touched ||
+                    sourceControls.Address.dirty)
+                    ? '2px solid red'
+                    : ''
+              }"
+            />
+          </div>
+          <h5
+            [ngStyle]="{ color: 'red' }"
+            *ngIf="
+              sourceControls.Address.invalid &&
+              (sourceControls.Address.touched || sourceControls.Address.dirty)
+            "
+          >
+            Address required
+          </h5>
+          <div class="row">
+            <label>City</label>
+            <input
+              type="text"
+              formControlName="City"
+              required
+              [ngStyle]="{
+                border:
+                  sourceControls.City.invalid &&
+                  (sourceControls.City.touched || sourceControls.City.dirty)
+                    ? '2px solid red'
+                    : ''
+              }"
+            />
+          </div>
+          <h5
+            [ngStyle]="{ color: 'red' }"
+            *ngIf="
+              sourceControls.City.invalid &&
+              (sourceControls.City.touched || sourceControls.City.dirty)
+            "
+          >
+            City required
+          </h5>
+          <div class="row">
+            <label>Pincode</label>
+            <input
+              type="number"
+              maxlength="6"
+              minlength="6"
+              formControlName="Pincode"
+              required
+              [ngStyle]="{
+                border:
+                  sourceControls.Pincode.invalid &&
+                  (sourceControls.Pincode.touched ||
+                    sourceControls.Pincode.dirty)
+                    ? '2px solid red'
+                    : ''
+              }"
+            />
+          </div>
+          <h5
+            [ngStyle]="{ color: 'red' }"
+            *ngIf="
+              sourceControls.Pincode.invalid &&
+              (sourceControls.Pincode.touched || sourceControls.Pincode.dirty)
+            "
+          >
+            Pincode required or not valid
+          </h5>
+          <div class="row">
+            <label>State</label>
+            <input
+              type="text"
+              formControlName="State"
+              required
+              [ngStyle]="{
+                border:
+                  sourceControls.State.invalid &&
+                  (sourceControls.State.touched || sourceControls.State.dirty)
+                    ? '2px solid red'
+                    : ''
+              }"
+            />
+          </div>
+          <h5
+            [ngStyle]="{ color: 'red' }"
+            *ngIf="
+              sourceControls.State.invalid &&
+              (sourceControls.State.touched || sourceControls.State.dirty)
+            "
+          >
+            State required
+          </h5>
+          <button [disabled]="!source.valid" matStepperNext>next</button>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="destination" label="Destination">
+        <form [formGroup]="destination">
+          <div class="row">
+            <label>Address</label>
+            <input
+              type="text"
+              formControlName="Address"
+              required
+              [ngStyle]="{
+                border:
+                  destinationControls.Address.invalid &&
+                  (destinationControls.Address.touched ||
+                    destinationControls.Address.dirty)
+                    ? '2px solid red'
+                    : ''
+              }"
+            />
+          </div>
+          <h5
+            [ngStyle]="{ color: 'red' }"
+            *ngIf="
+              destinationControls.Address.invalid &&
+              (destinationControls.Address.touched ||
+                destinationControls.Address.dirty)
+            "
+          >
+            Address required
+          </h5>
+          <div class="row">
+            <label>City</label>
+            <input
+              type="text"
+              formControlName="City"
+              required
+              [ngStyle]="{
+                border:
+                  destinationControls.City.invalid &&
+                  (destinationControls.City.touched ||
+                    destinationControls.City.dirty)
+                    ? '2px solid red'
+                    : ''
+              }"
+            />
+          </div>
+          <h5
+            [ngStyle]="{ color: 'red' }"
+            *ngIf="
+              destinationControls.City.invalid &&
+              (destinationControls.City.touched ||
+                destinationControls.City.dirty)
+            "
+          >
+            City required
+          </h5>
+          <div class="row">
+            <label>Pincode</label>
+            <input
+              type="number"
+              maxlength="6"
+              minlength="6"
+              formControlName="Pincode"
+              required
+              [ngStyle]="{
+                border:
+                  destinationControls.Pincode.invalid &&
+                  (destinationControls.Pincode.touched ||
+                    destinationControls.Pincode.dirty)
+                    ? '2px solid red'
+                    : ''
+              }"
+            />
+          </div>
+          <h5
+            [ngStyle]="{ color: 'red' }"
+            *ngIf="
+              destinationControls.Pincode.invalid &&
+              (destinationControls.Pincode.touched ||
+                destinationControls.Pincode.dirty)
+            "
+          >
+            Pincode required or not valid
+          </h5>
+          <div class="row">
+            <label>State</label>
+            <input
+              type="text"
+              formControlName="State"
+              required
+              [ngStyle]="{
+                border:
+                  destinationControls.State.invalid &&
+                  (destinationControls.State.touched ||
+                    destinationControls.State.dirty)
+                    ? '2px solid red'
+                    : ''
+              }"
+            />
+          </div>
+          <h5
+            [ngStyle]="{ color: 'red' }"
+            *ngIf="
+              destinationControls.State.invalid &&
+              (destinationControls.State.touched ||
+                destinationControls.State.dirty)
+            "
+          >
+            State required
+          </h5>
+          <div class="btn">
+            <button matStepperPrevious>prev</button>
+            <button
+              [disabled]="!destination.valid"
+              matStepperNext
+              (click)="getTrans()"
+            >
+              next
+            </button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step label="Transporter" [stepControl]="transporter">
+        <form [formGroup]="transporter">
+          <div *ngIf="clicked">
+            <mat-progress-spinner
+              mode="indeterminate"
+              diameter="45"
+            ></mat-progress-spinner>
+          </div>
+          <div class="row">
+            <input list="trans" formControlName="TransporterId" />
+          </div>
+          <datalist id="trans">
+            <option
+              *ngFor="let transporter of Transporters"
+              value="{{ transporter.Username }}"
+            ></option>
+          </datalist>
+          <div class="btn">
+            <button matStepperPrevious>prev</button>
+            <button [disabled]="!transporter.valid" matStepperNext>next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step label="Confirm" [stepControl]="confirmation">
+        <form [formGroup]="confirmation">
+          <div class="row">
+            <label>Delivery Date</label>
+            <input
+              type="date"
+              formControlName="OrderDate"
+              required
+              [ngStyle]="{
+                border:
+                  confirmationControls.OrderDate.invalid &&
+                  (confirmationControls.OrderDate.touched ||
+                    confirmationControls.OrderDate.dirty)
+                    ? '2px solid red'
+                    : ''
+              }"
+            />
+          </div>
+          <h5
+            [ngStyle]="{ color: 'red' }"
+            *ngIf="
+              confirmationControls.OrderDate.invalid &&
+              (confirmationControls.OrderDate.touched ||
+                confirmationControls.OrderDate.dirty)
+            "
+          >
+            Order date is required
+          </h5>
+          <div class="row">
+            <label>Volume</label>
+            <input
+              type="number"
+              formControlName="Volume"
+              required
+              [ngStyle]="{
+                border:
+                  confirmationControls.Volume.invalid &&
+                  (confirmationControls.Volume.touched ||
+                    confirmationControls.Volume.dirty)
+                    ? '2px solid red'
+                    : ''
+              }"
+            />
+          </div>
+          <h5
+            [ngStyle]="{ color: 'red' }"
+            *ngIf="
+              confirmationControls.Volume.invalid &&
+              (confirmationControls.Volume.touched ||
+                confirmationControls.Volume.dirty)
+            "
+          >
+            Volume is required
+          </h5>
+          <div class="row">
+            <label>Weight</label>
+            <input
+              type="number"
+              formControlName="Weight"
+              required
+              [ngStyle]="{
+                border:
+                  confirmationControls.Weight.invalid &&
+                  (confirmationControls.Weight.touched ||
+                    confirmationControls.Weight.dirty)
+                    ? '2px solid red'
+                    : ''
+              }"
+            />
+          </div>
+          <h5
+            [ngStyle]="{ color: 'red' }"
+            *ngIf="
+              confirmationControls.Weight.invalid &&
+              (confirmationControls.Weight.touched ||
+                confirmationControls.Weight.dirty)
+            "
+          >
+            Weight is required
+          </h5>
+          <div class="row">
+            <label>Pooling</label>
+            <input
+              type="text"
+              formControlName="IsLTL"
+              placeholder="yes or no only...."
+              required
+              [ngStyle]="{
+                border:
+                  confirmationControls.IsLTL.invalid &&
+                  (confirmationControls.IsLTL.touched ||
+                    confirmationControls.IsLTL.dirty)
+                    ? '2px solid red'
+                    : ''
+              }"
+            />
+          </div>
+          <h5
+            [ngStyle]="{ color: 'red' }"
+            *ngIf="
+              confirmationControls.IsLTL.invalid &&
+              (confirmationControls.IsLTL.touched ||
+                confirmationControls.IsLTL.dirty)
+            "
+          >
+            IsLTL is required
+          </h5>
+          <div class="btn">
+            <button matStepperPrevious>prev</button>
+            <button [disabled]="!confirmation.valid" (click)="onSubmit()">
+              Submit
+              <div class="lds-ring" *ngIf="loaded">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </button>
+          </div>
+        </form>
+      </mat-step>
+    </div>
+  </mat-horizontal-stepper>
+</div>

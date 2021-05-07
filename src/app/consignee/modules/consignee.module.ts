@@ -17,6 +17,7 @@ import { ViewbidsComponent } from "../viewbids/viewbids.component";
 import { PaymentdetailsComponent } from "../paymentdetails/paymentdetails.component";
 import { ShortenPipePipe } from "../shorten-pipe.pipe";
 import { ProfileComponent } from "../profile/profile.component";
+import { BiddingComponent } from "../orders/bidding/bidding.component";
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ProfileComponent } from "../profile/profile.component";
     StatusComponent,
     PaymentComponent,
     ManualComponent,
+    BiddingComponent,
     MoreorderComponent,
     ViewbidsComponent,
     PaymentdetailsComponent,

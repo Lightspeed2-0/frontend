@@ -85,7 +85,7 @@
             </div>
           </div>
         </div>
-        <div class="status" *ngIf="order.Status >= 0 && order.Status <= 4">
+        <div class="status" *ngIf="order.Status >= 0">
           <div class="order-details">
             <div class="row">
               <h3>OrderID</h3>
@@ -99,7 +99,10 @@
               <h3>Destination</h3>
               <h4>{{ order.Destination.Address | shortenPipe: 25 }}</h4>
             </div>
-            <div class="row" *ngIf="order.StatusStack.length <= 2">
+            <div
+              class="row"
+              *ngIf="order.StatusStack.length <= 2 && order.Status <= 4"
+            >
               <button (click)="onCancel(order._id, i)">
                 Cancel
                 <div class="lds-ring" *ngIf="cancel[i]">

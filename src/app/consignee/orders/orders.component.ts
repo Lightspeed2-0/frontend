@@ -9,6 +9,7 @@ import { Component, Input, OnInit } from "@angular/core";
 export class OrdersComponent implements OnInit {
   constructor(private service: ConsigneeserviceService) {}
   manualSearch = false;
+  biddingSearch = false;
   ngOnInit(): void {}
 
   manual() {
@@ -16,8 +17,18 @@ export class OrdersComponent implements OnInit {
     this.manualSearch = true;
   }
 
+  bidding() {
+    this.service.popup = true;
+    this.biddingSearch = true;
+  }
+
   closeManual() {
     this.service.popup = false;
     this.manualSearch = false;
+  }
+
+  closeBidding() {
+    this.service.popup = false;
+    this.biddingSearch = false;
   }
 }

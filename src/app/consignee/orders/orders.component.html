@@ -1,11 +1,17 @@
 <div class="Orders">
   <button (click)="manual()">Manual Search</button>
-  <button>Bidding</button>
+  <button (click)="bidding()">Bidding</button>
   <button>Pooling</button>
 </div>
 <div *ngIf="manualSearch" class="popup">
   <div class="wrap">
     <button (click)="closeManual()">X</button>
     <app-manual></app-manual>
+  </div>
+</div>
+<div *ngIf="biddingSearch" class="popup">
+  <div class="wrap">
+    <button (click)="closeBidding()">X</button>
+    <app-bidding></app-bidding>
   </div>
 </div>
