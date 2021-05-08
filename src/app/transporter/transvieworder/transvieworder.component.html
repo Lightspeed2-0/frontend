@@ -24,10 +24,26 @@
             <div class="content">{{ order._id | tshortpipe: 20 }}</div>
           </div>
           <div *ngFor="let indent of order.Indents; let j = index">
-            <h3 *ngIf="indent.Status <= 4">Order {{ j + 1 }}</h3>
-            <h3 *ngIf="indent.Status == 5" [ngStyle]="{ color: 'red' }">
-              Order {{ j + 1 }} Canceled
+            <h3
+              [ngStyle]="{
+                color:
+                  indent.StatusStack.length == 5
+                    ? 'darkgreen'
+                    : indent.Status < 5
+                    ? 'black'
+                    : 'red'
+              }"
+            >
+              Order
+              {{
+                indent.StatusStack.length == 5
+                  ? " Delivered"
+                  : indent.Status < 5
+                  ? j + 1
+                  : j + 1 + "  Canceled"
+              }}
             </h3>
+
             <div>
               <div class="row">
                 <div class="title">Source</div>

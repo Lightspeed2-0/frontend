@@ -110,6 +110,7 @@ export class ManualComponent implements OnInit {
       (res) => {
         this.loaded = false;
         console.log(res);
+        this.service.popup = false;
         this.router.navigateByUrl(
           `/Consignee/${this.service.Username}/Your Orders`
         );

@@ -63,6 +63,7 @@ export class StatusupdaterComponent implements OnInit {
 
   onUpdate(id: string, index: number) {
     this.updated[index] = true;
+    console.log(id, this.statusForm.value["Status"]);
     this.serive
       .updateStatus({
         IndentId: id,
@@ -73,6 +74,7 @@ export class StatusupdaterComponent implements OnInit {
           console.log(res);
           this.clicked = true;
           this.getOrder();
+          this.statusForm.reset();
           this.updated[index] = false;
         },
         (error) => {

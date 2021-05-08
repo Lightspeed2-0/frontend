@@ -28,7 +28,14 @@
             </div>
             <div *ngFor="let indent of order.Indents; let j = index">
               <h3 [ngStyle]="{ color: indent.Status < 5 ? 'black' : 'red' }">
-                Order {{ indent.Status < 5 ? j + 1 : j + 1 + "  Canceled" }}
+                Order
+                {{
+                  indent.StatusStack.length == 5
+                    ? " Delivered"
+                    : indent.Status < 5
+                    ? j + 1
+                    : j + 1 + "  Canceled"
+                }}
               </h3>
               <div>
                 <div class="row">
@@ -47,7 +54,10 @@
                   <h3>Volume</h3>
                   <h4>{{ indent.Volume }}</h4>
                 </div>
-                <div class="row" *ngIf="indent.Status < 5">
+                <div
+                  class="row"
+                  *ngIf="indent.Status < 5 && indent.StatusStack.length < 5"
+                >
                   <h3>Status</h3>
                   <form
                     [formGroup]="statusForm"

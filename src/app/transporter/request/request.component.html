@@ -97,8 +97,11 @@
             >
               <div class="row">
                 <input list="driver" formControlName="DriverId" />
-                <datalist id="driver" *ngFor="let driver of Drivers">
-                  <option value="{{ driver.Username }}"></option>
+                <datalist id="driver">
+                  <option
+                    *ngFor="let driver of Drivers"
+                    value="{{ driver.Username }}"
+                  ></option>
                 </datalist>
                 <div class="row">
                   <button [disabled]="!driverForm.valid">
