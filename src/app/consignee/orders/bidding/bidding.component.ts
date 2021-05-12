@@ -89,36 +89,36 @@ export class BiddingComponent implements OnInit {
   }
 
   onSubmit() {
-    // let isltl = false;
-    // if (String(this.confirmation.value["IsLTL"]).toLowerCase() === "yes") {
-    //   isltl = true;
-    // } else {
-    //   isltl = false;
-    // }
-    // const data = {
-    //   Source: this.source.value,
-    //   Destination: this.destination.value,
-    //   TransporterId: this.getId(),
-    //   OrderDate: this.confirmation.value["OrderDate"],
-    //   Volume: this.confirmation.value["Volume"],
-    //   Weight: this.confirmation.value["Weight"],
-    //   IsLTL: isltl,
-    // };
-    // console.log(data);
-    // this.loaded = true;
-    // this.service.indentCreate(data).subscribe(
-    //   (res) => {
-    //     this.loaded = false;
-    //     console.log(res);
-    //     this.router.navigateByUrl(
-    //       `/Consignee/${this.service.Username}/Your Orders`
-    //     );
-    //   },
-    //   (error) => {
-    //     if (error instanceof HttpErrorResponse) {
-    //       console.error(error);
-    //     }
-    //   }
-    // );
+    let isltl = false;
+    if (String(this.confirmation.value["IsLTL"]).toLowerCase() === "yes") {
+      isltl = true;
+    } else {
+      isltl = false;
+    }
+    const data = {
+      Source: this.source.value,
+      Destination: this.destination.value,
+      TransporterId: this.getId(),
+      OrderDate: this.confirmation.value["OrderDate"],
+      Volume: this.confirmation.value["Volume"],
+      Weight: this.confirmation.value["Weight"],
+      IsLTL: isltl,
+    };
+    console.log(data);
+    this.loaded = true;
+    this.service.bidCreate(data).subscribe(
+      (res) => {
+        this.loaded = false;
+        console.log(res);
+        this.router.navigateByUrl(
+          `/Consignee/${this.service.Username}/View Bids`
+        );
+      },
+      (error) => {
+        if (error instanceof HttpErrorResponse) {
+          console.error(error.error.msg);
+        }
+      }
+    );
   }
 }

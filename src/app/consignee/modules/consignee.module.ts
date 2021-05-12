@@ -5,6 +5,7 @@ import { MatStepperModule } from "@angular/material/stepper";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatExpansionModule } from "@angular/material/expansion";
+import { MatTableModule } from "@angular/material/table";
 
 import { ConsigneeComponent } from "../consignee.component";
 import { DashbordComponent } from "../dashbord/dashbord.component";
@@ -42,6 +43,7 @@ import { BiddingComponent } from "../orders/bidding/bidding.component";
     MatStepperModule,
     MatProgressSpinnerModule,
     MatExpansionModule,
+    MatTableModule,
   ],
 })
 export class ConsigneeModule {}

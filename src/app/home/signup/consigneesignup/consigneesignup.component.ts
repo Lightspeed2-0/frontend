@@ -76,7 +76,7 @@ export class ConsigneesignupComponent implements OnInit {
   onError() {
     this.panError = null;
     this.panCard = null;
-    this.form.reset();
+    // this.form.reset();
   }
 
   onPan(event: any) {

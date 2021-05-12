@@ -6,9 +6,11 @@ import { Injectable } from "@angular/core";
 })
 export class ConsigneeserviceService {
   constructor(private http: HttpClient) {}
+
   popup = false;
   UserProfile = false;
   Username = "";
+
   private getTransporterUrl =
     "https://lightning-backend.herokuapp.com/consignee/getTransporter";
 
@@ -26,6 +28,15 @@ export class ConsigneeserviceService {
 
   private canelOrderUrl =
     "https://lightning-backend.herokuapp.com/consignee/cancelOrder";
+
+  private createBidUrl =
+    "https://lightning-backend.herokuapp.com/consignee/createBid";
+
+  private viewBidUrl =
+    "https://lightning-backend.herokuapp.com/consignee/viewBids";
+
+  private acceptBidUrl =
+    "https://lightning-backend.herokuapp.com/consignee/acceptBid";
 
   getTransporter() {
     return this.http.get<any>(this.getTransporterUrl);
@@ -52,5 +63,17 @@ export class ConsigneeserviceService {
 
   cancelOrder(data: any) {
     return this.http.post<any>(this.canelOrderUrl, data);
+  }
+
+  bidCreate(data: any) {
+    return this.http.post<any>(this.createBidUrl, data);
+  }
+
+  viewBids() {
+    return this.http.get<any>(this.viewBidUrl);
+  }
+
+  acceptBid(data: any) {
+    return this.http.post<any>(this.acceptBidUrl, data);
   }
 }

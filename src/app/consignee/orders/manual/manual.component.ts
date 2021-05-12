@@ -117,7 +117,7 @@ export class ManualComponent implements OnInit {
       },
       (error) => {
         if (error instanceof HttpErrorResponse) {
-          console.error(error);
+          console.error(error.error.msg);
         }
       }
     );
