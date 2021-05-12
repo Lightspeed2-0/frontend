@@ -33,6 +33,12 @@ export class TransporterService {
   private cancelOrderUrl =
     "https://lightning-backend.herokuapp.com/transporter/cancelOrder";
 
+  private getBidUrl =
+    "https://lightning-backend.herokuapp.com/transporter/getBids";
+
+  private acceptBidUrl =
+    "https://lightning-backend.herokuapp.com/transporter/acceptBid";
+
   constructor(private http: HttpClient) {}
 
   getRequest() {
@@ -74,5 +80,13 @@ export class TransporterService {
 
   cancelOrder(data: any) {
     return this.http.post<any>(this.cancelOrderUrl, data);
+  }
+
+  getBid() {
+    return this.http.get<any>(this.getBidUrl);
+  }
+
+  acceptBid(data: any) {
+    return this.http.post<any>(this.acceptBidUrl, data);
   }
 }

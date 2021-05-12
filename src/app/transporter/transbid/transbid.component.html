@@ -1,0 +1,64 @@
+<div class="order">
+  <div *ngIf="clicked">
+    <mat-progress-spinner
+      mode="indeterminate"
+      diameter="45"
+    ></mat-progress-spinner>
+  </div>
+  <div *ngIf="isEmpty">No orders please come later.....</div>
+  <div class="order-wrap" *ngFor="let bid of Bids; let i = index">
+    <mat-accordion>
+      <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title> Bid Created </mat-panel-title>
+          <mat-panel-description>14/05/2021</mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="status">
+          <div class="order-details">
+            <div class="title">Order Details</div>
+            <div class="row">
+              <h3>Bid ID</h3>
+              <h4>bid._id</h4>
+            </div>
+            <div class="row">
+              <h3>Source</h3>
+              <h4>123123wkje e2kjwne</h4>
+            </div>
+            <div class="row">
+              <h3>Destination</h3>
+              <h4>2pori3inwqpdf3884</h4>
+            </div>
+            <div class="row">
+              <h3>Weight</h3>
+              <h4>10</h4>
+            </div>
+            <div class="row">
+              <h3>Volume</h3>
+              <h4>20</h4>
+            </div>
+            <div class="row">
+              <form [formGroup]="form" (ngSubmit)="acceptBid(bid._id)">
+                <h3>Amount</h3>
+                <div class="btn">
+                  <input type="number" formControlName="Amount" />
+                  <button [disabled]="!form.valid">
+                    Bid
+                    <div class="lds-ring" *ngIf="loaded">
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                    </div>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

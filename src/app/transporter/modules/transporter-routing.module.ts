@@ -1,3 +1,4 @@
+import { TransbidComponent } from "./../transbid/transbid.component";
 import { DriveraddComponent } from "./../driveradd/driveradd.component";
 import { TransprofileComponent } from "./../transprofile/transprofile.component";
 import { RouterModule, Routes } from "@angular/router";
@@ -22,6 +23,7 @@ const routes: Routes = [
       { path: "View Orders", component: TransvieworderComponent },
       { path: "Add Driver", component: DriveraddComponent },
       { path: "Manage Driver", component: DrivermanageComponent },
+      { path: "View Bids", component: TransbidComponent },
     ],
   },
 ];
