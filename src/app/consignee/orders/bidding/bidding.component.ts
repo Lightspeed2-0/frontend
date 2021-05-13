@@ -84,9 +84,12 @@ export class BiddingComponent implements OnInit {
       (res) => {
         this.loaded = false;
         console.log(res);
-        this.router.navigateByUrl(
-          `/Consignee/${this.service.Username}/View Bids`
-        );
+        if (res.msg === "success") {
+          this.service.popup = false;
+          this.router.navigateByUrl(
+            `/Consignee/${this.service.Username}/View Bids`
+          );
+        }
       },
       (error) => {
         if (error instanceof HttpErrorResponse) {

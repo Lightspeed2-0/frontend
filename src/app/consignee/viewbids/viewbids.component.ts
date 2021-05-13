@@ -12,35 +12,8 @@ export class ViewbidsComponent implements OnInit {
   isEmpty = false;
   panelOpenState = false;
 
-  Bids: any[] = [{ _id: 0 }];
+  Bids: any[] = [];
   displayedColumns = ["Id", "Username", "Amount", "Accept"];
-  trans: any[] = [
-    {
-      _id: "123235476gbd",
-      Username: "Jitiendran ks",
-      Amount: 1000,
-    },
-    {
-      _id: "123235476gbd",
-      Username: "Jitiendran ks",
-      Amount: 1000,
-    },
-    {
-      _id: "123235476gbd",
-      Username: "Jitiendran ks",
-      Amount: 1000,
-    },
-    {
-      _id: "123235476gbd",
-      Username: "Jitiendran ks",
-      Amount: 1000,
-    },
-    {
-      _id: "123235476gbd",
-      Username: "Jitiendran ks",
-      Amount: 1000,
-    },
-  ];
 
   constructor(private service: ConsigneeserviceService) {}
 

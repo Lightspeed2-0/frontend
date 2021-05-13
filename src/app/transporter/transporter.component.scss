@@ -1,5 +1,6 @@
 .dashboard-wrapper {
   padding: 2em;
+  // height: 100vh;
   .dash-img {
     position: fixed;
     width: 96vw;
@@ -92,6 +93,7 @@
     margin-top: 19em;
     display: flex;
     width: 100%;
+    height: 100%;
     .navbar-wrap {
       width: 25%;
       display: flex;
@@ -103,10 +105,10 @@
         align-items: center;
         gap: 1em;
         text-decoration: none;
-        padding: 0.75em 1em;
+        padding: 0.6em 1em;
         border: 2px solid gainsboro;
         border-bottom: 2px solid #fff;
-        font-size: 1.5em;
+        font-size: 1.4em;
         color: rgb(114, 114, 114);
         &:nth-child(1) {
           border-top-left-radius: 0.5em;

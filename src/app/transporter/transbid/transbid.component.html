@@ -14,30 +14,42 @@
       >
         <mat-expansion-panel-header>
           <mat-panel-title> Bid Created </mat-panel-title>
-          <mat-panel-description>14/05/2021</mat-panel-description>
+          <mat-panel-description>{{
+            bid.indent.OrderDate | tshortpipe: 10
+          }}</mat-panel-description>
         </mat-expansion-panel-header>
         <div class="status">
           <div class="order-details">
             <div class="title">Order Details</div>
             <div class="row">
               <h3>Bid ID</h3>
-              <h4>bid._id</h4>
+              <h4>{{ bid._id }}</h4>
             </div>
             <div class="row">
               <h3>Source</h3>
-              <h4>123123wkje e2kjwne</h4>
+              <h4>{{ bid.indent.Source.Address }}</h4>
             </div>
             <div class="row">
               <h3>Destination</h3>
-              <h4>2pori3inwqpdf3884</h4>
+              <h4>{{ bid.indent.Destination.Address }}</h4>
             </div>
             <div class="row">
               <h3>Weight</h3>
-              <h4>10</h4>
+              <h4>{{ bid.indent.Weight }}</h4>
             </div>
             <div class="row">
               <h3>Volume</h3>
-              <h4>20</h4>
+              <h4>{{ bid.indent.Volume }}</h4>
+            </div>
+            <div class="row">
+              <h3>Customer Profile</h3>
+              <a
+                href="https://lightspeed2021.herokuapp.com/Consignee/{{
+                  bid.Consignee.Username
+                }}/Profile/{{ bid.ConsigneeId }}"
+                target="_blank"
+                >{{ bid.Consignee.Username }}</a
+              >
             </div>
             <div class="row">
               <form [formGroup]="form" (ngSubmit)="acceptBid(bid._id)">

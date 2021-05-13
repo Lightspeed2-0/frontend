@@ -40,7 +40,7 @@ export class TransporterService {
     "https://lightning-backend.herokuapp.com/transporter/didBid";
 
   private myBidsUrl =
-    "https://lightning-backend.herokuapp.com/transporter/didBid";
+    "https://lightning-backend.herokuapp.com/transporter/myQuotes";
 
   constructor(private http: HttpClient) {}
 

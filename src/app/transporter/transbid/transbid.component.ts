@@ -16,7 +16,7 @@ export class TransbidComponent implements OnInit {
   panelOpenState = false;
   loaded = false;
 
-  Bids: any[] = [{ _id: 0 }];
+  Bids: any[] = [];
 
   form: FormGroup = new FormGroup({
     Amount: new FormControl(null, Validators.required),
