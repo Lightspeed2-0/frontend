@@ -15,6 +15,7 @@ import { DrivermanageComponent } from "../drivermanage/drivermanage.component";
 import { TransvieworderComponent } from "../transvieworder/transvieworder.component";
 import { TransstatusComponent } from "../transstatus/transstatus.component";
 import { TransbidComponent } from "../transbid/transbid.component";
+import { MybidComponent } from "../mybid/mybid.component";
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { TransbidComponent } from "../transbid/transbid.component";
     TransvieworderComponent,
     TransstatusComponent,
     TransbidComponent,
+    MybidComponent,
   ],
   imports: [
     CommonModule,

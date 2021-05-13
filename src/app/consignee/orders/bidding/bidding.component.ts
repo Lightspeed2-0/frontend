@@ -63,31 +63,6 @@ export class BiddingComponent implements OnInit {
     console.log(this.source.value);
   }
 
-  getTrans() {
-    this.clicked = true;
-    this.service.getTransporter().subscribe(
-      (res) => {
-        this.clicked = false;
-        const tokenObj = res;
-        console.log(tokenObj.transporters);
-        this.Transporters = tokenObj.transporters;
-        console.log(this.Transporters.length);
-      },
-      (error) => {
-        if (error instanceof HttpErrorResponse) {
-          console.error(error);
-        }
-      }
-    );
-  }
-
-  getId() {
-    const data = this.Transporters.find(
-      (data) => data.Username === this.transporter.value["TransporterId"]
-    );
-    return data._id;
-  }
-
   onSubmit() {
     let isltl = false;
     if (String(this.confirmation.value["IsLTL"]).toLowerCase() === "yes") {
@@ -98,7 +73,6 @@ export class BiddingComponent implements OnInit {
     const data = {
       Source: this.source.value,
       Destination: this.destination.value,
-      TransporterId: this.getId(),
       OrderDate: this.confirmation.value["OrderDate"],
       Volume: this.confirmation.value["Volume"],
       Weight: this.confirmation.value["Weight"],

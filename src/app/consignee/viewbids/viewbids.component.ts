@@ -48,7 +48,7 @@ export class ViewbidsComponent implements OnInit {
     this.service.viewBids().subscribe(
       (res) => {
         this.clicked = false;
-        this.Bids = res["Bids"];
+        this.Bids = res["bids"];
 
         if (this.Bids.length == 0) {
           this.isEmpty = true;
@@ -76,6 +76,17 @@ export class ViewbidsComponent implements OnInit {
       (error) => {
         if (error instanceof HttpErrorResponse) {
           console.error(error.error.msg);
+        }
+      }
+    );
+  }
+
+  onClose(id: string) {
+    this.service.closeBid({ BidId: id }).subscribe(
+      (res) => console.log(res),
+      (error) => {
+        if (error instanceof HttpErrorResponse) {
+          console.error(error.error);
         }
       }
     );

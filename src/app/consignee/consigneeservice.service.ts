@@ -38,6 +38,9 @@ export class ConsigneeserviceService {
   private acceptBidUrl =
     "https://lightning-backend.herokuapp.com/consignee/acceptBid";
 
+  private closeBidUrl =
+    "https://lightning-backend.herokuapp.com/consignee/closeBid";
+
   getTransporter() {
     return this.http.get<any>(this.getTransporterUrl);
   }
@@ -75,5 +78,9 @@ export class ConsigneeserviceService {
 
   acceptBid(data: any) {
     return this.http.post<any>(this.acceptBidUrl, data);
+  }
+
+  closeBid(data: any) {
+    return this.http.post<any>(this.closeBidUrl, data);
   }
 }

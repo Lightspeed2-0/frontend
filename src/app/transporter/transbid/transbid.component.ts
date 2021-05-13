@@ -29,7 +29,7 @@ export class TransbidComponent implements OnInit {
       (res) => {
         console.log(res);
         this.clicked = false;
-        this.Bids = res["Bids"];
+        this.Bids = res["bids"];
         if (this.Bids.length == 0) {
           this.isEmpty = true;
         }

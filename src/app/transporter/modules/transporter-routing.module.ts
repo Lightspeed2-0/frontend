@@ -10,6 +10,7 @@ import { TransDashboardComponent } from "../trans-dashboard/trans-dashboard.comp
 import { RequestComponent } from "../request/request.component";
 import { DrivermanageComponent } from "../drivermanage/drivermanage.component";
 import { TransvieworderComponent } from "../transvieworder/transvieworder.component";
+import { MybidComponent } from "../mybid/mybid.component";
 
 const routes: Routes = [
   {
@@ -24,6 +25,7 @@ const routes: Routes = [
       { path: "Add Driver", component: DriveraddComponent },
       { path: "Manage Driver", component: DrivermanageComponent },
       { path: "View Bids", component: TransbidComponent },
+      { path: "My Bids", component: MybidComponent },
     ],
   },
 ];

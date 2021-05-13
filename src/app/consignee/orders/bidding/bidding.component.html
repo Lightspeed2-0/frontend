@@ -216,36 +216,7 @@
           </h5>
           <div class="btn">
             <button matStepperPrevious>prev</button>
-            <button
-              [disabled]="!destination.valid"
-              matStepperNext
-              (click)="getTrans()"
-            >
-              next
-            </button>
-          </div>
-        </form>
-      </mat-step>
-      <mat-step label="Transporter" [stepControl]="transporter">
-        <form [formGroup]="transporter">
-          <div *ngIf="clicked">
-            <mat-progress-spinner
-              mode="indeterminate"
-              diameter="45"
-            ></mat-progress-spinner>
-          </div>
-          <div class="row">
-            <input list="trans" formControlName="TransporterId" />
-          </div>
-          <datalist id="trans">
-            <option
-              *ngFor="let transporter of Transporters"
-              value="{{ transporter.Username }}"
-            ></option>
-          </datalist>
-          <div class="btn">
-            <button matStepperPrevious>prev</button>
-            <button [disabled]="!transporter.valid" matStepperNext>next</button>
+            <button [disabled]="!destination.valid" matStepperNext>next</button>
           </div>
         </form>
       </mat-step>
