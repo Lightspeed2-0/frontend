@@ -49,7 +49,7 @@
             <ng-container matColumnDef="Id">
               <th mat-header-cell *matHeaderCellDef>ID.</th>
               <td mat-cell *matCellDef="let transporter">
-                {{ transporter._id }}
+                {{ transporter.TransporterId }}
               </td>
             </ng-container>
             <ng-container matColumnDef="Username">
@@ -68,7 +68,7 @@
             <ng-container matColumnDef="Accept">
               <th mat-header-cell *matHeaderCellDef>Accept</th>
               <td mat-cell *matCellDef="let transporter">
-                <button (click)="onAccept(bid._id, transporter._id)">
+                <button (click)="onAccept(bid._id, transporter.TransporterId)">
                   Accept
                 </button>
               </td>

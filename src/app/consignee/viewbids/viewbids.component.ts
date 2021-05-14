@@ -42,7 +42,7 @@ export class ViewbidsComponent implements OnInit {
   }
 
   onAccept(bidId: string, transId: string) {
-    this.service.acceptBid({ BidId: bidId, TrasnporterId: transId }).subscribe(
+    this.service.acceptBid({ BidId: bidId, TransporterId: transId }).subscribe(
       (res) => {
         console.log(res);
       },
