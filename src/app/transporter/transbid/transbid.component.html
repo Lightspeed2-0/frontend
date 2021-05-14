@@ -1,3 +1,4 @@
+<input type="text" placeholder="search...." [(ngModel)]="search" />
 <div class="order">
   <div *ngIf="clicked">
     <mat-progress-spinner
@@ -6,7 +7,10 @@
     ></mat-progress-spinner>
   </div>
   <div *ngIf="isEmpty">No orders please come later.....</div>
-  <div class="order-wrap" *ngFor="let bid of Bids; let i = index">
+  <div
+    class="order-wrap"
+    *ngFor="let bid of Bids | filter: search; let i = index"
+  >
     <mat-accordion>
       <mat-expansion-panel
         (opened)="panelOpenState = true"

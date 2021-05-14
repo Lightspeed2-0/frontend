@@ -3,7 +3,7 @@ import { FormControl } from "@angular/forms";
 import { FormGroup } from "@angular/forms";
 import { HttpErrorResponse } from "@angular/common/http";
 import { TransporterService } from "./../transporter.service";
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-transbid",
@@ -15,6 +15,8 @@ export class TransbidComponent implements OnInit {
   isEmpty = false;
   panelOpenState = false;
   loaded = false;
+
+  search = "";
 
   Bids: any[] = [];
 
@@ -29,7 +31,17 @@ export class TransbidComponent implements OnInit {
       (res) => {
         console.log(res);
         this.clicked = false;
-        this.Bids = res["bids"];
+        const arr: any[] = res["bids"];
+        if (this.search == "") {
+          this.Bids = res["bids"];
+        } else {
+          for (let i = 0; i < arr.length; i++) {
+            if (String(arr[i].indent.Source.Address).startsWith(this.search)) {
+              this.Bids.push(arr[i]);
+            }
+          }
+        }
+
         if (this.Bids.length == 0) {
           this.isEmpty = true;
         }

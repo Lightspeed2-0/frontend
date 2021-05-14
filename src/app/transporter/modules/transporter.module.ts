@@ -3,12 +3,13 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { AppRoutingModule } from "./../../app-routing.module";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { Ng2SearchPipeModule } from "ng2-search-filter";
 
 import { TransporterComponent } from "../transporter.component";
 import { RequestComponent } from "../request/request.component";
 import { TransprofileComponent } from "../transprofile/transprofile.component";
 import { TransDashboardComponent } from "../trans-dashboard/trans-dashboard.component";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { TshortpipePipe } from "../tshortpipe.pipe";
 import { DriveraddComponent } from "../driveradd/driveradd.component";
 import { DrivermanageComponent } from "../drivermanage/drivermanage.component";
@@ -38,6 +39,7 @@ import { MybidComponent } from "../mybid/mybid.component";
     ReactiveFormsModule,
     MatProgressSpinnerModule,
     MatExpansionModule,
+    Ng2SearchPipeModule,
   ],
 })
 export class TransporterModule {}

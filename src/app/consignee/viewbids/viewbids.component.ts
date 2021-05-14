@@ -13,6 +13,9 @@ export class ViewbidsComponent implements OnInit {
   panelOpenState = false;
 
   Bids: any[] = [];
+  close: any[] = [];
+  accept: any[] = [];
+
   displayedColumns = ["Id", "Username", "Amount", "Accept"];
 
   constructor(private service: ConsigneeserviceService) {}
@@ -26,6 +29,13 @@ export class ViewbidsComponent implements OnInit {
         if (this.Bids.length == 0) {
           this.isEmpty = true;
         }
+
+        this.close.length = this.Bids.length;
+        this.accept.length = this.accept.length;
+
+        this.close.fill(false);
+        this.accept.fill(false);
+
         console.log(res);
       },
       (error) => {
@@ -41,10 +51,15 @@ export class ViewbidsComponent implements OnInit {
     this.getBids();
   }
 
-  onAccept(bidId: string, transId: string) {
+  onAccept(bidId: string, transId: string, index: number) {
+    this.accept[index] = true;
     this.service.acceptBid({ BidId: bidId, TransporterId: transId }).subscribe(
       (res) => {
-        console.log(res);
+        if (res.msg === "success") {
+          this.clicked = true;
+          this.getBids();
+          this.accept[index] = false;
+        }
       },
       (error) => {
         if (error instanceof HttpErrorResponse) {
@@ -54,9 +69,17 @@ export class ViewbidsComponent implements OnInit {
     );
   }
 
-  onClose(id: string) {
+  onClose(id: string, index: number) {
+    this.close[index] = true;
     this.service.closeBid({ BidId: id }).subscribe(
-      (res) => console.log(res),
+      (res) => {
+        if (res.msg === "success") {
+          this.clicked = true;
+          this.getBids();
+          this.close[index] = false;
+        }
+        // console.log(res);
+      },
       (error) => {
         if (error instanceof HttpErrorResponse) {
           console.error(error.error);

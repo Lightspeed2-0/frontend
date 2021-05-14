@@ -12,7 +12,7 @@ export class MybidComponent implements OnInit {
   panelOpenState = false;
   isEmpty = false;
 
-  Bids: any[] = [{ _id: 0 }];
+  Bids: any[] = [];
 
   constructor(private service: TransporterService) {}
 
