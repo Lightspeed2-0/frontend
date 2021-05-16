@@ -40,6 +40,7 @@ import { ConsigneeVerifyComponent } from "./admin/consignee-verify/consignee-ver
 import { TransporterVerifyComponent } from "./admin/transporter-verify/transporter-verify.component";
 import { TrasnotpComponent } from "./home/signup/verify/trasnotp/trasnotp.component";
 import { QueriesComponent } from "./admin/queries/queries.component";
+import { AgmCoreModule } from "@agm/core";
 
 @NgModule({
   declarations: [
@@ -84,6 +85,9 @@ import { QueriesComponent } from "./admin/queries/queries.component";
     MatPaginatorModule,
     MatSnackBarModule,
     MatExpansionModule,
+    AgmCoreModule.forRoot({
+      apiKey: "",
+    }),
   ],
   providers: [
     {

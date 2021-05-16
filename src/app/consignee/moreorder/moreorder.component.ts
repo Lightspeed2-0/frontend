@@ -8,7 +8,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./moreorder.component.scss"],
 })
 export class MoreorderComponent implements OnInit {
-  panelOpenState = false;
+  panelOpenState: any[] = [];
   popup = false;
   msg = "";
   clicked = true;
@@ -32,7 +32,9 @@ export class MoreorderComponent implements OnInit {
           this.isEmpty = false;
         }
         this.cancel.length = this.Orders.length;
+        this.panelOpenState.length = this.Orders.length;
         this.cancel.fill(false);
+        this.panelOpenState.fill(false);
         console.log(response);
       },
       (err) => {

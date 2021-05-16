@@ -19,6 +19,8 @@ import { PaymentdetailsComponent } from "../paymentdetails/paymentdetails.compon
 import { ShortenPipePipe } from "../shorten-pipe.pipe";
 import { ProfileComponent } from "../profile/profile.component";
 import { BiddingComponent } from "../orders/bidding/bidding.component";
+import { MapDirective } from "src/app/direction/map.directive";
+import { DirectionComponent } from "./../../direction/direction.component";
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { BiddingComponent } from "../orders/bidding/bidding.component";
     PaymentdetailsComponent,
     ShortenPipePipe,
     ProfileComponent,
+    DirectionComponent,
+    MapDirective,
   ],
   imports: [
     CommonModule,

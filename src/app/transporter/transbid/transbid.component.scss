@@ -36,13 +36,15 @@
 input {
   margin-left: 1em;
   margin-bottom: 1em;
-  border: 2px solid gainsboro;
+  border: none;
   outline: none;
   padding: 0.5em 2em;
   font-size: 1.3em;
-  border-radius: 0.3em;
-  &:focus {
-    border: 2px solid #ffe227;
+  border-radius: 1em;
+  background: linear-gradient(to right, #f7971e, #ffd200);
+  color: #fff;
+  &::placeholder {
+    color: white;
   }
 }
 
@@ -98,7 +100,9 @@ input {
                 font-size: 1.1em;
                 padding: 0.3em 0.5em;
                 outline: none;
+                margin-top: 0.8em;
                 border: 2px solid gainsboro;
+                background: #fff;
                 border-radius: 0.2em;
                 &:focus {
                   border: 2px solid #00c6ff;
