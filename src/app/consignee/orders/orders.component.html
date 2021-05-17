@@ -1,7 +1,7 @@
 <div class="Orders">
   <button (click)="manual()">Manual Search</button>
   <button (click)="bidding()">Bidding</button>
-  <button>Pooling</button>
+  <button (click)="pooling()">Pooling</button>
 </div>
 <div *ngIf="manualSearch" class="popup">
   <div class="wrap">
@@ -13,5 +13,11 @@
   <div class="wrap">
     <button (click)="closeBidding()">X</button>
     <app-bidding></app-bidding>
+  </div>
+</div>
+<div *ngIf="poolingSearch" class="popup">
+  <div class="wrap">
+    <button (click)="closePooling()">X</button>
+    <app-pool></app-pool>
   </div>
 </div>

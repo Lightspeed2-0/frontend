@@ -118,7 +118,14 @@
               </button>
             </div>
           </div>
-          <app-direction *ngIf="panelOpenState[i]"></app-direction>
+          <app-direction
+            [Coordinates]="{
+              src: { latitude: '12.9481', longitude: '80.13974' },
+              des: { latitude: '12.988166', longitude: '80.176506' },
+              Path: []
+            }"
+            *ngIf="panelOpenState[i]"
+          ></app-direction>
           <app-status [Status]="order.StatusStack"></app-status>
         </div>
       </mat-expansion-panel>

@@ -10,6 +10,7 @@ export class ConsigneeserviceService {
   popup = false;
   UserProfile = false;
   Username = "";
+  poolIndent: any;
 
   private getTransporterUrl =
     "https://lightning-backend.herokuapp.com/consignee/getTransporter";
@@ -41,6 +42,15 @@ export class ConsigneeserviceService {
   private closeBidUrl =
     "https://lightning-backend.herokuapp.com/consignee/closeBid";
 
+  private createPoolUrl =
+    "https://lightning-backend.herokuapp.com/consignee/createPool";
+
+  private getPoolUrl =
+    "https://lightning-backend.herokuapp.com/consignee/getPool";
+
+  private recommendPoolUrl =
+    "https://lightning-backend.herokuapp.com/consignee/recommendPool";
+
   getTransporter() {
     return this.http.get<any>(this.getTransporterUrl);
   }
@@ -48,6 +58,7 @@ export class ConsigneeserviceService {
   indentCreate(data: any) {
     return this.http.post<any>(this.indentUrl, data);
   }
+
   getOrder() {
     return this.http.get<any>(this.getOrderUrl);
   }
@@ -82,5 +93,17 @@ export class ConsigneeserviceService {
 
   closeBid(data: any) {
     return this.http.post<any>(this.closeBidUrl, data);
+  }
+
+  createPool(data: any) {
+    return this.http.post<any>(this.createPoolUrl, data);
+  }
+
+  getPool() {
+    return this.http.get<any>(this.getPoolUrl);
+  }
+
+  recommendPool(data: any) {
+    return this.http.post<any>(this.recommendPoolUrl, data);
   }
 }

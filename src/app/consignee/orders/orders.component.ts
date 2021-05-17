@@ -10,6 +10,7 @@ export class OrdersComponent implements OnInit {
   constructor(private service: ConsigneeserviceService) {}
   manualSearch = false;
   biddingSearch = false;
+  poolingSearch = false;
   ngOnInit(): void {}
 
   manual() {
@@ -22,6 +23,11 @@ export class OrdersComponent implements OnInit {
     this.biddingSearch = true;
   }
 
+  pooling() {
+    this.service.popup = true;
+    this.poolingSearch = true;
+  }
+
   closeManual() {
     this.service.popup = false;
     this.manualSearch = false;
@@ -30,5 +36,10 @@ export class OrdersComponent implements OnInit {
   closeBidding() {
     this.service.popup = false;
     this.biddingSearch = false;
+  }
+
+  closePooling() {
+    this.service.popup = false;
+    this.poolingSearch = false;
   }
 }

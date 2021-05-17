@@ -21,6 +21,9 @@ import { ProfileComponent } from "../profile/profile.component";
 import { BiddingComponent } from "../orders/bidding/bidding.component";
 import { MapDirective } from "src/app/direction/map.directive";
 import { DirectionComponent } from "./../../direction/direction.component";
+import { PoolComponent } from "../orders/pool/pool.component";
+import { PoolingComponent } from "../pooling/pooling.component";
+import { SuggestionsComponent } from "../suggestions/suggestions.component";
 
 @NgModule({
   declarations: [
@@ -38,6 +41,9 @@ import { DirectionComponent } from "./../../direction/direction.component";
     ProfileComponent,
     DirectionComponent,
     MapDirective,
+    PoolComponent,
+    PoolingComponent,
+    SuggestionsComponent,
   ],
   imports: [
     CommonModule,

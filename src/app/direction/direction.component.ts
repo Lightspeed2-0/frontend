@@ -1,5 +1,4 @@
-import { mapToMapExpression } from "@angular/compiler/src/render3/util";
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { ILatLng } from "./map.directive";
 
 declare const L: any;
@@ -10,10 +9,7 @@ declare const L: any;
   styleUrls: ["./direction.component.scss"],
 })
 export class DirectionComponent implements OnInit {
-  origin: ILatLng = {
-    latitude: 12.980334,
-    longitude: 80.177866,
-  };
+  @Input() Coordinates: any;
 
   destination: ILatLng = {
     latitude: 12.9481,
@@ -25,10 +21,13 @@ export class DirectionComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    let mymap = L.map("map").setView(
-      [this.origin.latitude, this.origin.longitude],
-      12
-    );
+    const origin: ILatLng = this.Coordinates.src;
+    const destination: ILatLng = this.Coordinates.des;
+    const pathArr: any[] = this.Coordinates.Path;
+    const coordinates: any[] = [];
+
+    let mymap = L.map("map").setView([origin.latitude, origin.longitude], 11);
+
     L.tileLayer(
       "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoiaml0aWVuZHJhbjA3IiwiYSI6ImNrb3Fyd2R2NjBiMTAyb21tMzRqaGl5OTcifQ.oP1eai0Io9AVpkB_wwjuyg",
       {
@@ -42,23 +41,45 @@ export class DirectionComponent implements OnInit {
       }
     ).addTo(mymap);
 
-    let smarker = L.marker([this.origin.latitude, this.origin.longitude]).addTo(
-      mymap
-    );
+    const primary = new L.Icon({
+      iconUrl:
+        "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png",
+      shadowUrl:
+        "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41],
+    });
 
-    let dmarker = L.marker([
-      this.destination.latitude,
-      this.destination.longitude,
-    ]).addTo(mymap);
+    const secondary = new L.Icon({
+      iconUrl:
+        "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-yellow.png",
+      shadowUrl:
+        "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41],
+    });
 
-    smarker.bindPopup("Meenambakkam");
-    dmarker.bindPopup("Chrompet");
+    let smarker = L.marker([origin.latitude, origin.longitude], {
+      icon: primary,
+    }).addTo(mymap);
 
-    const coordinates = [
-      [this.origin.latitude, this.origin.longitude],
-      [12.9673484, 80.1526888],
-      [this.destination.latitude, this.destination.longitude],
-    ];
+    let dmarker = L.marker([destination.latitude, destination.longitude], {
+      icon: primary,
+    }).addTo(mymap);
+
+    smarker.bindPopup("Pickup Place");
+    dmarker.bindPopup("Delivery Place");
+
+    coordinates.push([origin.latitude, origin.longitude]);
+    coordinates.push([destination.latitude, destination.longitude]);
+
+    for (let i = 0; i < pathArr.length; i++) {
+      L.marker(pathArr[i], { icon: secondary }).addTo(mymap);
+    }
 
     const polyline = L.polyline(coordinates, { color: "red" }).addTo(mymap);
     mymap.fitBounds(polyline.getBounds());

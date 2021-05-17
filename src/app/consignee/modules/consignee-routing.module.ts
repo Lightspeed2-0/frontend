@@ -10,6 +10,8 @@ import { ViewbidsComponent } from "../viewbids/viewbids.component";
 import { MoreorderComponent } from "../moreorder/moreorder.component";
 import { PaymentdetailsComponent } from "../paymentdetails/paymentdetails.component";
 import { ProfileComponent } from "../profile/profile.component";
+import { PoolingComponent } from "../pooling/pooling.component";
+import { SuggestionsComponent } from "../suggestions/suggestions.component";
 
 const routes: Routes = [
   {
@@ -20,8 +22,10 @@ const routes: Routes = [
       { path: "", component: DashbordComponent },
       { path: "Orders", component: OrdersComponent },
       { path: "View Bids", component: ViewbidsComponent },
+      { path: "Pooling", component: PoolingComponent },
       { path: "Your Orders", component: MoreorderComponent },
       { path: "Your Payments", component: PaymentdetailsComponent },
+      { path: "Suggested Orders", component: SuggestionsComponent },
     ],
   },
   { path: "Consignee/:Username/Profile/:id", component: ProfileComponent },

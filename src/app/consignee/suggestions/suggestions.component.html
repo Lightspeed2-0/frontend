@@ -1,0 +1,71 @@
+<div class="header">
+  <button (click)="onBack()">
+    <span class="material-icons"> arrow_back_ios_new </span>
+    Back
+  </button>
+</div>
+<div class="main">
+  <div *ngIf="loaded">
+    <mat-progress-spinner
+      mode="indeterminate"
+      diameter="45"
+    ></mat-progress-spinner>
+  </div>
+  <div *ngIf="isEmpty">No orders please come later.....</div>
+  <div class="order-wrap" *ngFor="let order of Orders; let i = index">
+    <mat-accordion>
+      <mat-expansion-panel
+        (opened)="panelOpenState[i] = true"
+        (closed)="panelOpenState[i] = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title> Transporter Name </mat-panel-title>
+          <mat-panel-description> </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="status">
+          <div class="order-details">
+            <div class="title">Order Details</div>
+            <div class="row">
+              <h3>order. ID</h3>
+              <h4>{{ order._id }}</h4>
+            </div>
+            <div class="row">
+              <h3>Source</h3>
+              <h4>{{ order.indent.Source.Address }}</h4>
+            </div>
+            <div class="row">
+              <h3>Destination</h3>
+              <h4>{{ order.indent.Destination.Address }}</h4>
+            </div>
+            <div class="row">
+              <h3>Weight</h3>
+              <h4>{{ order.indent.Weight }}</h4>
+            </div>
+            <div class="row">
+              <h3>Volume</h3>
+              <h4>{{ order.indent.Volume }}</h4>
+            </div>
+            <button (click)="onAccept(order._id, i)">
+              <span class="material-icons"> check_circle_outline </span>
+              Accept
+              <div class="lds-ring" *ngIf="clicked[i]">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </button>
+          </div>
+          <app-direction
+            [Coordinates]="{
+              src: { latitude: '12.9481', longitude: '80.13974' },
+              des: { latitude: '12.988166', longitude: '80.176506' },
+              Path: [['12.9673484', '80.1526888']]
+            }"
+            *ngIf="panelOpenState[i]"
+          ></app-direction>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>
