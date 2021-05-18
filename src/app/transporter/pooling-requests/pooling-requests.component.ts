@@ -61,7 +61,7 @@ export class PoolingRequestsComponent implements OnInit {
 
   onAccept(index: number) {
     this.accept[index] = true;
-    this.clicked[index] = true;
+    // this.clicked[index] = true;
     this.Isaccepted = true;
   }
 
@@ -89,16 +89,19 @@ export class PoolingRequestsComponent implements OnInit {
     this.accept[index] = false;
   }
 
-  enterAmount(id: string, index: number) {
+  enterAmount(requestid: string, indentid: string, index: number) {
     const data = {
-      RequestId: id,
+      PoolingRequestId: requestid,
+      IndentId: indentid,
       ...this.form.value,
       IsAccepted: this.Isaccepted,
     };
+    this.clicked[index] = true;
     // console.log(data);
-    this.service.putAccept(data).subscribe(
+    this.service.accpetPool(data).subscribe(
       (res) => {
         console.log(res);
+        this.clicked[index] = false;
         if (res.msg === "success") {
           // this.Req.splice(index, 1);
           this.loaded = true;
@@ -114,12 +117,12 @@ export class PoolingRequestsComponent implements OnInit {
       }
     );
   }
-  onAppend(orderid: string, indentid: string, poolrequestid: string) {
+  onAppend(indentid: string, orderid: string, poolrequestid: string) {
     this.service
       .appendOrder({
         OrderId: orderid,
         IndentId: indentid,
-        PoolRequestId: poolrequestid,
+        PoolingRequestId: poolrequestid,
       })
       .subscribe(
         (res) => {

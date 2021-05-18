@@ -46,7 +46,10 @@ export class TransporterService {
     "https://lightning-backend.herokuapp.com/transporter/poolRequests";
 
   private appendOrderUrl =
-    "https://lightning-backend.herokuapp.com/transporter/doPool";
+    "https://lightning-backend.herokuapp.com/transporter/appendPoolOrder";
+
+  private acceptPoolUrl =
+    "https://lightning-backend.herokuapp.com/transporter/respondPoolRequest";
 
   constructor(private http: HttpClient) {}
 
@@ -105,6 +108,10 @@ export class TransporterService {
 
   getPoolRequest() {
     return this.http.get<any>(this.getPoolRequestUrl);
+  }
+
+  accpetPool(data: any) {
+    return this.http.post<any>(this.acceptPoolUrl, data);
   }
 
   appendOrder(data: any) {

@@ -27,6 +27,7 @@ export class StatusupdaterComponent implements OnInit {
   statusForm: FormGroup = new FormGroup({
     Status: new FormControl(null, Validators.required),
   });
+  statusGot: any;
 
   constructor(private serive: DriverService) {}
 
@@ -61,13 +62,13 @@ export class StatusupdaterComponent implements OnInit {
     return status!._id;
   }
 
-  onUpdate(id: string, index: number) {
+  onUpdate(id: string, status: any, index: number) {
     this.updated[index] = true;
-    console.log(id, this.statusForm.value["Status"]);
+    console.log(id, this.statusGot);
     this.serive
       .updateStatus({
         IndentId: id,
-        Status: this.getStatus(this.statusForm.value["Status"]),
+        Status: this.getStatus(this.statusGot),
       })
       .subscribe(
         (res) => {

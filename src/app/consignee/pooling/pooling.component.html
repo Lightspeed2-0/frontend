@@ -16,7 +16,9 @@
           <mat-panel-title
             [ngStyle]="{
               color:
-                indent.StatusStack.length === 5
+                indent.Status === -4
+                  ? 'black'
+                  : indent.StatusStack.length === 5
                   ? 'darkgreen'
                   : indent.Status === 5
                   ? 'red'
@@ -172,5 +174,19 @@
         </div>
       </mat-expansion-panel>
     </mat-accordion>
+  </div>
+</div>
+<div class="confirm-wrap" *ngIf="popup">
+  <div class="confirm-popup">
+    <div class="row">
+      <div class="msg">Are you sure you want to {{ msg }}</div>
+      <button (click)="onClose()"><i class="far fa-times-circle"></i></button>
+    </div>
+    <div class="btn">
+      <button (click)="msg === 'Pay' ? onPayment() : Declined()">
+        Proceed
+      </button>
+      <button (click)="onClose()">Cancel</button>
+    </div>
   </div>
 </div>

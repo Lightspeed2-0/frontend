@@ -94,9 +94,9 @@ export class PoolingComponent implements OnInit {
 
   onPayment() {
     this.service
-      .postPayment({
+      .accepPool({
         IndentId: this.orderId,
-        RequestId: this.requestId,
+        PoolingRequestId: this.requestId,
         IsAccepted: true,
       })
       .subscribe(

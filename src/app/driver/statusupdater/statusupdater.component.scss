@@ -31,14 +31,15 @@
             width: 17.5em;
             text-align: left;
           }
-          form {
+          .form {
             width: 17.5em;
             .row {
               display: flex;
               align-items: center;
               gap: 0.75em;
-              input {
+              select {
                 font-size: 1.2em;
+                background: #fff;
                 padding: 0.3em;
                 outline: none;
                 border-image: linear-gradient(to right, #11998e, #38ef7d) 1;

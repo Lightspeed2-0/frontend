@@ -92,13 +92,7 @@
           </div>
           <div class="row" *ngIf="request.Status === 4">
             <button
-              (click)="
-                onAppend(
-                  request.Indent._id,
-                  request.Order._id,
-                  request.PoolRequestId
-                )
-              "
+              (click)="onAppend(request.IndentId, request.OrderId, request._id)"
             >
               Append Order
               <div class="lds-ring" *ngIf="clicked[i]">
@@ -132,10 +126,18 @@
           <form
             *ngIf="accept[i]"
             [formGroup]="form"
-            (ngSubmit)="enterAmount(request._id, i)"
+            (ngSubmit)="enterAmount(request._id, request.Indent._id, i)"
           >
             <input type="number" formControlName="Amount" />
-            <button class="send" [disabled]="!form.valid">send</button>
+            <button class="send" [disabled]="!form.valid">
+              send
+              <div class="lds-ring" *ngIf="clicked[i]">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </button>
             <button (click)="onBack(i)">X</button>
           </form>
         </div>

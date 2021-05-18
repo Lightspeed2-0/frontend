@@ -51,8 +51,11 @@ export class ConsigneeserviceService {
   private recommendPoolUrl =
     "https://lightning-backend.herokuapp.com/consignee/recommendPool";
 
-  private acceptPoolUrl =
+  private requestPoolUrl =
     "https://lightning-backend.herokuapp.com/consignee/requestPool";
+
+  private acceptPoolUrl =
+    "https://lightning-backend.herokuapp.com/consignee/acceptPool";
 
   getTransporter() {
     return this.http.get<any>(this.getTransporterUrl);
@@ -111,6 +114,10 @@ export class ConsigneeserviceService {
   }
 
   requestPool(data: any) {
+    return this.http.post<any>(this.requestPoolUrl, data);
+  }
+
+  accepPool(data: any) {
     return this.http.post<any>(this.acceptPoolUrl, data);
   }
 }

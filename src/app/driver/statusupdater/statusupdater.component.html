@@ -54,24 +54,30 @@
                   <h3>Volume</h3>
                   <h4>{{ indent.Volume }}</h4>
                 </div>
+                <div class="row">
+                  <h3>StatusStack</h3>
+                  <h4>{{ indent.StatusStack.length }}</h4>
+                </div>
                 <div
                   class="row"
                   *ngIf="indent.Status < 5 && indent.StatusStack.length < 5"
                 >
                   <h3>Status</h3>
-                  <form
-                    [formGroup]="statusForm"
-                    (ngSubmit)="onUpdate(indent._id, j)"
-                  >
+                  <div class="form">
                     <div class="row">
-                      <input list="stat" formControlName="Status" />
+                      <!-- <input list="stat" #status />
                       <datalist id="stat">
+                        <option value="{{ indent.Volume }}">
+                          {{ Status[indent.StatusStack.length].status }}
+                        </option>
+                      </datalist> -->
+                      <select [(ngModel)]="statusGot">
                         <option>
                           {{ Status[indent.StatusStack.length].status }}
                         </option>
-                      </datalist>
+                      </select>
                       <div class="row">
-                        <button>
+                        <button (click)="onUpdate(indent._id, statusGot, j)">
                           Update
                           <div class="lds-ring" *ngIf="updated[j]">
                             <div></div>
@@ -82,7 +88,7 @@
                         </button>
                       </div>
                     </div>
-                  </form>
+                  </div>
                 </div>
               </div>
             </div>
