@@ -17,6 +17,7 @@ import { TransvieworderComponent } from "../transvieworder/transvieworder.compon
 import { TransstatusComponent } from "../transstatus/transstatus.component";
 import { TransbidComponent } from "../transbid/transbid.component";
 import { MybidComponent } from "../mybid/mybid.component";
+import { PoolingRequestsComponent } from "../pooling-requests/pooling-requests.component";
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { MybidComponent } from "../mybid/mybid.component";
     TransstatusComponent,
     TransbidComponent,
     MybidComponent,
+    PoolingRequestsComponent,
   ],
   imports: [
     CommonModule,

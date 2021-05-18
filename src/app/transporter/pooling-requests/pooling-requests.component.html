@@ -1,0 +1,145 @@
+<div class="request">
+  <div *ngIf="loaded">
+    <mat-progress-spinner
+      mode="indeterminate"
+      diameter="45"
+    ></mat-progress-spinner>
+  </div>
+  <div *ngIf="isEmpty">No requests available</div>
+  <div class="request-wrap" *ngFor="let request of Req; let i = index">
+    <mat-accordion>
+      <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title
+            [ngStyle]="{
+              color:
+                request.Status === 0
+                  ? 'palegreen'
+                  : request.Status === 2
+                  ? 'orange'
+                  : request.Status === 1 || request.Status === 3
+                  ? 'red'
+                  : request.Status === 4
+                  ? 'darkgreen'
+                  : 'black'
+            }"
+          >
+            {{
+              request.Status === 2
+                ? "Waiting for payment"
+                : request.Status === 3
+                ? "Order canceled by consignee"
+                : request.Status === 1
+                ? "Order canceled by you"
+                : request.Status === 4
+                ? "Payment recieved"
+                : "New Order"
+            }}
+          </mat-panel-title>
+          <mat-panel-description>{{
+            request.Indent.OrderDate | tshortpipe: 10
+          }}</mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="request-details" *ngIf="request.Status !== 2">
+          <div class="row">
+            <div class="title">OrderId</div>
+            <div class="content">{{ request._id | tshortpipe: 20 }}</div>
+          </div>
+          <div class="row">
+            <div class="title">Source</div>
+            <div class="content">
+              {{ request.Indent.Source.Address }}
+              {{ request.Indent.Source.Pincode }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="title">Destination</div>
+            <div class="content">
+              {{ request.Indent.Destination.Address }}
+              {{ request.Indent.Destination.Pincode }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="title">Delivery Date</div>
+            <div class="content">
+              {{ request.Indent.OrderDate | tshortpipe: 10 }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="title">Weight</div>
+            <div class="content">{{ request.Indent.Weight }}</div>
+          </div>
+          <div class="row">
+            <div class="title">Volume</div>
+            <div class="content">{{ request.Indent.Volume }}</div>
+          </div>
+          <div class="row">
+            <div class="title">IsLTL</div>
+            <div class="content">{{ request.Indent.IsLTL }}</div>
+          </div>
+          <div class="row">
+            <div class="title">Consignee Profile</div>
+            <a
+              href="https://lightspeed2021.herokuapp.com/Consignee/{{
+                request.Consignee.Username
+              }}/Profile/{{ request.ConsigneeId }}"
+              target="_blank"
+              >{{ request.Consignee.Username }}</a
+            >
+          </div>
+          <div class="row" *ngIf="request.Status === 4">
+            <button
+              (click)="
+                onAppend(
+                  request.Indent._id,
+                  request.Order._id,
+                  request.PoolRequestId
+                )
+              "
+            >
+              Append Order
+              <div class="lds-ring" *ngIf="clicked[i]">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </button>
+          </div>
+          <div class="row" *ngIf="!accept[i] && request.Status === 0">
+            <button (click)="onAccept(i)">
+              Accept
+              <div class="lds-ring" *ngIf="clicked[i]">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </button>
+            <button (click)="onDecline(request._id, i)">
+              Decline
+              <div class="lds-ring" *ngIf="dclicked[i]">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </button>
+          </div>
+          <form
+            *ngIf="accept[i]"
+            [formGroup]="form"
+            (ngSubmit)="enterAmount(request._id, i)"
+          >
+            <input type="number" formControlName="Amount" />
+            <button class="send" [disabled]="!form.valid">send</button>
+            <button (click)="onBack(i)">X</button>
+          </form>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

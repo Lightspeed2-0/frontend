@@ -23,7 +23,6 @@ export class DirectionComponent implements OnInit {
   ngOnInit(): void {
     const origin: ILatLng = this.Coordinates.src;
     const destination: ILatLng = this.Coordinates.des;
-    const pathArr: any[] = this.Coordinates.Path;
     const coordinates: any[] = [];
 
     let mymap = L.map("map").setView([origin.latitude, origin.longitude], 11);
@@ -76,10 +75,6 @@ export class DirectionComponent implements OnInit {
 
     coordinates.push([origin.latitude, origin.longitude]);
     coordinates.push([destination.latitude, destination.longitude]);
-
-    for (let i = 0; i < pathArr.length; i++) {
-      L.marker(pathArr[i], { icon: secondary }).addTo(mymap);
-    }
 
     const polyline = L.polyline(coordinates, { color: "red" }).addTo(mymap);
     mymap.fitBounds(polyline.getBounds());

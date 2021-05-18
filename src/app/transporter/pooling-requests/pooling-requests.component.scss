@@ -1,0 +1,209 @@
+.request {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .request-wrap {
+    margin-bottom: 1em;
+    width: 60vw;
+    .request-details {
+      margin-top: 1.5em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .row {
+        width: 35em;
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5em;
+        .title {
+          width: 17.5em;
+          font-size: 1.4em;
+          font-weight: 500;
+        }
+        .content {
+          font-size: 1.3em;
+          width: 17.5em;
+        }
+        a {
+          font-size: 1.3em;
+          width: 17.5em;
+        }
+
+        button {
+          cursor: pointer;
+          outline: none;
+          border: none;
+          font-size: 1.3em;
+          padding: 0.4em;
+          width: 7em;
+          color: #fff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5em;
+          &:nth-child(1) {
+            background: linear-gradient(to right, #11998e, #38ef7d);
+          }
+          &:nth-child(2) {
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            margin-left: 1.5em;
+          }
+          .lds-ring {
+            display: inline-block;
+            position: relative;
+            width: 20px;
+            height: 20px;
+            div {
+              box-sizing: border-box;
+              display: block;
+              position: absolute;
+              width: 20px;
+              height: 20px;
+              border: 2.5px solid #fff;
+              border-radius: 50%;
+              animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+              border-color: #fff transparent transparent transparent;
+              &:nth-child(1) {
+                animation-delay: -0.45s;
+              }
+              &:nth-child(2) {
+                animation-delay: -0.3s;
+              }
+              &:nth-child(3) {
+                animation-delay: -0.15s;
+              }
+            }
+            @keyframes lds-ring {
+              0% {
+                transform: rotate(0deg);
+              }
+              100% {
+                transform: rotate(360deg);
+              }
+            }
+          }
+        }
+      }
+      form {
+        width: 35em;
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5em;
+        input {
+          font-size: 1.2em;
+          padding: 0.3em;
+          outline: none;
+          border-image: linear-gradient(to right, #11998e, #38ef7d) 1;
+        }
+        button {
+          cursor: pointer;
+          outline: none;
+          border: none;
+          font-size: 1.3em;
+          padding: 0.4em;
+          width: 7em;
+          color: #fff;
+          margin-left: 1.5em;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          &:nth-child(2) {
+            background: linear-gradient(to right, #11998e, #38ef7d);
+          }
+          &:nth-child(3) {
+            color: gray;
+            background: none;
+          }
+          &:disabled {
+            background: gainsboro;
+            cursor: not-allowed;
+          }
+          .lds-ring {
+            display: inline-block;
+            position: relative;
+            width: 20px;
+            height: 20px;
+            div {
+              box-sizing: border-box;
+              display: block;
+              position: absolute;
+              width: 20px;
+              height: 20px;
+              border: 2.5px solid #fff;
+              border-radius: 50%;
+              animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+              border-color: #fff transparent transparent transparent;
+              &:nth-child(1) {
+                animation-delay: -0.45s;
+              }
+              &:nth-child(2) {
+                animation-delay: -0.3s;
+              }
+              &:nth-child(3) {
+                animation-delay: -0.15s;
+              }
+            }
+            @keyframes lds-ring {
+              0% {
+                transform: rotate(0deg);
+              }
+              100% {
+                transform: rotate(360deg);
+              }
+            }
+          }
+        }
+        .row {
+          margin-top: 1.35em;
+          display: flex;
+          align-items: center;
+          button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.3em;
+            &:disabled {
+              background: gainsboro;
+              cursor: not-allowed;
+            }
+            .lds-ring {
+              display: inline-block;
+              position: relative;
+              width: 20px;
+              height: 20px;
+              div {
+                box-sizing: border-box;
+                display: block;
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                border: 2.5px solid #fff;
+                border-radius: 50%;
+                animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+                border-color: #fff transparent transparent transparent;
+                &:nth-child(1) {
+                  animation-delay: -0.45s;
+                }
+                &:nth-child(2) {
+                  animation-delay: -0.3s;
+                }
+                &:nth-child(3) {
+                  animation-delay: -0.15s;
+                }
+              }
+              @keyframes lds-ring {
+                0% {
+                  transform: rotate(0deg);
+                }
+                100% {
+                  transform: rotate(360deg);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

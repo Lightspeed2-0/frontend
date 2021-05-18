@@ -1,3 +1,4 @@
+import { PoolingRequestsComponent } from "./../pooling-requests/pooling-requests.component";
 import { TransbidComponent } from "./../transbid/transbid.component";
 import { DriveraddComponent } from "./../driveradd/driveradd.component";
 import { TransprofileComponent } from "./../transprofile/transprofile.component";
@@ -21,6 +22,7 @@ const routes: Routes = [
       { path: "", component: TransDashboardComponent },
       { path: "Profile", component: TransprofileComponent },
       { path: "Request", component: RequestComponent },
+      { path: "Pooling Requests", component: PoolingRequestsComponent },
       { path: "View Orders", component: TransvieworderComponent },
       { path: "Add Driver", component: DriveraddComponent },
       { path: "Manage Driver", component: DrivermanageComponent },

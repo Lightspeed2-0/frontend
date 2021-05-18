@@ -42,6 +42,12 @@ export class TransporterService {
   private myBidsUrl =
     "https://lightning-backend.herokuapp.com/transporter/myQuotes";
 
+  private getPoolRequestUrl =
+    "https://lightning-backend.herokuapp.com/transporter/poolRequests";
+
+  private appendOrderUrl =
+    "https://lightning-backend.herokuapp.com/transporter/doPool";
+
   constructor(private http: HttpClient) {}
 
   getRequest() {
@@ -95,5 +101,13 @@ export class TransporterService {
 
   myBid() {
     return this.http.get<any>(this.myBidsUrl);
+  }
+
+  getPoolRequest() {
+    return this.http.get<any>(this.getPoolRequestUrl);
+  }
+
+  appendOrder(data: any) {
+    return this.http.post<any>(this.appendOrderUrl, data);
   }
 }

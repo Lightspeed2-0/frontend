@@ -6,42 +6,81 @@
     ></mat-progress-spinner>
   </div>
   <div *ngIf="isEmpty">No orders please come later.....</div>
-  <div class="order-wrap" *ngFor="let bid of Bids; let i = index">
+  <div class="order-wrap" *ngFor="let indent of Bids; let i = index">
     <mat-accordion>
       <mat-expansion-panel
-        (opened)="panelOpenState = true"
-        (closed)="panelOpenState = false"
+        (opened)="panelOpenState[i] = true"
+        (closed)="panelOpenState[i] = false"
       >
         <mat-expansion-panel-header>
-          <mat-panel-title> Bid Created </mat-panel-title>
+          <mat-panel-title
+            [ngStyle]="{
+              color:
+                indent.StatusStack.length === 5
+                  ? 'darkgreen'
+                  : indent.Status === 5
+                  ? 'red'
+                  : indent.Status >= 0
+                  ? 'darkgreen'
+                  : indent.IsPaid
+                  ? 'darkgreen'
+                  : indent.request.Status === 0
+                  ? 'palegreen'
+                  : indent.request.Status === 1 || indent.request.Status === 3
+                  ? 'red'
+                  : indent.request.Status === 2
+                  ? 'orange'
+                  : 'black'
+            }"
+          >
+            {{
+              indent.Status === -4
+                ? "Pool Indent Created"
+                : indent.StatusStack.length === 5
+                ? "Order Delivered"
+                : indent.Status === 5
+                ? "Order canceled"
+                : indent.Status >= 0
+                ? "Order Created"
+                : indent.IsPaid
+                ? "Order paid"
+                : indent.request.Status === 1
+                ? "Order is Canceled by Transporter"
+                : indent.request.Status === 3
+                ? "Order is Canceled by you"
+                : indent.request.Status === 2
+                ? "Payment pending"
+                : "New Order"
+            }}
+          </mat-panel-title>
           <mat-panel-description>{{
-            bid.indent.OrderDate | shortenPipe: 10
+            indent.OrderDate | shortenPipe: 10
           }}</mat-panel-description>
         </mat-expansion-panel-header>
-        <div class="status">
+        <div class="status" *ngIf="indent.Status === -4">
           <div class="order-details">
             <div class="title">Order Details</div>
             <div class="row">
-              <h3>Bid ID</h3>
-              <h4>{{ bid._id }}</h4>
+              <h3>indent ID</h3>
+              <h4>{{ indent._id }}</h4>
             </div>
             <div class="row">
               <h3>Source</h3>
-              <h4>{{ bid.indent.Source.Address }}</h4>
+              <h4>{{ indent.Source.Address }}</h4>
             </div>
             <div class="row">
               <h3>Destination</h3>
-              <h4>{{ bid.indent.Destination.Address }}</h4>
+              <h4>{{ indent.Destination.Address }}</h4>
             </div>
             <div class="row">
               <h3>Weight</h3>
-              <h4>{{ bid.indent.Weight }}</h4>
+              <h4>{{ indent.Weight }}</h4>
             </div>
             <div class="row">
               <h3>Volume</h3>
-              <h4>{{ bid.indent.Volume }}</h4>
+              <h4>{{ indent.Volume }}</h4>
             </div>
-            <button class="suggest" (click)="onSuggest(bid.indent)">
+            <button class="suggest" (click)="onSuggest(indent)">
               <span class="material-icons"> assistant </span>
               Suggest Orders
               <div class="lds-ring" *ngIf="close[i]">
@@ -51,16 +90,85 @@
                 <div></div>
               </div>
             </button>
-            <!-- <button (click)="onClose(bid._id, i)">
-              Close Bid
-              <div class="lds-ring" *ngIf="close[i]">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-              </div>
-            </button> -->
           </div>
+        </div>
+        <div class="status" *ngIf="indent.Status === -3">
+          <div class="order-details">
+            <div class="row">
+              <h3>OrderID</h3>
+              <h4>{{ indent._id }}</h4>
+            </div>
+            <div class="row">
+              <h3>Source</h3>
+              <h4>{{ indent.Source.Address | shortenPipe: 25 }}</h4>
+            </div>
+            <div class="row">
+              <h3>Destination</h3>
+              <h4>{{ indent.Destination.Address | shortenPipe: 25 }}</h4>
+            </div>
+            <div
+              class="row"
+              *ngIf="
+                indent.request.Amount > 0 &&
+                !indent.IsPaid &&
+                indent.request.Status === 2
+              "
+            >
+              <h3>{{ indent.request.Amount }} to be paid</h3>
+              <div class="payment">
+                <button (click)="onProceed(indent._id, indent.request._id, i)">
+                  Proceed pay
+                </button>
+                <button (click)="onDecline(indent.request._id, i)">
+                  Decline
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="status" *ngIf="indent.Status >= 0">
+          <div class="order-details">
+            <div class="row">
+              <h3>OrderID</h3>
+              <h4>{{ indent._id }}</h4>
+            </div>
+            <div class="row">
+              <h3>Source</h3>
+              <h4>{{ indent.Source.Address | shortenPipe: 25 }}</h4>
+            </div>
+            <div class="row">
+              <h3>Destination</h3>
+              <h4>{{ indent.Destination.Address | shortenPipe: 25 }}</h4>
+            </div>
+            <div
+              class="row"
+              *ngIf="indent.StatusStack.length <= 2 && indent.Status <= 4"
+            >
+              <button (click)="onCancel(indent._id, i)">
+                Cancel
+                <div class="lds-ring" *ngIf="cancel[i]">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+              </button>
+            </div>
+          </div>
+          <app-direction
+            [Coordinates]="{
+              src: {
+                latitude: indent.Source.Geolocation.lat,
+                longitude: indent.Source.Geolocation.lng
+              },
+              des: {
+                latitude: indent.Destination.Geolocation.lat,
+                longitude: indent.Destination.Geolocation.lng
+              }
+            }"
+            *ngIf="panelOpenState[i]"
+          ></app-direction>
+          <app-status [Status]="indent.StatusStack"></app-status>
         </div>
       </mat-expansion-panel>
     </mat-accordion>

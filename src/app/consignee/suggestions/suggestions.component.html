@@ -19,8 +19,8 @@
         (closed)="panelOpenState[i] = false"
       >
         <mat-expansion-panel-header>
-          <mat-panel-title> Transporter Name </mat-panel-title>
-          <mat-panel-description> </mat-panel-description>
+          <mat-panel-title> Order </mat-panel-title>
+          <mat-panel-description> {{ order.OrderDate }}</mat-panel-description>
         </mat-expansion-panel-header>
         <div class="status">
           <div class="order-details">
@@ -31,23 +31,23 @@
             </div>
             <div class="row">
               <h3>Source</h3>
-              <h4>{{ order.indent.Source.Address }}</h4>
+              <h4>{{ order.Source.Pincode }}</h4>
             </div>
             <div class="row">
               <h3>Destination</h3>
-              <h4>{{ order.indent.Destination.Address }}</h4>
+              <h4>{{ order.Destination.Pincode }}</h4>
             </div>
-            <div class="row">
+            <!-- <div class="row">
               <h3>Weight</h3>
               <h4>{{ order.indent.Weight }}</h4>
             </div>
             <div class="row">
               <h3>Volume</h3>
               <h4>{{ order.indent.Volume }}</h4>
-            </div>
-            <button (click)="onAccept(order._id, i)">
+            </div> -->
+            <button (click)="onAccept(order._id, order.TransporterId, i)">
               <span class="material-icons"> check_circle_outline </span>
-              Accept
+              Request
               <div class="lds-ring" *ngIf="clicked[i]">
                 <div></div>
                 <div></div>
@@ -58,9 +58,14 @@
           </div>
           <app-direction
             [Coordinates]="{
-              src: { latitude: '12.9481', longitude: '80.13974' },
-              des: { latitude: '12.988166', longitude: '80.176506' },
-              Path: [['12.9673484', '80.1526888']]
+              src: {
+                latitude: order.Source.Geolocation.lat,
+                longitude: order.Source.Geolocation.lng
+              },
+              des: {
+                latitude: order.Destination.Geolocation.lat,
+                longitude: order.Destination.Geolocation.lng
+              }
             }"
             *ngIf="panelOpenState[i]"
           ></app-direction>

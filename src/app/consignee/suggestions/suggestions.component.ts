@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { ConsigneeserviceService } from "./../consigneeservice.service";
 import { Component, OnInit } from "@angular/core";
@@ -17,27 +18,14 @@ export class SuggestionsComponent implements OnInit {
   isEmpty = true;
 
   panelOpenState: any[] = [];
-  Orders: any[] = [
-    {
-      _id: 1,
-      indent: {
-        Source: {
-          Address: "22/16",
-        },
-        Destination: {
-          Address: "MIT",
-        },
-        Weight: 100,
-        Volume: 12,
-      },
-    },
-  ];
+  Orders: any[] = [];
   clicked: any[] = [];
 
   getOrders() {
     this.service.recommendPool(this.service.poolIndent).subscribe((res) => {
       console.log(res);
-      this.Orders = res;
+      this.loaded = false;
+      this.Orders = res["orders"];
       if (this.Orders.length > 0) {
         this.isEmpty = false;
       }
@@ -52,13 +40,34 @@ export class SuggestionsComponent implements OnInit {
   ngOnInit(): void {
     this.loaded = true;
     this.getOrders();
+    console.log(this.service.poolIndent);
   }
 
   onBack() {
     this.router.navigateByUrl(`/Consignee/${this.service.Username}/Pooling`);
   }
 
-  onAccept(id: string, index: number) {
+  onAccept(orderid: string, transporterid: string, index: number) {
     this.clicked[index] = true;
+    const data = {
+      OrderId: orderid,
+      TransporterId: transporterid,
+      IndentId: this.service.poolIndent._id,
+    };
+    this.service.requestPool(data).subscribe(
+      (res) => {
+        console.log(res);
+        if (res.msg === "success") {
+          this.router.navigateByUrl(
+            `/Consignee/${this.service.Username}/Pooling`
+          );
+        }
+      },
+      (error) => {
+        if (error instanceof HttpErrorResponse) {
+          console.error(error.error);
+        }
+      }
+    );
   }
 }
