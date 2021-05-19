@@ -14,6 +14,7 @@ export class StatusupdaterComponent implements OnInit {
   clicked = false;
   isEmpty = true;
   panelOpenState = false;
+  selected: any[] = [];
   Orders: any[] = [];
   Status: { _id: number; status: string }[] = [
     { _id: 0, status: "Driver Assigned" },
@@ -32,6 +33,7 @@ export class StatusupdaterComponent implements OnInit {
   constructor(private serive: DriverService) {}
 
   getOrder() {
+    this.Orders.length = 0;
     this.serive.getOrder().subscribe(
       (res) => {
         this.clicked = false;
@@ -39,6 +41,8 @@ export class StatusupdaterComponent implements OnInit {
         this.Orders = res["Orders"];
         if (this.Orders.length > 0) {
           this.isEmpty = false;
+        } else {
+          this.isEmpty = true;
         }
         console.log(this.Status);
         this.updated.length = this.Orders.length;

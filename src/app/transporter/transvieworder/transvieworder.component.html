@@ -13,10 +13,12 @@
         (closed)="panelOpenState = false"
       >
         <mat-expansion-panel-header>
-          <mat-panel-title>Order</mat-panel-title>
-          <mat-panel-description>{{
+          <mat-panel-title [ngStyle]="{ color: 'darkgreen' }"
+            >Order Created</mat-panel-title
+          >
+          <!-- <mat-panel-description>{{
             order.Indents[0].OrderDate | tshortpipe: 10
-          }}</mat-panel-description>
+          }}</mat-panel-description> -->
         </mat-expansion-panel-header>
         <div class="request-details">
           <div class="row">
@@ -37,7 +39,7 @@
               Order
               {{
                 indent.StatusStack.length == 5
-                  ? " Delivered"
+                  ? j + 1 + " Delivered"
                   : indent.Status < 5
                   ? j + 1
                   : j + 1 + "  Canceled"

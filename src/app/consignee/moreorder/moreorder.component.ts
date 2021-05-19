@@ -23,6 +23,7 @@ export class MoreorderComponent implements OnInit {
   constructor(private service: ConsigneeserviceService) {}
 
   getOrders() {
+    this.Orders.length = 0;
     this.service.getOrder().subscribe(
       (res) => {
         this.clicked = false;
@@ -30,6 +31,8 @@ export class MoreorderComponent implements OnInit {
         this.Orders = response;
         if (this.Orders.length > 0) {
           this.isEmpty = false;
+        } else {
+          this.isEmpty = true;
         }
         this.cancel.length = this.Orders.length;
         this.panelOpenState.length = this.Orders.length;
@@ -81,6 +84,7 @@ export class MoreorderComponent implements OnInit {
           console.log(res);
           if (res.msg === "Payment Successful") {
             this.popup = false;
+            this.clicked = true;
             this.getOrders();
           }
         },
@@ -98,6 +102,7 @@ export class MoreorderComponent implements OnInit {
       .subscribe(
         (res) => {
           console.log(res);
+          this.clicked = true;
           this.getOrders();
         },
         (error) => {
@@ -114,6 +119,7 @@ export class MoreorderComponent implements OnInit {
       (res) => {
         this.cancel[index] = false;
         console.log(res);
+        this.clicked = true;
         this.getOrders();
       },
       (error) => {

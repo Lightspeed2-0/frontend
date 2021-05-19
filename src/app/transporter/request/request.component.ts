@@ -33,6 +33,7 @@ export class RequestComponent implements OnInit {
   constructor(private service: TransporterService) {}
 
   getRequest() {
+    this.Req.length = 0;
     this.service.getRequest().subscribe(
       (res) => {
         this.loaded = false;
@@ -41,6 +42,8 @@ export class RequestComponent implements OnInit {
         console.log(this.Req);
         if (this.Req.length > 0) {
           this.isEmpty = false;
+        } else {
+          this.isEmpty = true;
         }
         this.accept.length = this.Req.length;
         this.accept.fill(false);

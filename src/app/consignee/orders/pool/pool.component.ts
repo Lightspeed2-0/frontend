@@ -87,7 +87,7 @@ export class PoolComponent implements OnInit {
         if (res.msg === "success") {
           this.service.popup = false;
           this.router.navigateByUrl(
-            `/Consignee/${this.service.Username}/View Bids`
+            `/Consignee/${this.service.Username}/Pooling`
           );
         }
       },

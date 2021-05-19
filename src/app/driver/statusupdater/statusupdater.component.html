@@ -13,7 +13,7 @@
         (closed)="panelOpenState = false"
       >
         <mat-expansion-panel-header>
-          <mat-panel-title [ngStyle]="{ color: 'orange' }">
+          <mat-panel-title [ngStyle]="{ color: '#ff577f' }">
             Order
           </mat-panel-title>
           <mat-panel-description>{{
@@ -27,11 +27,20 @@
               <h4>{{ order._id }}</h4>
             </div>
             <div *ngFor="let indent of order.Indents; let j = index">
-              <h3 [ngStyle]="{ color: indent.Status < 5 ? 'black' : 'red' }">
+              <h3
+                [ngStyle]="{
+                  color:
+                    indent.StatusStack.length == 5
+                      ? 'darkgreen'
+                      : indent.Status < 5
+                      ? 'black'
+                      : 'red'
+                }"
+              >
                 Order
                 {{
                   indent.StatusStack.length == 5
-                    ? " Delivered"
+                    ? j + 1 + " Delivered"
                     : indent.Status < 5
                     ? j + 1
                     : j + 1 + "  Canceled"

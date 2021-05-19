@@ -26,6 +26,7 @@ export class PoolingRequestsComponent implements OnInit {
   isEmpty = true;
 
   getRequest() {
+    this.Req.length = 0;
     this.service.getPoolRequest().subscribe(
       (res) => {
         this.loaded = false;
@@ -33,9 +34,13 @@ export class PoolingRequestsComponent implements OnInit {
         const response = res;
         this.Req = response["requests"];
         console.log(this.Req);
+
         if (this.Req.length > 0) {
           this.isEmpty = false;
+        } else {
+          this.isEmpty = true;
         }
+
         this.accept.length = this.Req.length;
         this.accept.fill(false);
 
@@ -117,7 +122,14 @@ export class PoolingRequestsComponent implements OnInit {
       }
     );
   }
-  onAppend(indentid: string, orderid: string, poolrequestid: string) {
+
+  onAppend(
+    indentid: string,
+    orderid: string,
+    poolrequestid: string,
+    index: number
+  ) {
+    this.clicked[index] = true;
     this.service
       .appendOrder({
         OrderId: orderid,
@@ -127,6 +139,7 @@ export class PoolingRequestsComponent implements OnInit {
       .subscribe(
         (res) => {
           console.log(res);
+          this.loaded = true;
           this.getRequest();
         },
         (error) => {

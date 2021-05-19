@@ -17,6 +17,7 @@ export class TransvieworderComponent implements OnInit {
   constructor(private service: TransporterService) {}
 
   getOrders() {
+    this.Orders.length = 0;
     this.service.getOrders().subscribe(
       (res) => {
         console.log(res);
@@ -24,6 +25,8 @@ export class TransvieworderComponent implements OnInit {
         this.Orders = res["Orders"];
         if (this.Orders.length > 0) {
           this.isEmpty = false;
+        } else {
+          this.isEmpty = true;
         }
         this.accept.length = this.Orders.length;
         this.accept.fill(false);

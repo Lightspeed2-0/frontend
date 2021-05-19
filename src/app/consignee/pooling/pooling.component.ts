@@ -15,7 +15,7 @@ export class PoolingComponent implements OnInit {
   msg = "";
   // panelOpenState = false;
 
-  Bids: any[] = [];
+  Pool: any[] = [];
   close: any[] = [];
   accept: any[] = [];
   orderId = "";
@@ -33,20 +33,24 @@ export class PoolingComponent implements OnInit {
   ) {}
 
   getPooling() {
+    this.Pool.length = 0;
     this.service.getPool().subscribe(
       (res) => {
         console.log(res);
         this.clicked = false;
-        this.Bids = res["indents"];
+        this.Pool = res["indents"];
 
-        if (this.Bids.length == 0) {
+        if (this.Pool.length == 0) {
           this.isEmpty = true;
+        } else {
+          this.isEmpty = false;
         }
-        this.cancel.length = this.Bids.length;
-        this.panelOpenState.length = this.Bids.length;
+
+        this.cancel.length = this.Pool.length;
+        this.panelOpenState.length = this.Pool.length;
         this.cancel.fill(false);
         this.panelOpenState.fill(false);
-        this.close.length = this.Bids.length;
+        this.close.length = this.Pool.length;
         this.accept.length = this.accept.length;
 
         this.close.fill(false);
@@ -104,6 +108,7 @@ export class PoolingComponent implements OnInit {
           console.log(res);
           if (res.msg === "Payment Successful") {
             this.popup = false;
+            this.clicked = true;
             this.getPooling();
           }
         },
@@ -121,6 +126,7 @@ export class PoolingComponent implements OnInit {
       .subscribe(
         (res) => {
           console.log(res);
+          this.clicked = true;
           this.getPooling();
         },
         (error) => {
@@ -137,6 +143,7 @@ export class PoolingComponent implements OnInit {
       (res) => {
         this.cancel[index] = false;
         console.log(res);
+        this.clicked = true;
         this.getPooling();
       },
       (error) => {

@@ -92,7 +92,10 @@
           </div>
           <div class="row" *ngIf="request.Status === 4">
             <button
-              (click)="onAppend(request.IndentId, request.OrderId, request._id)"
+              (click)="
+                onAppend(request.IndentId, request.OrderId, request._id, i)
+              "
+              [ngStyle]="{ width: '10em' }"
             >
               Append Order
               <div class="lds-ring" *ngIf="clicked[i]">

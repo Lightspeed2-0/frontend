@@ -6,7 +6,7 @@
     ></mat-progress-spinner>
   </div>
   <div *ngIf="isEmpty">No orders please come later.....</div>
-  <div class="order-wrap" *ngFor="let indent of Bids; let i = index">
+  <div class="order-wrap" *ngFor="let indent of Pool; let i = index">
     <mat-accordion>
       <mat-expansion-panel
         (opened)="panelOpenState[i] = true"
@@ -17,7 +17,7 @@
             [ngStyle]="{
               color:
                 indent.Status === -4
-                  ? 'black'
+                  ? 'violet'
                   : indent.StatusStack.length === 5
                   ? 'darkgreen'
                   : indent.Status === 5
