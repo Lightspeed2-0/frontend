@@ -47,6 +47,9 @@ export class MoreorderComponent implements OnInit {
       }
     );
   }
+  // getPaths(data: any) {
+  //   return this.http.post<any>(this.pathUrl, data);
+  // }
 
   ngOnInit(): void {
     this.clicked = true;

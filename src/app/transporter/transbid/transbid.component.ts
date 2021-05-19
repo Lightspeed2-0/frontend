@@ -27,6 +27,7 @@ export class TransbidComponent implements OnInit {
   constructor(private service: TransporterService) {}
 
   getBids() {
+    this.Bids.length = 0;
     this.service.getBid().subscribe(
       (res) => {
         console.log(res);
@@ -64,6 +65,8 @@ export class TransbidComponent implements OnInit {
     this.service.acceptBid({ BidId: id, ...this.form.value }).subscribe(
       (res) => {
         this.loaded = false;
+        this.clicked = true;
+        this.getBids();
         console.log(res);
       },
       (error) => {

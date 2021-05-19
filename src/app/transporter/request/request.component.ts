@@ -17,6 +17,9 @@ export class RequestComponent implements OnInit {
 
   driverForm: FormGroup = new FormGroup({
     DriverId: new FormControl(null, Validators.required),
+    TotalWeight: new FormControl(null, Validators.required),
+    TotalVolume: new FormControl(null, Validators.required),
+    TruckNumber: new FormControl(null, Validators.required),
   });
 
   Req: any[] = [];
@@ -147,6 +150,9 @@ export class RequestComponent implements OnInit {
     this.service
       .allocateDriver({
         DriverId: this.getDriverid(this.driverForm.value["DriverId"]),
+        TotalWeight: this.driverForm.value["TotalWeight"],
+        TotalVolume: this.driverForm.value["TotalVolume"],
+        VehicleNo: this.driverForm.value["TruckNumber"],
         RequestId: requestId,
       })
       .subscribe(

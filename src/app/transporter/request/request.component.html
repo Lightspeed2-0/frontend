@@ -96,6 +96,18 @@
               (ngSubmit)="onAllocate(request._id, i)"
             >
               <div class="row">
+                <div class="title">Truck Capacity</div>
+                <input type="text" formControlName="TotalVolume" />
+              </div>
+              <div class="row">
+                <div class="title">Carrying Weight</div>
+                <input type="text" formControlName="TotalWeight" />
+              </div>
+              <div class="row">
+                <div class="title">Vehicle Number</div>
+                <input type="text" formControlName="TruckNumber" />
+              </div>
+              <div class="row">
                 <input list="driver" formControlName="DriverId" />
                 <datalist id="driver">
                   <option

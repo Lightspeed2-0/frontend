@@ -21,6 +21,7 @@ export class ViewbidsComponent implements OnInit {
   constructor(private service: ConsigneeserviceService) {}
 
   getBids() {
+    this.Bids.length = 0;
     this.service.viewBids().subscribe(
       (res) => {
         this.clicked = false;
