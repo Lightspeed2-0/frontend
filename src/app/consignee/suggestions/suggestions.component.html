@@ -20,7 +20,9 @@
       >
         <mat-expansion-panel-header>
           <mat-panel-title> Order </mat-panel-title>
-          <mat-panel-description> {{ order.OrderDate }}</mat-panel-description>
+          <mat-panel-description>
+            {{ order.OrderDate | shortenPipe: 10 }}</mat-panel-description
+          >
         </mat-expansion-panel-header>
         <div class="status">
           <div class="order-details">
@@ -31,11 +33,11 @@
             </div>
             <div class="row">
               <h3>Source</h3>
-              <h4>{{ order.Source.Pincode }}</h4>
+              <h4>{{ order.Source.City }}</h4>
             </div>
             <div class="row">
               <h3>Destination</h3>
-              <h4>{{ order.Destination.Pincode }}</h4>
+              <h4>{{ order.Destination.City }}</h4>
             </div>
             <!-- <div class="row">
               <h3>Weight</h3>
