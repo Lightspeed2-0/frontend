@@ -20,6 +20,7 @@ export class SuggestionsComponent implements OnInit {
   panelOpenState: any[] = [];
   Orders: any[] = [];
   clicked: any[] = [];
+  indent: any;
 
   getOrders() {
     this.service.recommendPool(this.service.poolIndent).subscribe((res) => {
@@ -40,7 +41,9 @@ export class SuggestionsComponent implements OnInit {
   ngOnInit(): void {
     this.loaded = true;
     this.getOrders();
+    this.indent = this.service.poolIndent;
     console.log(this.service.poolIndent);
+    console.log(this.indent);
   }
 
   onBack() {

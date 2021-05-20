@@ -67,6 +67,14 @@
               des: {
                 latitude: order.Destination.Geolocation.lat,
                 longitude: order.Destination.Geolocation.lng
+              },
+              src1: {
+                latitude: indent.Source.Geolocation.lat,
+                longitude: indent.Source.Geolocation.lng
+              },
+              des1: {
+                latitude: indent.Destination.Geolocation.lat,
+                longitude: indent.Destination.Geolocation.lng
               }
             }"
             *ngIf="panelOpenState[i]"
